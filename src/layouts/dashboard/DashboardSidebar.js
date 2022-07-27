@@ -85,7 +85,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
         className="sidebar-bg"
         style={{
           width: '100%',
-          height: '100%',
+          height: '150%',
           objectFit: 'cover',
           objectPosition: 'center',
           position: 'absolute',

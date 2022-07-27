@@ -10,6 +10,8 @@ import NotFound from './pages/Page404';
 import Register from './pages/Register';
 import Products from './pages/Products';
 import DashboardApp from './pages/DashboardApp';
+import Report from './pages/reports/Report';
+import Devices from './pages/devices/Devices';
 
 // ----------------------------------------------------------------------
 
@@ -21,6 +23,8 @@ export default function Router() {
       children: [
         { path: 'app', element: <DashboardApp /> },
         { path: 'user', element: <User /> },
+        { path: 'report', element: <Report /> },
+        { path: 'devices', element: <Devices /> },
         { path: 'products', element: <Products /> },
         { path: 'blog', element: <Blog /> },
       ],

@@ -41,8 +41,8 @@ export default function LanguagePopover() {
         onClick={handleOpen}
         sx={{
           padding: 0,
-          width: 40,
-          height: 40,
+          width: 35,
+          height: 35,
           ...(open && {
             bgcolor: (theme) => alpha(theme.palette.primary.main, theme.palette.action.focusOpacity),
           }),
