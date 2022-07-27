@@ -1,0 +1,35 @@
+.preloader {
+  // background: white;
+  position: fixed;
+  height: 100vh;
+  height: calc(1vh * 100);
+  width: 100%;
+  z-index: 500;
+}
+.preloader .ball {
+  position: absolute;
+  top: -60vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  background: rgba(21, 134, 199, 1);
+  margin: 0 auto;
+}
+@media (max-width: 967px) {
+  .preloader .ball {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.after-animation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
