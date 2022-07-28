@@ -9,26 +9,20 @@ import Page from '../../components/Page';
 
 export default function Devices() {
   const titles = [
-    ["Cihaz Türleri"],
-    ["Cihaz Konumları"],
-    ["Pompa Yönetim Türleri"],
-    ["Sim Kartlar"],
-    ["Modem Kayıtları"],
-    ["Kullanıcı Yetkileri"]
+    ["Bitki Türleri"],
+    ["Sulama Türleri"],
+    ["Sistem Parametreleri"],
   ];
   const paths = [
     ["https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wwtR?ver=4d2d"],
     ["https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wB6z?ver=eddc"],
     ["https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wqGK?ver=47a4"],
-    ["https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wppQ?ver=7215"],
-    ["https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wEaN?ver=9f5b"],
-    ["https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wqHi?ver=6ef6"]
   ];
   return (
     <Page title="Dashboard: Test">
       <Container maxWidth="xxl">
         <Typography variant="h5" style={{textAlign:'center'}}>
-          Cihazlar ve Yetkilendirme
+          Ayarlar
         </Typography>
         <Stack direction="row" flexWrap="wrap-reverse" alignItems="center" justifyContent="flex-end" sx={{ mb: 5 }}/>
         <Grid container spacing={3}>

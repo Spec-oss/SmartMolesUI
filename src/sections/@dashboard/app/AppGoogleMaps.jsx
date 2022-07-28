@@ -13,7 +13,7 @@ const data = [
 
 const options = {
   colorAxis: { colors: ["#47B5FF", "#1363DF", "006778"] },
-  backgroundColor: "#blue",
+  backgroundColor: '#F5F7FA',
   datalessRegionColor: "CDC2AE",
   defaultColor: "black",
 };

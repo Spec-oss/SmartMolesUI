@@ -17,6 +17,7 @@ export default function CssBaseline() {
         body: {
           width: '100%',
           height: '100%',
+          background: 'linear-gradient(to left, #f5f7fa 0%, #c3cfe2 100%)'  
         },
         '#root': {
           width: '100%',

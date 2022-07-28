@@ -123,9 +123,9 @@ export default function NotificationsPopover() {
       >
         <Box sx={{ display: 'flex', alignItems: 'center', py: 2, px: 2.5 }}>
           <Box sx={{ flexGrow: 1 }}>
-            <Typography variant="subtitle1">Notifications</Typography>
+            <Typography variant="subtitle1">Bildirimler</Typography>
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              You have {totalUnRead} unread messages
+              Okunmamış {totalUnRead} mesajınız var
             </Typography>
           </Box>
 
@@ -145,7 +145,7 @@ export default function NotificationsPopover() {
             disablePadding
             subheader={
               <ListSubheader disableSticky sx={{ py: 1, px: 2.5, typography: 'overline' }}>
-                New
+                Yeni
               </ListSubheader>
             }
           >
@@ -172,7 +172,7 @@ export default function NotificationsPopover() {
 
         <Box sx={{ p: 1 }}>
           <Button fullWidth disableRipple>
-            View All
+            Hepsini Göster
           </Button>
         </Box>
       </MenuPopover>

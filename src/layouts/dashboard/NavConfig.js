@@ -48,7 +48,7 @@ const navConfig = [
   },
   {
     title: 'Ayarlar',
-    path: '/dashboard/user',
+    path: '/dashboard/settings',
     icon: getIcon('tabler:plant-2'),
   },
   {

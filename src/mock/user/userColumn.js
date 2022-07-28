@@ -3,7 +3,7 @@ export const columns = [
     name: 'name',
     label: 'Ad',
     options: {
-      filter: false,
+      filter: true,
       sort: true,
     },
   },

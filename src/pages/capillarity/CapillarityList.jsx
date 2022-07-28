@@ -15,25 +15,24 @@ import Iconify from '../../components/Iconify';
 import { columns } from '../../mock/user/userColumn';
 import { options } from '../../mock/user/userOptions';
 
-
-const Users = () => {
+const CapillarityList = () => {
   const { data, loading, error, reFetch } = useFetch(
-    process.env.REACT_APP_API_URL + 'user');
+    process.env.REACT_APP_API_URL_NEW + 'gateway');
     
   return (
     <Page title="User">
       <Container maxWidth="xxl">
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h5" gutterBottom>
-            Müşteri Yönetimi
+            Smart Capillarity
           </Typography>
           <Button variant="contained" component={RouterLink} to="#" startIcon={<Iconify icon="eva:plus-fill" />}>
             Yeni Kayıt Ekle
           </Button>
         </Stack>
-        <MuiTable title={'Müşteri Listesi'} data={data} columns={columns} options={options} />
+        <MuiTable title={'Capillarity Listesi'} data={data} columns={columns} options={options} />
       </Container>
     </Page>
   );
 };
-export default Users;
+export default CapillarityList;

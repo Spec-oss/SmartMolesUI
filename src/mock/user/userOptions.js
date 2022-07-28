@@ -1,9 +1,10 @@
 export const options = {
-    filter: true,
-    filterType: 'dropdown',
-    serverSide: true,
-    rowsPerPage: 10,
-    selectableRows: true,
+    // filter: true,
+    // search:true,
+    // filterType: 'dropdown',
+    // serverSide: true,
+    // rowsPerPage: 10,
+    // selectableRows: true,
     textLabels: {
       body: {
         noMatch: "Listede bir kayıt bulunmamaktadır.",

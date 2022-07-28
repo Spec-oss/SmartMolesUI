@@ -12,17 +12,17 @@ import account from '../../mock/account';
 
 const MENU_OPTIONS = [
   {
-    label: 'Home',
+    label: 'Anasayfa',
     icon: 'eva:home-fill',
     linkTo: '/',
   },
   {
-    label: 'Profile',
+    label: 'Hesabım',
     icon: 'eva:person-fill',
     linkTo: '#',
   },
   {
-    label: 'Settings',
+    label: 'Ayarlar',
     icon: 'eva:settings-2-fill',
     linkTo: '#',
   },
@@ -102,7 +102,7 @@ export default function AccountPopover() {
         <Divider sx={{ borderStyle: 'dashed' }} />
 
         <MenuItem onClick={handleClose} sx={{ m: 1 }}>
-          Logout
+          Çıkış Yap
         </MenuItem>
       </MenuPopover>
     </>

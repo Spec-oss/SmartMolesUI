@@ -7,16 +7,16 @@ import Page from '../../components/Page';
 
 // ----------------------------------------------------------------------
 
-export default function Devices() {
+export default function Report() {
   const titles = [
-    ["Cihaz Türleri"],
-    ["Cihaz Konumları"],
-    ["Pompa Yönetim Türleri"],
-    ["Sim Kartlar"],
-    ["Modem Kayıtları"],
-    ["Kullanıcı Yetkileri"]
+    ["KHAS Raporları"],
+    ["Loglar"],
+    ["HUB Raporları"],
+    ["Sulama Raporları"],
+    ["Hata Raporları"],
+    ["Müşteri Raporları"]
   ];
-  const paths = [
+  const path = [
     ["https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wwtR?ver=4d2d"],
     ["https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wB6z?ver=eddc"],
     ["https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wqGK?ver=47a4"],
@@ -27,14 +27,14 @@ export default function Devices() {
   return (
     <Page title="Dashboard: Test">
       <Container maxWidth="xxl">
-        <Typography variant="h5" style={{textAlign:'center'}}>
-          Cihazlar ve Yetkilendirme
+        <Typography variant="h5" style={{ textAlign: 'center' }}>
+          Raporlar
         </Typography>
-        <Stack direction="row" flexWrap="wrap-reverse" alignItems="center" justifyContent="flex-end" sx={{ mb: 5 }}/>
+        <Stack direction="row" flexWrap="wrap-reverse" alignItems="center" justifyContent="flex-end" sx={{ mb: 5 }} />
         <Grid container spacing={3}>
         {titles.map((title,index) => (
           <Grid key={index} item xs={12} sm={6} md={3}>
-            <MenuCard title={title} path={paths[index]} />
+            <MenuCard title={title} path={path[index]} />
           </Grid>))}
         </Grid>
       </Container>

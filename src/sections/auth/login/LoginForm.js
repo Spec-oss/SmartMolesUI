@@ -1,3 +1,4 @@
+
 import * as Yup from 'yup';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -19,8 +20,8 @@ export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
 
   const LoginSchema = Yup.object().shape({
-    email: Yup.string().email('Email must be a valid email address').required('Email is required'),
-    password: Yup.string().required('Password is required'),
+    email: Yup.string().email('Geçerli bir e-mail adresi giriniz.').required('E-mail giriniz.'),
+    password: Yup.string().required('Şifre Giriniz.'),
   });
 
   const defaultValues = {
@@ -46,11 +47,11 @@ export default function LoginForm() {
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={3}>
-        <RHFTextField name="email" label="Email address" />
+        <RHFTextField name="email" label="E-mail Adresi" />
 
         <RHFTextField
           name="password"
-          label="Password"
+          label="Şifre"
           type={showPassword ? 'text' : 'password'}
           InputProps={{
             endAdornment: (
@@ -65,14 +66,14 @@ export default function LoginForm() {
       </Stack>
 
       <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ my: 2 }}>
-        <RHFCheckbox name="remember" label="Remember me" />
+        <RHFCheckbox name="remember" label="Beni Hatırla" />
         <Link variant="subtitle2" underline="hover">
-          Forgot password?
+          Şifrenizi mi unuttunuz?
         </Link>
       </Stack>
 
       <LoadingButton fullWidth size="large" type="submit" variant="contained" loading={isSubmitting}>
-        Login
+        Giriş Yap
       </LoadingButton>
     </FormProvider>
   );
