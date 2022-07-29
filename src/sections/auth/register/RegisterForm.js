@@ -50,15 +50,15 @@ export default function RegisterForm() {
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={3}>
         <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-          <RHFTextField name="firstName" label="First name" />
-          <RHFTextField name="lastName" label="Last name" />
+          <RHFTextField style={{backgroundColor:'white', borderRadius:10}} name="firstName" label="Adınız" />
+          <RHFTextField style={{backgroundColor:'white', borderRadius:10}} name="lastName" label="Soyadınız" />
         </Stack>
 
-        <RHFTextField name="email" label="Email address" />
+        <RHFTextField style={{backgroundColor:'white', borderRadius:10}} name="email" label="E-mail Adresi" />
 
-        <RHFTextField
+        <RHFTextField style={{backgroundColor:'white', borderRadius:10}}
           name="password"
-          label="Password"
+          label="Şifre"
           type={showPassword ? 'text' : 'password'}
           InputProps={{
             endAdornment: (
@@ -72,7 +72,7 @@ export default function RegisterForm() {
         />
 
         <LoadingButton fullWidth size="large" type="submit" variant="contained" loading={isSubmitting}>
-          Register
+          Kaydol
         </LoadingButton>
       </Stack>
     </FormProvider>

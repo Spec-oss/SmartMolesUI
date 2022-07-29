@@ -23,7 +23,7 @@ export default function MenuCard({title,path}) {
       </Box>
       <Stack spacing={2} sx={{ p: 3 }}>
         <Link to="#" color="inherit" underline="hover" component={RouterLink}>
-          <Typography variant="subtitle2" noWrap>
+          <Typography variant="subtitle2" noWrap textAlign={"center"}>
             {title}
           </Typography>
         </Link>

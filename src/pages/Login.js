@@ -6,7 +6,6 @@ import { Card, Link, Container, Typography } from '@mui/material';
 import useResponsive from '../hooks/useResponsive';
 // components
 import Page from '../components/Page';
-import Logo from '../components/Logo';
 // sections
 import { LoginForm } from '../sections/auth/login';
 import AuthSocial from '../sections/auth/AuthSocial';
@@ -21,6 +20,7 @@ const RootStyle = styled('div')(({ theme }) => ({
 
 const HeaderStyle = styled('header')(({ theme }) => ({
   top: 0,
+  left: 0,
   zIndex: 9,
   lineHeight: 0,
   width: '100%',
@@ -64,18 +64,7 @@ export default function Login() {
   return (
     <Page title="Login">
       <RootStyle>
-        <HeaderStyle>
-          <Logo />
-
-          {smUp && (
-            <Typography variant="body2" sx={{ mt: { md: -2 } }}>
-              Don’t have an account? {''}
-              <Link variant="subtitle2" component={RouterLink} to="/register">
-                Get started
-              </Link>
-            </Typography>
-          )}
-        </HeaderStyle>
+        <HeaderStyle></HeaderStyle>
 
         {mdUp && (
           <SectionStyle>
@@ -89,23 +78,17 @@ export default function Login() {
         <Container maxWidth="sm">
           <ContentStyle>
             <Typography variant="h4" gutterBottom>
-              Sign in to Minimal
+              Hoşgeldiniz
             </Typography>
-
-            <Typography sx={{ color: 'text.secondary', mb: 5 }}>Enter your details below.</Typography>
-
+            <Typography sx={{ color: 'text.secondary', mb: 5 }}>Lütfen Bilgileriniz ile Giriş Yapınız.</Typography>
             <AuthSocial />
-
             <LoginForm />
-
-            {!smUp && (
-              <Typography variant="body2" align="center" sx={{ mt: 3 }}>
-                Don’t have an account?{' '}
-                <Link variant="subtitle2" component={RouterLink} to="/register">
-                  Get started
-                </Link>
-              </Typography>
-            )}
+            <Typography variant="body2" align="center" sx={{ mt: 3 }}>
+              Henüz bir hesabın yok mu?{' '}
+              <Link variant="subtitle2" component={RouterLink} to="/register">
+                Kaydol
+              </Link>
+            </Typography>
           </ContentStyle>
         </Container>
       </RootStyle>

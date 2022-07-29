@@ -47,9 +47,9 @@ export default function LoginForm() {
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={3}>
-        <RHFTextField name="email" label="E-mail Adresi" />
+        <RHFTextField style={{backgroundColor:'white', borderRadius:10}} name="email" label="E-mail Adresi" />
 
-        <RHFTextField
+        <RHFTextField style={{backgroundColor:'white', borderRadius:10}}
           name="password"
           label="Şifre"
           type={showPassword ? 'text' : 'password'}

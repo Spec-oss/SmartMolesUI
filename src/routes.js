@@ -13,6 +13,7 @@ import DashboardApp from './pages/DashboardApp';
 import Reports from './pages/reports/Reports';
 import Devices from './pages/devices/Devices';
 import Settings from './pages/settings/Settings';
+import CapillarityDetail from './pages/capillarity/CapillarityDetail';
 
 // ----------------------------------------------------------------------
 
@@ -28,6 +29,7 @@ export default function Router() {
         { path: 'devices', element: <Devices /> },
         { path: 'products', element: <Products /> },
         { path: 'settings', element: <Settings />},
+        { path: 'capillarity/detail', element: <CapillarityDetail />},
         { path: 'blog', element: <Blog /> },
       ],
     },

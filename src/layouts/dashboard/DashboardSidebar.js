@@ -14,6 +14,7 @@ import Scrollbar from '../../components/Scrollbar';
 import NavSection from '../../components/NavSection';
 //
 import navConfig from './NavConfig';
+import backgroundPhoto from '../../assets/images/bg2.jpg'; 
 
 // ----------------------------------------------------------------------
 
@@ -80,7 +81,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
         </Link>
       </Box>
       <img 
-        src="http://localhost:3001/static/media/bg2.9644ed41ee7fdd1bf5ce.jpg" 
+        src={backgroundPhoto} 
         alt="sidebar background" 
         className="sidebar-bg"
         style={{
