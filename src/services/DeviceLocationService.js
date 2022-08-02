@@ -1,19 +1,19 @@
-import axios from "axios"
+import axios from 'axios';
 
-export default class DeviceLocations{
-     getDeviceLocation(){
-         return axios.get("http://192.168.1.33:3000/v1/api/devices-location")
-     }
-     addDeviceLocation(){
-        return axios.post("http://192.168.1.33:3000/v1/api/devices-location")
-     }
-     updateDeviceLocation(id){
-        return axios.put("http://192.168.1.33:3000/v1/api/devices-location/"+id)
-     }
-     deleteDeviceLocation(id){
-        return axios.delete("http://192.168.1.33:3000/v1/api/devices-location/"+id)
-     }
-     getByDeviceLocationId(id){
-        return axios.delete("http://192.168.1.33:3000/v1/api/devices-location/"+id)
-     }
+export default class DeviceLocationServices {
+  getDeviceLocation() {
+    return axios.get(process.env.REACT_APP_API_URL_NEW + '/devices-location');
+  }
+  addDeviceLocation() {
+    return axios.post(process.env.REACT_APP_API_URL_NEW + '/devices-location');
+  }
+  updateDeviceLocation(id) {
+    return axios.put(process.env.REACT_APP_API_URL_NEW + ' /devices-location/' + id);
+  }
+  deleteDeviceLocation(id) {
+    return axios.delete(process.env.REACT_APP_API_URL_NEW + '/devices-location/' + id);
+  }
+  getByDeviceLocationId(id) {
+    return axios.delete(process.env.REACT_APP_API_URL_NEW + '/devices-location/' + id);
+  }
 }
