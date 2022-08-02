@@ -23,12 +23,12 @@ const navConfig = [
   },
   {
     title: 'Smart Capillarity',
-    path: '/dashboard/user',
+    path: '/dashboard/capillarity/detail',
     icon: getIcon('teenyicons:plant-outline'),
   },
   {
     title: 'Smart Root',
-    path: '/dashboard/user',
+    path: '/dashboard/root/detail',
     icon: getIcon('fluent:branch-24-filled'),
   },
   {

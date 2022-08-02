@@ -11,9 +11,17 @@ import Register from './pages/Register';
 import Products from './pages/Products';
 import DashboardApp from './pages/DashboardApp';
 import Reports from './pages/reports/Reports';
-import Devices from './pages/devices/Devices';
+import Devices from './pages/devicesandAuthorization/Devices';
+import DeviceTypes from './pages/devicesandAuthorization/deviceTypes/DeviceTypes';
+import DeviceLocations from './pages/devicesandAuthorization/deviceLocations/DeviceLocations';
+import PumpManagementTypes from './pages/devicesandAuthorization/pumpManagementTypes/PumpManagementTypes';
+import SimCards from './pages/devicesandAuthorization/simCards/SimCards';
+import ModemImeiRecords from './pages/devicesandAuthorization/modemImeiRecords/ModemImeiRecords';
 import Settings from './pages/settings/Settings';
 import CapillarityDetail from './pages/capillarity/CapillarityDetail';
+import Root from './pages/root/Root';
+import { element } from 'prop-types';
+
 
 // ----------------------------------------------------------------------
 
@@ -27,9 +35,15 @@ export default function Router() {
         { path: 'user', element: <User /> },
         { path: 'report', element: <Reports /> },
         { path: 'devices', element: <Devices /> },
+          {path: 'device-types', element: <DeviceTypes/>},
+          {path: 'device-locations', element: <DeviceLocations/>},
+          {path: 'pump-management-types', element: <PumpManagementTypes/>},
+          {path: 'simcards', element: <SimCards/>},
+          {path: 'modem-records', element: <ModemImeiRecords/>},
         { path: 'products', element: <Products /> },
         { path: 'settings', element: <Settings />},
         { path: 'capillarity/detail', element: <CapillarityDetail />},
+        { path: 'root/detail', element: <Root />},
         { path: 'blog', element: <Blog /> },
       ],
     },

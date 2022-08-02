@@ -59,9 +59,8 @@ export default function OptionsTab() {
   };
 
   return (
-    <Paper
+    <Paper elevation={20}
       style={{
-        boxShadow: `15px 20px 20px ${GREY}`,
         border: BorderAllSharp,
         borderWidth: 11,
         borderRadius: 50,
@@ -124,10 +123,9 @@ export default function OptionsTab() {
               <Divider variant="middle" />
             </Grid>
             <Grid style={{ marginLeft: 0 }} container>
-              <Grid item xs={6}>
+              <Grid item xs={12} md={6}>
                 <Card
                   sx={{
-                    boxShadow: '10px 15px 20px #a9a495',
                     backgroundColor: "#d9d4c1",
                     marginTop: 2,
                     borderRadius: 8,
@@ -144,10 +142,9 @@ export default function OptionsTab() {
                   </CardActionArea>
                 </Card>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={12} md={6}>
                 <Card
                   sx={{
-                    boxShadow: '10px 15px 20px #a9a495',
                     backgroundColor: "#d9d4c1",
                     marginTop: 2,
                     borderRadius: 8,
@@ -187,10 +184,9 @@ export default function OptionsTab() {
                   </CardActionArea>
                 </Card>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={12} md={6}>
                 <Card
                   sx={{
-                    boxShadow: '10px 15px 20px #a9a495',
                     backgroundColor: "#d9d4c1",
                     marginTop: 2,
                     borderRadius: 8,
@@ -230,10 +226,9 @@ export default function OptionsTab() {
                   </CardActionArea>
                 </Card>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={12} md={6} >
                 <Card
                   sx={{
-                    boxShadow: '10px 15px 20px #a9a495',
                     backgroundColor: "#d9d4c1",
                     marginTop: 2,
                     borderRadius: 8,

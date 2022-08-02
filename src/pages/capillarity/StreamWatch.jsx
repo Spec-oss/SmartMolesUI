@@ -6,7 +6,7 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-// import LineChart from "../../components/googleChart/LineChart";
+import AppKhasSensor from '../../sections/@dashboard/capillarity/AppKhasSensor'
 import Khas from './Khas';
 
 function TabPanel(props) {
@@ -66,7 +66,23 @@ const StreamWatch = ({ text }) => {
             <Khas />
           </TabPanel>
           <TabPanel value={value} index={1}>
-            {/* <LineChart /> */}
+            <AppKhasSensor
+            title="Website Visits"
+            subheader="(+43%) than last year"
+            chartLabels={[
+              '01/01/2012',
+              '02/01/2012',
+              '03/01/2012',
+              '04/01/2012',
+              '05/01/2012',
+              '06/01/2012',
+              '07/01/2012',
+            ]}
+            chartData={[
+              { name: 'Series 1', data: [80, 50, 30, 40, 100, 20,70] },
+              { name: 'Series 2', data: [20, 30, 40, 80, 20, 80,90] },
+              { name: 'Series 3', data: [44, 76, 78, 13, 43, 10,5] },
+            ]}/>
           </TabPanel>
         </Box>
         {/* </Grid> */}

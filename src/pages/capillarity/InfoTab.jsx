@@ -27,9 +27,8 @@ const GREY = '#9E9E9E';
 
 export default function InfoTab() {
   return (
-    <Paper
+    <Paper elevation={20}
       style={{
-        boxShadow: `15px 20px 20px ${GREY}`,
         border: BorderAllSharp,
         borderWidth: 11,
         borderRadius: 50,
@@ -113,10 +112,9 @@ export default function InfoTab() {
             </Typography>
             <Divider />
             <Grid style={{ marginLeft: 0 }} container>
-              <Grid item xs={6}>
+              <Grid item xs={12} xl={6}>
                 <Card
                   sx={{
-                    boxShadow: '10px 15px 20px #a9a495',
                     backgroundColor: '#d9d4c1',
                     margin: 2,
                     borderRadius: 8,
@@ -143,10 +141,9 @@ export default function InfoTab() {
                   </CardActions> */}
                 </Card>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={12} xl={6}>
                 <Card
                   sx={{
-                    boxShadow: '10px 15px 20px #a9a495',
                     backgroundColor: '#d9d4c1',
                     margin: 2,
                     borderRadius: 8,
@@ -173,10 +170,9 @@ export default function InfoTab() {
                   </CardActions> */}
                 </Card>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={12} xl={6}>
                 <Card
                   sx={{
-                    boxShadow: '10px 15px 20px #a9a495',
                     backgroundColor: '#d9d4c1',
                     margin: 2,
                     borderRadius: 8,
@@ -203,10 +199,9 @@ export default function InfoTab() {
                   </CardActions> */}
                 </Card>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={12} xl={6}>
                 <Card
                   sx={{
-                    boxShadow: '10px 15px 20px #a9a495',
                     backgroundColor: '#d9d4c1',
                     margin: 2,
                     borderRadius: 8,
