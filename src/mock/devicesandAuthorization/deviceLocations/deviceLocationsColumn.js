@@ -1,7 +1,7 @@
 export const columns = [
   {
     name: 'ImageUrl',
-    label: 'Ad',
+    label: 'Görsel',
     options: {
       filter: true,
       sort: true,
