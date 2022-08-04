@@ -1,19 +1,19 @@
 import axios from 'axios';
 
 export default class GatewayLogService {
-  getGatewayLogs() {
+  getGatewayLog() {
     return axios.get(process.env.REACT_APP_API_URL_NEW + '/gateway-logs');
   }
-  addGatewayLogs() {
-    return axios.post(process.env.REACT_APP_API_URL_NEW + '/gateway-logs');
+  async addGatewayLog(data) {
+    return await axios.post(process.env.REACT_APP_API_URL_NEW + '/gateway-logs' , data);
   }
-  updateGatewayLogs(id) {
-    return axios.put(process.env.REACT_APP_API_URL_NEW + ' /gateway-logs/' + id);
+  async updateGatewayLog(id) {
+    return await axios.put(process.env.REACT_APP_API_URL_NEW + ' /gateway-logs/' + id);
   }
-  deleteGatewayLogs(id) {
-    return axios.delete(process.env.REACT_APP_API_URL_NEW + '/gateway-logs/' + id);
+  async deleteGatewayLog(id) {
+    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/gateway-logs/' + id);
   }
-  getByGatewayLogsId(id) {
-    return axios.delete(process.env.REACT_APP_API_URL_NEW + '/gateway-logs/' + id);
+  async getByGatewayLogId(id) {
+    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/gateway-logs/' + id);
   }
 }

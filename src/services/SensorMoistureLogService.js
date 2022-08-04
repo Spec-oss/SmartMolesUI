@@ -1,19 +1,19 @@
 import axios from 'axios';
 
 export default class SensorMoistureLogService {
-  getSensorMoistureLogs() {
-    return axios.get(process.env.REACT_APP_API_URL_NEW + '/sensor-moisture-log');
+  getSensorMoistureLog() {
+    return await axios.get(process.env.REACT_APP_API_URL_NEW + '/sensor-moisture-log');
   }
-  addSensorMoistureLogs() {
-    return axios.post(process.env.REACT_APP_API_URL_NEW + '/sensor-moisture-log');
+  async addSensorMoistureLog(data) {
+    return await axios.post(process.env.REACT_APP_API_URL_NEW + '/sensor-moisture-log' , data);
   }
-  updateSensorMoistureLogs(id) {
-    return axios.put(process.env.REACT_APP_API_URL_NEW + ' /sensor-moisture-log/' + id);
+  async updateSensorMoistureLog(id) {
+    return await axios.put(process.env.REACT_APP_API_URL_NEW + ' /sensor-moisture-log/' + id);
   }
-  deleteSensorMoistureLogs(id) {
-    return axios.delete(process.env.REACT_APP_API_URL_NEW + '/sensor-moisture-log/' + id);
+  async deleteSensorMoistureLog(id) {
+    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/sensor-moisture-log/' + id);
   }
-  getBySensorMoistureLogsId(id) {
-    return axios.delete(process.env.REACT_APP_API_URL_NEW + '/sensor-moisture-log/' + id);
+  async getBySensorMoistureLogId(id) {
+    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/sensor-moisture-log/' + id);
   }
 }

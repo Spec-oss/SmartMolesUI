@@ -1,19 +1,19 @@
 import axios from 'axios';
 
 export default class PlantService {
-  getPlants() {
+  getPlant() {
     return axios.get(process.env.REACT_APP_API_URL_NEW + '/plants');
   }
-  addPlants() {
-    return axios.post(process.env.REACT_APP_API_URL_NEW + '/plants');
+  async addPlant(data) {
+    return await axios.post(process.env.REACT_APP_API_URL_NEW + '/plants' , data);
   }
-  updatePlants(id) {
-    return axios.put(process.env.REACT_APP_API_URL_NEW + ' /plants/' + id);
+  async updatePlant(id) {
+    return await axios.put(process.env.REACT_APP_API_URL_NEW + ' /plants/' + id);
   }
-  deletePlants(id) {
-    return axios.delete(process.env.REACT_APP_API_URL_NEW + '/plants/' + id);
+  async deletePlant(id) {
+    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/plants/' + id);
   }
-  getByPlantsId(id) {
-    return axios.delete(process.env.REACT_APP_API_URL_NEW + '/plants/' + id);
+  async getByPlantId(id) {
+    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/plants/' + id);
   }
 }

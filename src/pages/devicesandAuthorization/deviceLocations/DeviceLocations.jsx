@@ -1,16 +1,9 @@
-import * as Yup from 'yup';
 import { useEffect, useState } from 'react';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 
 //material
 import { Stack, Button, Container, Typography, Box, Modal, TextField } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
-//hooks
-// import useFetch from '../../../hooks/useFetch';
-
-// form
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
 
 // component
 import MuiTable from '../../../components/tables/Table';
@@ -24,7 +17,6 @@ import { options } from '../../../mock/devicesandAuthorization/deviceLocations/d
 
 //service
 import DeviceLocationServices from 'src/services/DeviceLocationService';
-import axios from 'axios';
 
 const style = {
   position: 'absolute',
@@ -39,17 +31,7 @@ const style = {
 };
 
 const DeviceLocations = () => {
-  const navigate = useNavigate();
   const services = new DeviceLocationServices();
-  const DeviceLocationsSchema = Yup.object().shape({
-    imageUrl: Yup.string().required('Bu alan zorunludur.'),
-    titleTR: Yup.string().required('Bu alan zorunludur.'),
-  });
-
-  const defaultValues = {
-    imageUrl: '',
-    titleTR: '',
-  };
 
   const [data, setData] = useState({
     imageUrl: '',
@@ -64,60 +46,35 @@ const DeviceLocations = () => {
     });
   };
 
-  const methods = useForm({
-    resolver: yupResolver(DeviceLocationsSchema),
-    defaultValues,
-  });
-
-  const {
-    handleSubmit,
-    formState: { isSubmitting },
-  } = methods;
-
   const onSubmit = async (e) => {
     e.preventDefault();
-    const userData = {
+    const deviceLocationData = {
       ImageUrl: data.imageUrl,
       TitleTR: data.titleTR,
-      TitleEN:'',
+      TitleEN: '',
     };
-    axios.post(process.env.REACT_APP_API_URL_NEW + '/devices-location',userData).then((response) => {
-      console.log(response.status);
-      console.log(response.data);
+
+    await services.addDeviceLocation(deviceLocationData).then((e) => {
+      if (e.status === 201) {
+        setResult(e.data);
+        getData();
+        handleClose();
+      }
     });
-    navigate(0, { replace: true });
   };
 
-  const handleClick = async (e)=>{
-    const userData = {
-      ImageUrl: data.imageUrl,
-      TitleTR: data.titleTR,
-      TitleEN:'x',
-
-      
-    };
-    e.preventDefault();
-    const res = await axios.post(process.env.REACT_APP_API_URL_NEW + 
-      '/devices-location', userData);
-    if(res.status ===201){
-      console.log(res.data)
-      services.getDeviceLocation().then((result) => setDeviceLocation(result.data));
-    }
-    else{
-      console.log(res.statusText)
-    }
-  }
-
-  // const { data, loading, error, reFetch } = useFetch('http://192.168.1.33:3000/v1/api/devices-location');
   const [deviceLocation, setDeviceLocation] = useState({});
-
+  const [getId, setGetId] = useState({});
+  const [handleResult, setResult] = useState({});
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  useEffect(() => {
+  const getData = () => {
     services.getDeviceLocation().then((result) => setDeviceLocation(result.data));
+  };
+  useEffect(() => {
+    getData();
   }, []);
 
   return (
@@ -144,9 +101,13 @@ const DeviceLocations = () => {
           aria-describedby="modal-modal-description"
         >
           <Box sx={style}>
-            <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
+            <Typography textAlign={'center'} variant="subtitle1" gutterBottom component="div">
+              Yeni Kayıt Ekle
+            </Typography>
+            <FormProvider onSubmit={(e) => onSubmit(e)}>
               <Stack spacing={3}>
                 <TextField
+                  required
                   style={{ backgroundColor: 'white', borderRadius: 10 }}
                   name="imageUrl"
                   label="Görsel"
@@ -154,13 +115,14 @@ const DeviceLocations = () => {
                   onChange={handleChange}
                 />
                 <TextField
+                  required
                   style={{ backgroundColor: 'white', borderRadius: 10 }}
                   name="titleTR"
                   label="Adı"
                   value={data.titleTR}
                   onChange={handleChange}
                 />
-                <LoadingButton onClick={(e)=>handleClick(e)} fullWidth size="large" type="submit" variant="contained" loading={isSubmitting}>
+                <LoadingButton onClick={(e) => onSubmit(e)} fullWidth size="large" type="submit" variant="contained">
                   Kaydet
                 </LoadingButton>
               </Stack>

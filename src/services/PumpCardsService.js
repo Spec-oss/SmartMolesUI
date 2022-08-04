@@ -1,19 +1,19 @@
 import axios from 'axios';
 
 export default class PumpCardService {
-  getPumpCards() {
+  getPumpCard() {
     return axios.get(process.env.REACT_APP_API_URL_NEW + '/pump-cards');
   }
-  addPumpCards() {
-    return axios.post(process.env.REACT_APP_API_URL_NEW + '/pump-cards');
+  async addPumpCard(data) {
+    return await axios.post(process.env.REACT_APP_API_URL_NEW + '/pump-cards' , data);
   }
-  updatePumpCards(id) {
-    return axios.put(process.env.REACT_APP_API_URL_NEW + ' /pump-cards/' + id);
+  async updatePumpCard(id) {
+    return await axios.put(process.env.REACT_APP_API_URL_NEW + ' /pump-cards/' + id);
   }
-  deletePumpCards(id) {
-    return axios.delete(process.env.REACT_APP_API_URL_NEW + '/pump-cards/' + id);
+  async deletePumpCard(id) {
+    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/pump-cards/' + id);
   }
-  getByPumpCardsId(id) {
-    return axios.delete(process.env.REACT_APP_API_URL_NEW + '/pump-cards/' + id);
+  async getByPumpCardId(id) {
+    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/pump-cards/' + id);
   }
 }

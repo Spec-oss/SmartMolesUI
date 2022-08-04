@@ -2,9 +2,6 @@ import MUIDataTable from 'mui-datatables';
 import { useState, useEffect } from 'react';
 
 const MuiTable = ({data, columns, options,title}) => {
-    useEffect(()=>{
-  console.log(data)
-    },[])
    const tableData = {
      columns,
      data,

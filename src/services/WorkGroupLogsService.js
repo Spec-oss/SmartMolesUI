@@ -1,19 +1,19 @@
 import axios from 'axios';
 
 export default class WorkGroupLogService {
-  getWorkGroupLogs() {
+  getWorkGroupLog() {
     return axios.get(process.env.REACT_APP_API_URL_NEW + '/work-group-logs');
   }
-  addWorkGroupLogs() {
-    return axios.post(process.env.REACT_APP_API_URL_NEW + '/work-group-logs');
+  async addWorkGroupLog(data) {
+    return await axios.post(process.env.REACT_APP_API_URL_NEW + '/work-group-logs' , data);
   }
-  updateWorkGroupLogs(id) {
-    return axios.put(process.env.REACT_APP_API_URL_NEW + ' /work-group-logs/' + id);
+  async updateWorkGroupLog(id) {
+    return await axios.put(process.env.REACT_APP_API_URL_NEW + ' /work-group-logs/' + id);
   }
-  deleteWorkGroupLogs(id) {
-    return axios.delete(process.env.REACT_APP_API_URL_NEW + '/work-group-logs/' + id);
+  async deleteWorkGroupLog(id) {
+    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/work-group-logs/' + id);
   }
-  getByWorkGroupLogsId(id) {
-    return axios.delete(process.env.REACT_APP_API_URL_NEW + '/work-group-logs/' + id);
+  async getByWorkGroupLogId(id) {
+    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/work-group-logs/' + id);
   }
 }

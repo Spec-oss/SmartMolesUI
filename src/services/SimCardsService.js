@@ -1,19 +1,19 @@
 import axios from 'axios';
 
 export default class SimCardService {
-  getSimCards() {
+  getSimCard() {
     return axios.get(process.env.REACT_APP_API_URL_NEW + '/simcards');
   }
-  addSimCards() {
-    return axios.post(process.env.REACT_APP_API_URL_NEW + '/simcards');
+  async addSimCard(data) {
+    return await axios.post(process.env.REACT_APP_API_URL_NEW + '/simcards' , data);
   }
-  updateSimCards(id) {
-    return axios.put(process.env.REACT_APP_API_URL_NEW + ' /simcards/' + id);
+  async updateSimCard(id) {
+    return await axios.put(process.env.REACT_APP_API_URL_NEW + ' /simcards/' + id);
   }
-  deleteSimCards(id) {
-    return axios.delete(process.env.REACT_APP_API_URL_NEW + '/simcards/' + id);
+  async deleteSimCard(id) {
+    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/simcards/' + id);
   }
-  getBySimCardsId(id) {
-    return axios.delete(process.env.REACT_APP_API_URL_NEW + '/simcards/' + id);
+  async getBySimCardId(id) {
+    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/simcards/' + id);
   }
 }

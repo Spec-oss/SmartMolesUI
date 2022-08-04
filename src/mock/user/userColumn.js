@@ -1,6 +1,6 @@
 export const columns = [
   {
-    name: 'name',
+    name: 'Name',
     label: 'Ad',
     options: {
       filter: true,
@@ -8,15 +8,15 @@ export const columns = [
     },
   },
   {
-    name: 'surName',
+    name: 'Surname',
     label: 'Soyad',
     options: {
-      filter: false,
-      sort: false,
+      filter: true,
+      sort: true,
     },
   },
   {
-    name: 'email',
+    name: 'Mail',
     label: 'E-mail',
     options: {
       filter: true,
@@ -24,7 +24,7 @@ export const columns = [
     },
   },
   {
-    name: 'phone',
+    name: 'Phone',
     label: 'Telefon',
     options: {
       filter: true,
@@ -32,66 +32,11 @@ export const columns = [
     },
   },
   {
-    name: 'country',
-    label: 'Ülke',
-    options: {
-      filter: true,
-      sort: false,
-    },
-  },
-  {
-    name: 'city',
+    name: 'City',
     label: 'Şehir',
     options: {
       filter: true,
       sort: false,
     },
   },
-  {
-    name: "isAdmin",
-    label: "Kullanıcı Türü",
-     cell: (row) =>
-        row.isAdmin ? (
-          <input
-            type="checkbox"
-            id="vehicle1"
-            name="vehicle1"
-            checked
-            disabled="disabled"
-          />
-        ) : (
-          <center>
-            <input
-              type="checkbox"
-              id="vehicle1"
-              name="vehicle1"
-              disabled="disabled"
-            />
-          </center>
-        )
-    
-  },
-  {
-    name: "Aktif mi?",
-    selector: row => row.isActive,
-     cell: (row) =>
-        row.isActive ? (
-          <input
-            type="checkbox"
-            id="vehicle1"
-            name="vehicle1"
-            checked
-            disabled="disabled"
-          />
-        ) : (
-          <center>
-            <input
-              type="checkbox"
-              id="vehicle1"
-              name="vehicle1"
-              disabled="disabled"
-            />
-          </center>
-        )
-  }
 ];

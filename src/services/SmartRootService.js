@@ -1,19 +1,19 @@
 import axios from 'axios';
 
 export default class SmartRootService {
-  getSmartRoots() {
+  getSmartRoot() {
     return axios.get(process.env.REACT_APP_API_URL_NEW + '/smart-root');
   }
-  addSmartRoots() {
-    return axios.post(process.env.REACT_APP_API_URL_NEW + '/smart-root');
+  async addSmartRoot(data) {
+    return axios.post(process.env.REACT_APP_API_URL_NEW + '/smart-root' , data);
   }
-  updateSmartRoots(id) {
+  async updateSmartRoot(id) {
     return axios.put(process.env.REACT_APP_API_URL_NEW + ' /smart-root/' + id);
   }
-  deleteSmartRoots(id) {
+  async deleteSmartRoot(id) {
     return axios.delete(process.env.REACT_APP_API_URL_NEW + '/smart-root/' + id);
   }
-  getBySmartRootsId(id) {
+  async getBySmartRootId(id) {
     return axios.delete(process.env.REACT_APP_API_URL_NEW + '/smart-root/' + id);
   }
 }

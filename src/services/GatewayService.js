@@ -1,19 +1,19 @@
 import axios from 'axios';
 
 export default class GatewayService {
-  getGateways() {
+  getGateway() {
     return axios.get(process.env.REACT_APP_API_URL_NEW + '/gateway');
   }
-  addGateways() {
-    return axios.post(process.env.REACT_APP_API_URL_NEW + '/gateway');
+  async addGateway(data) {
+    return await axios.post(process.env.REACT_APP_API_URL_NEW + '/gateway' , data);
   }
-  updateGateways(id) {
-    return axios.put(process.env.REACT_APP_API_URL_NEW + ' /gateway/' + id);
+  async updateGateway(id) {
+    return await axios.put(process.env.REACT_APP_API_URL_NEW + ' /gateway/' + id);
   }
-  deleteGateways(id) {
-    return axios.delete(process.env.REACT_APP_API_URL_NEW + '/gateway/' + id);
+  async deleteGateway(id) {
+    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/gateway/' + id);
   }
-  getByGatewaysId(id) {
-    return axios.delete(process.env.REACT_APP_API_URL_NEW + '/gateway/' + id);
+  async getByGatewayId(id) {
+    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/gateway/' + id);
   }
 }

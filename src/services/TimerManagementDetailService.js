@@ -1,19 +1,19 @@
 import axios from 'axios';
 
 export default class TimerManagementDetailService {
-  getTimerManagementDetails() {
+  getTimerManagementDetail() {
     return axios.get(process.env.REACT_APP_API_URL_NEW + '/timer-management-details');
   }
-  addTimerManagementDetails() {
-    return axios.post(process.env.REACT_APP_API_URL_NEW + '/timer-management-details');
+  async addTimerManagementDetail(data) {
+    return await axios.post(process.env.REACT_APP_API_URL_NEW + '/timer-management-details' , data);
   }
-  updateTimerManagementDetails(id) {
-    return axios.put(process.env.REACT_APP_API_URL_NEW + ' /timer-management-details/' + id);
+  async updateTimerManagementDetail(id) {
+    return await axios.put(process.env.REACT_APP_API_URL_NEW + ' /timer-management-details/' + id);
   }
-  deleteTimerManagementDetails(id) {
-    return axios.delete(process.env.REACT_APP_API_URL_NEW + '/timer-management-details/' + id);
+  async deleteTimerManagementDetail(id) {
+    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/timer-management-details/' + id);
   }
-  getByTimerManagementDetailsId(id) {
-    return axios.delete(process.env.REACT_APP_API_URL_NEW + '/timer-management-details/' + id);
+  async getByTimerManagementDetailId(id) {
+    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/timer-management-details/' + id);
   }
 }

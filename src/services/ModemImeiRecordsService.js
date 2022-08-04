@@ -1,19 +1,19 @@
 import axios from 'axios';
 
-export default class ModemImeiRecordsService {
-  getModemImeiRecords() {
+export default class ModemImeiRecordService {
+  getModemImeiRecord() {
     return axios.get(process.env.REACT_APP_API_URL_NEW + '/modem-imei-records');
   }
-  addModemImeiRecords() {
-    return axios.post(process.env.REACT_APP_API_URL_NEW + '/modem-imei-records');
+  async addModemImeiRecord(data) {
+    return await axios.post(process.env.REACT_APP_API_URL_NEW + '/modem-imei-records' , data);
   }
-  updateModemImeiRecords(id) {
-    return axios.put(process.env.REACT_APP_API_URL_NEW + ' /modem-imei-records/' + id);
+  async updateModemImeiRecord(id) {
+    return await axios.put(process.env.REACT_APP_API_URL_NEW + ' /modem-imei-records/' + id);
   }
-  deleteModemImeiRecords(id) {
-    return axios.delete(process.env.REACT_APP_API_URL_NEW + '/modem-imei-records/' + id);
+  async deleteModemImeiRecord(id) {
+    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/modem-imei-records/' + id);
   }
-  getByModemImeiRecordsId(id) {
-    return axios.delete(process.env.REACT_APP_API_URL_NEW + '/modem-imei-records/' + id);
+  async getByModemImeiRecordId(id) {
+    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/modem-imei-records/' + id);
   }
 }

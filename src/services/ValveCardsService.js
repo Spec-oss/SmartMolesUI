@@ -1,19 +1,19 @@
 import axios from 'axios';
 
 export default class ValveCardService {
-  getValveCards() {
+  getValveCard() {
     return axios.get(process.env.REACT_APP_API_URL_NEW + '/valve-cards');
   }
-  addValveCards() {
-    return axios.post(process.env.REACT_APP_API_URL_NEW + '/valve-cards');
+  async addValveCard(data) {
+    return await axios.post(process.env.REACT_APP_API_URL_NEW + '/valve-cards' , data);
   }
-  updateValveCards(id) {
-    return axios.put(process.env.REACT_APP_API_URL_NEW + ' /valve-cards/' + id);
+  async updateValveCard(id) {
+    return await axios.put(process.env.REACT_APP_API_URL_NEW + ' /valve-cards/' + id);
   }
-  deleteValveCards(id) {
-    return axios.delete(process.env.REACT_APP_API_URL_NEW + '/valve-cards/' + id);
+  async deleteValveCard(id) {
+    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/valve-cards/' + id);
   }
-  getByValveCardsId(id) {
-    return axios.delete(process.env.REACT_APP_API_URL_NEW + '/valve-cards/' + id);
+  async getByValveCardId(id) {
+    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/valve-cards/' + id);
   }
 }

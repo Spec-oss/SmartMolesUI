@@ -1,19 +1,19 @@
 import axios from 'axios';
 
 export default class SensorCardLogService {
-  getSensorCardLogs() {
+  getSensorCardLog() {
     return axios.get(process.env.REACT_APP_API_URL_NEW + '/sensor-card-log');
   }
-  addSensorCardLogs() {
-    return axios.post(process.env.REACT_APP_API_URL_NEW + '/sensor-card-log');
+  async addSensorCardLog(data) {
+    return await axios.post(process.env.REACT_APP_API_URL_NEW + '/sensor-card-log' , data);
   }
-  updateSensorCardLogs(id) {
-    return axios.put(process.env.REACT_APP_API_URL_NEW + ' /sensor-card-log/' + id);
+  async updateSensorCardLog(id) {
+    return await axios.put(process.env.REACT_APP_API_URL_NEW + ' /sensor-card-log/' + id);
   }
-  deleteSensorCardLogs(id) {
-    return axios.delete(process.env.REACT_APP_API_URL_NEW + '/sensor-card-log/' + id);
+  async deleteSensorCardLog(id) {
+    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/sensor-card-log/' + id);
   }
-  getBySensorCardLogsId(id) {
-    return axios.delete(process.env.REACT_APP_API_URL_NEW + '/sensor-card-log/' + id);
+  async getBySensorCardLogId(id) {
+    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/sensor-card-log/' + id);
   }
 }
