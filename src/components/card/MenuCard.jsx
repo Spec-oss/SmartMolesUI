@@ -14,7 +14,7 @@ const ProductImgStyle = styled('img')({
 
 // ----------------------------------------------------------------------
 
-export default function MenuCard({title,path}) {
+export default function MenuCard({title,path, to}) {
 
   return (
     <Card>
@@ -22,7 +22,7 @@ export default function MenuCard({title,path}) {
         <ProductImgStyle alt="Menü" src={path} />
       </Box>
       <Stack spacing={2} sx={{ p: 3 }}>
-        <Link to="#" color="inherit" underline="hover" component={RouterLink}>
+        <Link to={{pathname:`${to}`}} color="inherit" underline="hover" component={RouterLink}>
           <Typography variant="subtitle2" noWrap textAlign={"center"}>
             {title}
           </Typography>

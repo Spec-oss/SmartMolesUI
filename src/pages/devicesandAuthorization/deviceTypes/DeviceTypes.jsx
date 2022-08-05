@@ -13,7 +13,7 @@ import { FormProvider } from '../../../components/hook-form';
 
 //mock
 import { columns } from '../../../mock/devicesandAuthorization/devicesTypes/deviceTypesColumn';
-import { options } from '../../../mock/devicesandAuthorization/devicesTypes/deviceTypesOptions';
+import { options } from '../../../mock/MuiTableOptions';
 
 //service
 import DeviceTypeService from 'src/services/DeviceTypeService';

@@ -16,6 +16,14 @@ export default function Devices() {
     ["Modem Kayıtları"],
     ["Kullanıcı Yetkileri"]
   ];
+  const to = [
+    ['/dashboard/device-types'],
+    ['/dashboard/device-locations'],
+    ['/dashboard/pump-management-types'],
+    ['/dashboard/simcards'],
+    ['/dashboard/modem-records'],
+    ['/dashboard/device-locations']
+  ];
   const paths = [
     ["https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wwtR?ver=4d2d"],
     ["https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wB6z?ver=eddc"],
@@ -34,7 +42,7 @@ export default function Devices() {
         <Grid container spacing={3}>
         {titles.map((title,index) => (
           <Grid key={index} item xs={12} sm={6} md={3}>
-            <MenuCard title={title} path={paths[index]} />
+            <MenuCard title={title} path={paths[index]} to={to[index]} />
           </Grid>))}
         </Grid>
       </Container>

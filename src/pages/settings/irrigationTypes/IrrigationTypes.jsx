@@ -12,11 +12,11 @@ import Iconify from '../../../components/Iconify';
 import { FormProvider } from '../../../components/hook-form';
 
 //mock
-import { columns } from '../../../mock/devicesandAuthorization/devicesTypes/deviceTypesColumn';
+import { columns } from '../../../mock/settings/irrigationTypes/irrigationTypesColumn';
 import { options } from '../../../mock/MuiTableOptions';
 
 //service
-import ModemImeiRecordService from '../../../services/ModemImeiRecordsService';
+import IrrigationTypesService from '../../../services/IrrigationTypesService';
 
 const style = {
   position: 'absolute',
@@ -30,13 +30,12 @@ const style = {
   p: 4,
 };
 
-const ModemImeiRecord = () => {
-  const services = new ModemImeiRecordService();
+const IrrigationTypes = () => {
+  const services = new IrrigationTypesService();
 
   const [data, setData] = useState({
-    GatewayID: '',
-    UserID: '',
-    ImeiNumber: '',
+    imageUrl: '',
+    titleTR: '',
   });
 
   const handleChange = (e) => {
@@ -49,13 +48,13 @@ const ModemImeiRecord = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const modemImeiRecordData = {
-      GatewayID: '',
-      UserID: '',
-      ImeiNumber: data.ImeiNumber,
+    const IrrigationTypeData = {
+      ImageUrl: data.imageUrl,
+      TitleTR: data.titleTR,
+      TitleEN: '',
     };
 
-    await services.addModemImeiRecord(modemImeiRecordData).then((e) => {
+    await services.addIrrigationType(IrrigationTypeData).then((e) => {
       if (e.status === 201) {
         setResult(e.data);
         getData();
@@ -64,7 +63,7 @@ const ModemImeiRecord = () => {
     });
   };
 
-  const [modemImeiRecord, setModemImeiRecord] = useState({});
+  const [irrigationType, setIrrigationType] = useState({});
   const [getId, setGetId] = useState({});
   const [handleResult, setResult] = useState({});
   const [open, setOpen] = useState(false);
@@ -72,18 +71,18 @@ const ModemImeiRecord = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const getData = () => {
-    services.getModemImeiRecord().then((result) => setModemImeiRecord(result.data));
+    services.getIrrigationType().then((result) => setIrrigationType(result.data));
   };
   useEffect(() => {
     getData();
   }, []);
 
   return (
-    <Page title="Cihaz Türleri">
+    <Page title="Sulama Türleri">
       <Container maxWidth="xxl">
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h5" gutterBottom>
-            Modem IMEI Kayıtları
+            Sulama Türleri
           </Typography>
           <Button
             onClick={handleOpen}
@@ -110,9 +109,17 @@ const ModemImeiRecord = () => {
                 <TextField
                   required
                   style={{ backgroundColor: 'white', borderRadius: 10 }}
-                  name="ImeiNumber"
-                  label="IMEI Numarası"
-                  value={data.ImeiNumber}
+                  name="ImageUrl"
+                  label="Görsel"
+                  value={data.ImageUrl}
+                  onChange={handleChange}
+                />
+                <TextField
+                  required
+                  style={{ backgroundColor: 'white', borderRadius: 10 }}
+                  name="titleTR"
+                  label="Adı"
+                  value={data.titleTR}
                   onChange={handleChange}
                 />
                 <LoadingButton onClick={(e) => onSubmit(e)} fullWidth size="large" type="submit" variant="contained">
@@ -122,9 +129,9 @@ const ModemImeiRecord = () => {
             </FormProvider>
           </Box>
         </Modal>
-        <MuiTable title={'Modem IMEI Kayıtları'} data={deviceType.data} columns={columns} options={options} />
+        <MuiTable title={'Sulama Türleri'} data={irrigationType.data} columns={columns} options={options} />
       </Container>
     </Page>
   );
 };
-export default ModemImeiRecord;
+export default IrrigationTypes;
