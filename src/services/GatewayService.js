@@ -14,6 +14,6 @@ export default class GatewayService {
     return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/gateway/' + id);
   }
   async getByGatewayId(id) {
-    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/gateway/' + id);
+    return await axios.get(process.env.REACT_APP_API_URL_NEW + '/gateway/' + id);
   }
 }

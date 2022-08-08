@@ -14,6 +14,6 @@ export default class TimerManagementLogService {
     return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/timer-management-logs/' + id);
   }
   async getByTimerManagementLogId(id) {
-    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/timer-management-logs/' + id);
+    return await axios.get(process.env.REACT_APP_API_URL_NEW + '/timer-management-logs/' + id);
   }
 }

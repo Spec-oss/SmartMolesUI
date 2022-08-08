@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {
   styled,
   Grid,
@@ -6,12 +5,9 @@ import {
   Typography,
   ButtonBase,
   Divider,
-  Stack,
-  Button,
   Card,
   CardContent,
   CardActionArea,
-  CardActions,
 } from '@mui/material';
 import { BorderAllSharp } from '@mui/icons-material';
 import logo from '../../assets/images/kostebek.png';
@@ -22,8 +18,6 @@ const Img = styled('img')({
   maxWidth: '100%',
   maxHeight: '100%',
 });
-
-const GREY = '#9E9E9E';
 
 export default function InfoTab() {
   return (

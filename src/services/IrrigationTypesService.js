@@ -14,6 +14,6 @@ export default class IrrigationTypeService {
     return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/irrigation-types/' + id);
   }
   async getByIrrigationTypeId(id) {
-    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/irrigation-types/' + id);
+    return await axios.get(process.env.REACT_APP_API_URL_NEW + '/irrigation-types/' + id);
   }
 }

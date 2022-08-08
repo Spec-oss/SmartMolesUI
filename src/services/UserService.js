@@ -14,6 +14,6 @@ export default class UserService {
     return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/users/' + id);
   }
   async getByUserId(id) {
-    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/users/' + id);
+    return await axios.get(process.env.REACT_APP_API_URL_NEW + '/users/' + id);
   }
 }

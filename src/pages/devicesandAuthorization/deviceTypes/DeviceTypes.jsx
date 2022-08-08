@@ -16,7 +16,7 @@ import { columns } from '../../../mock/devicesandAuthorization/devicesTypes/devi
 import { options } from '../../../mock/MuiTableOptions';
 
 //service
-import DeviceTypeService from 'src/services/DeviceTypeService';
+import DeviceTypeService from '../../../services/DeviceTypeService';
 
 const style = {
   position: 'absolute',

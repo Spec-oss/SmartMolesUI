@@ -14,6 +14,6 @@ export default class WorkGroupLogService {
     return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/work-group-logs/' + id);
   }
   async getByWorkGroupLogId(id) {
-    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/work-group-logs/' + id);
+    return await axios.get(process.env.REACT_APP_API_URL_NEW + '/work-group-logs/' + id);
   }
 }

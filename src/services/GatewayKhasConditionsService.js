@@ -14,6 +14,6 @@ export default class GatewayKhasConditionService {
     return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/gateway-khas-conditions/' + id);
   }
   async getByGatewayKhasConditionId(id) {
-    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/gateway-khas-conditions/' + id);
+    return await axios.get(process.env.REACT_APP_API_URL_NEW + '/gateway-khas-conditions/' + id);
   }
 }

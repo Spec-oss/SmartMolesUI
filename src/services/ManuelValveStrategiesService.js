@@ -14,6 +14,6 @@ export default class ManuelValveStrategiesService {
     return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/manuel-valve-strategies/' + id);
   }
   async getByManuelValveStrategiessId(id) {
-    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/manuel-valve-strategies/' + id);
+    return await axios.get(process.env.REACT_APP_API_URL_NEW + '/manuel-valve-strategies/' + id);
   }
 }

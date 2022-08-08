@@ -14,6 +14,6 @@ export default class TimerManagementDetailService {
     return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/timer-management-details/' + id);
   }
   async getByTimerManagementDetailId(id) {
-    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/timer-management-details/' + id);
+    return await axios.get(process.env.REACT_APP_API_URL_NEW + '/timer-management-details/' + id);
   }
 }

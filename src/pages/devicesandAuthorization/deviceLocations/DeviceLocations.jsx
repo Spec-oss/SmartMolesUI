@@ -16,7 +16,7 @@ import { columns } from '../../../mock/devicesandAuthorization/deviceLocations/d
 import { options } from '../../../mock/MuiTableOptions';
 
 //service
-import DeviceLocationServices from 'src/services/DeviceLocationService';
+import DeviceLocationServices from '../../../services/DeviceLocationService';
 
 const style = {
   position: 'absolute',

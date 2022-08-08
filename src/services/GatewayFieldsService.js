@@ -14,6 +14,6 @@ export default class GatewayFieldsService {
     return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/gateway-fields/' + id);
   }
   async getByGatewayFieldId(id) {
-    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/gateway-fields/' + id);
+    return await axios.get(process.env.REACT_APP_API_URL_NEW + '/gateway-fields/' + id);
   }
 }

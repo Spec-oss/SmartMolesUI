@@ -14,6 +14,6 @@ export default class SimCardService {
     return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/simcards/' + id);
   }
   async getBySimCardId(id) {
-    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/simcards/' + id);
+    return await axios.get(process.env.REACT_APP_API_URL_NEW + '/simcards/' + id);
   }
 }

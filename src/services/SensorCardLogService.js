@@ -14,6 +14,6 @@ export default class SensorCardLogService {
     return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/sensor-card-log/' + id);
   }
   async getBySensorCardLogId(id) {
-    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/sensor-card-log/' + id);
+    return await axios.get(process.env.REACT_APP_API_URL_NEW + '/sensor-card-log/' + id);
   }
 }

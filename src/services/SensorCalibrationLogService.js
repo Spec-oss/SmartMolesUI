@@ -14,6 +14,6 @@ export default class SensorCalibrationLogService {
     return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/sensor-calibration-log/' + id);
   }
   async getBySensorCalibrationLogId(id) {
-    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/sensor-calibration-log/' + id);
+    return await axios.get(process.env.REACT_APP_API_URL_NEW + '/sensor-calibration-log/' + id);
   }
 }

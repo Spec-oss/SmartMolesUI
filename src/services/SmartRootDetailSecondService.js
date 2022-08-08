@@ -14,6 +14,6 @@ export default class SmartRootDetailSecondService {
     return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/smart-root-second/' + id);
   }
   async getBySmartRootDetailSecondId(id) {
-    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/smart-root-second/' + id);
+    return await axios.get(process.env.REACT_APP_API_URL_NEW + '/smart-root-second/' + id);
   }
 }

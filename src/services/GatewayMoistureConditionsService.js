@@ -14,6 +14,6 @@ export default class GatewayMoistureConditionService {
     return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/gateway-moisture-conditions/' + id);
   }
   async getByGatewayMoistureConditionsId(id) {
-    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/gateway-moisture-conditions/' + id);
+    return await axios.get(process.env.REACT_APP_API_URL_NEW + '/gateway-moisture-conditions/' + id);
   }
 }

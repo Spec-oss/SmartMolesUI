@@ -1,19 +1,20 @@
-import React from 'react';
-import { Tabs, Tab, Grid, Typography, Box , tabsClasses} from '@mui/material';
 import { useState } from 'react';
+
+import { Tabs, Tab, Grid, Box , tabsClasses} from '@mui/material';
+
 import InfoIcon from '@mui/icons-material/Info';
 import BrowseGalleryIcon from '@mui/icons-material/BrowseGallery';
 import ModeFanOffIcon from '@mui/icons-material/ModeFanOff';
+
 import StreamWatch from './StreamWatch';
-
-import './capillarity.scss';
-
 import InfoTab from './InfoTab';
 import LiveTab from './LiveTab';
 import OptionsTab from './OptionsTab';
 
+import './capillarity.scss';
+
 function CapillarityDetail() {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -37,7 +38,7 @@ function CapillarityDetail() {
       >
         {value === index && (
           <Box sx={{ p: 3 }}>
-            <Typography>{children}</Typography>
+            {children}
           </Box>
         )}
       </div>

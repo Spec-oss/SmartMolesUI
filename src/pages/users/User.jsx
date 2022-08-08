@@ -13,7 +13,7 @@ import { FormProvider } from '../../components/hook-form';
 
 //mock
 import { columns } from '../../mock/user/userColumn';
-import { options } from '../../mock/user/userOptions';
+import { options } from '../../mock/MuiTableOptions';
 
 //service
 import UserService from '../../services/UserService';
@@ -49,11 +49,13 @@ const Users = () => {
     MersisNo: '',
     Address: '',
     MailIsVerified: '',
+    MailVerifiedAt: '',
     Country: '',
     City: '',
     Distinct: '',
     DetailAddress: '',
     PostalCode: '',
+    Phone: '',
     CompanyPhone: '',
     HomePhone: '',
     UserType: '',
@@ -85,11 +87,13 @@ const Users = () => {
     MersisNo: '',
     Address: '',
     MailIsVerified: true,
+    MailVerifiedAt: new Date(),
     Country: '',
     City: '',
     Distinct: '',
     DetailAddress: '',
     PostalCode: '',
+    Phone: '',
     CompanyPhone: '',
     HomePhone: '',
     UserType: '',

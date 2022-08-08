@@ -14,6 +14,6 @@ export default class PumpManagementTypeService {
     return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/pump-management-types/' + id);
   }
   async getByPumpManagementTypeId(id) {
-    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/pump-management-types/' + id);
+    return await axios.get(process.env.REACT_APP_API_URL_NEW + '/pump-management-types/' + id);
   }
 }

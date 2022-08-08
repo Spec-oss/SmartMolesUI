@@ -14,6 +14,6 @@ export default class ValveCardsLogService {
     return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/valve-cards-logs/' + id);
   }
   async getByValveCardsLogId(id) {
-    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/valve-cards-logs/' + id);
+    return await axios.get(process.env.REACT_APP_API_URL_NEW + '/valve-cards-logs/' + id);
   }
 }

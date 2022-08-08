@@ -38,9 +38,8 @@ const style = {
   p: 4,
 };
 
-const GREY = "#9E9E9E";
-
 export default function OptionsTab() {
+  
   const [open, setOpen] = React.useState(false);
   const [openManuel, setOpenManuel] = React.useState(false);
   const [openKhas, setOpenKhas] = React.useState(false);
@@ -73,7 +72,7 @@ export default function OptionsTab() {
         backgroundColor: "#EFEAD8",
       }}
     >
-      <Grid container spacing={2}>
+      <Grid container>
         <Grid
           item
           xs={12}
@@ -122,13 +121,12 @@ export default function OptionsTab() {
               </Typography>
               <Divider variant="middle" />
             </Grid>
-            <Grid style={{ marginLeft: 0 }} container>
+            <Grid item xs={12} sm container>
               <Grid item xs={12} md={6}>
                 <Card
                   sx={{
                     backgroundColor: "#d9d4c1",
                     marginTop: 2,
-                    borderRadius: 8,
                     maxWidth: 'auto',
                     textAlign: "center",
                   }}
@@ -147,7 +145,6 @@ export default function OptionsTab() {
                   sx={{
                     backgroundColor: "#d9d4c1",
                     marginTop: 2,
-                    borderRadius: 8,
                     maxWidth: 'auto',
                     textAlign: "center",
                   }}
@@ -189,7 +186,6 @@ export default function OptionsTab() {
                   sx={{
                     backgroundColor: "#d9d4c1",
                     marginTop: 2,
-                    borderRadius: 8,
                     maxWidth: 'auto',
                     textAlign: "center",
                   }}
@@ -231,7 +227,6 @@ export default function OptionsTab() {
                   sx={{
                     backgroundColor: "#d9d4c1",
                     marginTop: 2,
-                    borderRadius: 8,
                     maxWidth: 'auto',
                     textAlign: "center",
                   }}

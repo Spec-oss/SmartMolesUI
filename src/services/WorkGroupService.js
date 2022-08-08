@@ -14,6 +14,6 @@ export default class WorkGroupService {
     return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/work-group/' + id);
   }
   async getByWorkGroupId(id) {
-    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/work-group/' + id);
+    return await axios.get(process.env.REACT_APP_API_URL_NEW + '/work-group/' + id);
   }
 }

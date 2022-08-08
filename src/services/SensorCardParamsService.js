@@ -14,6 +14,6 @@ export default class SensorCardParamService {
     return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/sensor-card-params/' + id);
   }
   async getBySensorCardParamId(id) {
-    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/sensor-card-params/' + id);
+    return await axios.get(process.env.REACT_APP_API_URL_NEW + '/sensor-card-params/' + id);
   }
 }

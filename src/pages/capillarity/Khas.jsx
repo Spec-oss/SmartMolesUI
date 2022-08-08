@@ -2,13 +2,11 @@ import React from "react";
 import { Paper, Grid } from "@mui/material";
 import { BorderAllSharp } from "@mui/icons-material";
 
-const GREY = "#a9a495;";
 const Khas = () => {
     return (
-        <Paper
+        <Paper elevation={20}
             style={{
                 marginTop: 30,
-                boxShadow: `250px 205px 50px ${GREY}`,
                 border: BorderAllSharp,
                 borderWidth: 11,
                 borderRadius: 50,

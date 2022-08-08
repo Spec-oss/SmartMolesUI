@@ -1,5 +1,6 @@
-import React from "react";
+
 import Table from "../../components/tables/Table";
+
 import { data, columns } from "../../mock/test/data";
 
 const Capillarity = () => {

@@ -14,6 +14,6 @@ export default class PumpCardsLogService {
     return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/pump-cards-logs/' + id);
   }
   async getByPumpCardsLogId(id) {
-    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/pump-cards-logs/' + id);
+    return await axios.get(process.env.REACT_APP_API_URL_NEW + '/pump-cards-logs/' + id);
   }
 }

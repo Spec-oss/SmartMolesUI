@@ -14,6 +14,6 @@ export default class SensorMoistureLogService {
     return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/sensor-moisture-log/' + id);
   }
   async getBySensorMoistureLogId(id) {
-    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/sensor-moisture-log/' + id);
+    return await axios.get(process.env.REACT_APP_API_URL_NEW + '/sensor-moisture-log/' + id);
   }
 }

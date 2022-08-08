@@ -14,6 +14,6 @@ export default class GatewayLogService {
     return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/gateway-logs/' + id);
   }
   async getByGatewayLogId(id) {
-    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/gateway-logs/' + id);
+    return await axios.get(process.env.REACT_APP_API_URL_NEW + '/gateway-logs/' + id);
   }
 }

@@ -1,12 +1,12 @@
 export const options = {
-  selectableRows: ' ',
+  selectableRows: 'single',
   onTableChange: (action, state) => {;
   },
   rowsPerPage: 25,
   rowsPerPageOptions: [10, 25, 50, 100, 250],
   textLabels: {
     body: {
-      noMatch: 'Listede bir kayıt bulunmamaktadır.',
+      noMatch: 'Listede kayıt bulunmamaktadır.',
     },
     pagination: {
       next: 'Sonraki Sayfa',

@@ -14,6 +14,6 @@ export default class DeviceTypeService {
     return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/devices-types/' + id);
   }
   async getByDeviceTypeId(id) {
-    return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/devices-types/' + id);
+    return await axios.get(process.env.REACT_APP_API_URL_NEW + '/devices-types/' + id);
   }
 }
