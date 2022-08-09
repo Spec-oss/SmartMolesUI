@@ -12,11 +12,11 @@ import Iconify from '../../../components/Iconify';
 import { FormProvider } from '../../../components/hook-form';
 
 //mock
-import { columns } from '../../../mock/devicesandAuthorization/deviceLocations/deviceLocationsColumn';
+import { columns } from '../../../mock/settings/pumpManagementTypes/pumpManagementTypesColumn';
 import { options } from '../../../mock/MuiTableOptions';
 
 //service
-import DeviceLocationServices from '../../../services/DeviceLocationService';
+import PumpManagementTypesService from '../../../services/PumpManagementTypesService';
 
 const style = {
   position: 'absolute',
@@ -30,11 +30,10 @@ const style = {
   p: 4,
 };
 
-const DeviceLocations = () => {
-  const services = new DeviceLocationServices();
+const PumpManagementType = () => {
+  const services = new PumpManagementTypesService();
 
   const [data, setData] = useState({
-    imageUrl: '',
     titleTR: '',
   });
 
@@ -48,13 +47,11 @@ const DeviceLocations = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const deviceLocationData = {
-      ImageUrl: data.imageUrl,
-      TitleTR: data.titleTR,
-      TitleEN: '',
+    const PumpManagementTypeData = {
+      titleTR: data.titleTR,
     };
 
-    await services.addDeviceLocation(deviceLocationData).then((e) => {
+    await services.addPumpManagementType(PumpManagementTypeData).then((e) => {
       if (e.status === 201) {
         setResult(e.data);
         getData();
@@ -63,7 +60,7 @@ const DeviceLocations = () => {
     });
   };
 
-  const [deviceLocation, setDeviceLocation] = useState({});
+  const [pumpManagementType, setPumpManagementType] = useState({});
   const [getId, setGetId] = useState({});
   const [handleResult, setResult] = useState({});
   const [open, setOpen] = useState(false);
@@ -71,18 +68,18 @@ const DeviceLocations = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const getData = () => {
-    services.getDeviceLocation().then((result) => setDeviceLocation(result.data));
+    services.getPumpManagementType().then((result) => setPumpManagementType(result.data));
   };
   useEffect(() => {
     getData();
   }, []);
 
   return (
-    <Page title="Cihaz Türleri">
+    <Page title="Pompa Yönetim Türleri">
       <Container maxWidth="xxl">
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h5" gutterBottom>
-            Cihaz Konumları
+            Pompa Yönetim Türleri
           </Typography>
           <Button
             onClick={handleOpen}
@@ -109,15 +106,7 @@ const DeviceLocations = () => {
                 <TextField
                   required
                   style={{ backgroundColor: 'white', borderRadius: 10 }}
-                  name="imageUrl"
-                  label="Görsel"
-                  value={data.imageUrl}
-                  onChange={handleChange}
-                />
-                <TextField
-                  required
-                  style={{ backgroundColor: 'white', borderRadius: 10 }}
-                  name="titleTR"
+                  name="Name"
                   label="Adı"
                   value={data.titleTR}
                   onChange={handleChange}
@@ -129,9 +118,9 @@ const DeviceLocations = () => {
             </FormProvider>
           </Box>
         </Modal>
-        <MuiTable title={'Cihaz Konumları'} data={deviceLocation.data} columns={columns} options={options} />
+        <MuiTable title={'Pompa Yönetim Türleri'} data={pumpManagementType.data} columns={columns} options={options} />
       </Container>
     </Page>
   );
 };
-export default DeviceLocations;
+export default PumpManagementType;

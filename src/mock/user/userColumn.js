@@ -1,3 +1,6 @@
+import Button from '@mui/material/Button';
+import { Link as RouterLink } from 'react-router-dom';
+
 export const columns = [
   {
     name: 'Name',
@@ -32,11 +35,18 @@ export const columns = [
     },
   },
   {
-    name: 'City',
-    label: 'Şehir',
+    name: "Detaylar",
     options: {
-      filter: true,
+      filter: false,
       sort: false,
-    },
+      empty: true,
+      customBodyRenderLite: () => {
+        return (
+          <Button variant="contained" size="small" to="/dashboard/user-detail" LinkComponent={RouterLink}>
+            Detaylar
+          </Button>
+        );
+      }
+    }
   },
 ];

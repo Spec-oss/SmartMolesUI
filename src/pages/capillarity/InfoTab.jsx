@@ -1,14 +1,4 @@
-import {
-  styled,
-  Grid,
-  Paper,
-  Typography,
-  ButtonBase,
-  Divider,
-  Card,
-  CardContent,
-  CardActionArea,
-} from '@mui/material';
+import { styled, Grid, Paper, Typography, ButtonBase, Divider, Card, CardContent, CardActionArea } from '@mui/material';
 import { BorderAllSharp } from '@mui/icons-material';
 import logo from '../../assets/images/kostebek.png';
 
@@ -21,7 +11,8 @@ const Img = styled('img')({
 
 export default function InfoTab() {
   return (
-    <Paper elevation={20}
+    <Paper
+      elevation={20}
       style={{
         border: BorderAllSharp,
         borderWidth: 11,
@@ -35,7 +26,7 @@ export default function InfoTab() {
         backgroundColor: '#EFEAD8',
       }}
     >
-      <Grid container spacing={2}>
+      <Grid container>
         <Grid
           item
           xs={12}
@@ -45,11 +36,14 @@ export default function InfoTab() {
             display: 'flex',
           }}
         >
-          <ButtonBase sx={{ width: 128, height: 128 }}>
-            <Img alt="complex" src={logo} />
-          </ButtonBase>
-
-          <Typography>BU ALANDA NEM, TARİH GİBİ BİR ÇOK BİLGİYİ GÖREBİLİRSİNİZ</Typography>
+          <Grid item xs={4}>
+            <ButtonBase sx={{ width: 128, height: 128 }}>
+              <Img alt="complex" src={logo} />
+            </ButtonBase>
+          </Grid>
+          <Grid item xs={8}>
+            <Typography>BU ALANDA NEM, TARİH GİBİ BİR ÇOK BİLGİYİ GÖREBİLİRSİNİZ</Typography>
+          </Grid>
         </Grid>
         <Grid item xs={12} sm container style={{ textAlign: 'center' }}>
           <Grid item xs container direction="column" spacing={0}>
@@ -106,19 +100,18 @@ export default function InfoTab() {
             </Typography>
             <Divider />
             <Grid style={{ marginLeft: 0 }} container>
-              <Grid item xs={12} xl={6}>
+              <Grid item xs={12} md={6}>
                 <Card
                   sx={{
                     backgroundColor: '#d9d4c1',
                     margin: 2,
-                    borderRadius: 8,
                     maxWidth: 'auto',
                     textAlign: 'center',
                   }}
                 >
                   <CardActionArea>
                     <CardContent style={{ height: 120 }}>
-                      <Typography gutterBottom variant="h6" component="div">
+                      <Typography gutterBottom variant="overline" component="div">
                         Vana Durumu
                       </Typography>
                       <Typography variant="center" color="text.secondary">
@@ -135,19 +128,18 @@ export default function InfoTab() {
                   </CardActions> */}
                 </Card>
               </Grid>
-              <Grid item xs={12} xl={6}>
+              <Grid item xs={12} md={6}>
                 <Card
                   sx={{
                     backgroundColor: '#d9d4c1',
                     margin: 2,
-                    borderRadius: 8,
                     maxWidth: 'auto',
                     textAlign: 'center',
                   }}
                 >
                   <CardActionArea>
                     <CardContent style={{ height: 120 }}>
-                      <Typography gutterBottom variant="h6" component="div">
+                      <Typography gutterBottom variant="overline" component="div">
                         Vana
                       </Typography>
                       <Typography variant="center" color="text.secondary">
@@ -164,19 +156,18 @@ export default function InfoTab() {
                   </CardActions> */}
                 </Card>
               </Grid>
-              <Grid item xs={12} xl={6}>
+              <Grid item xs={12} md={6}>
                 <Card
                   sx={{
                     backgroundColor: '#d9d4c1',
                     margin: 2,
-                    borderRadius: 8,
                     maxWidth: 'auto',
                     textAlign: 'center',
                   }}
                 >
                   <CardActionArea>
                     <CardContent style={{ height: 120 }}>
-                      <Typography gutterBottom variant="h6" component="div">
+                      <Typography gutterBottom variant="overline" component="div">
                         Gerçek Zamanlı Kalibrasyon
                       </Typography>
                       <Typography variant="center" color="text.secondary">
@@ -193,19 +184,18 @@ export default function InfoTab() {
                   </CardActions> */}
                 </Card>
               </Grid>
-              <Grid item xs={12} xl={6}>
+              <Grid item xs={12} md={6}>
                 <Card
                   sx={{
                     backgroundColor: '#d9d4c1',
                     margin: 2,
-                    borderRadius: 8,
                     maxWidth: 'auto',
                     textAlign: 'center',
                   }}
                 >
                   <CardActionArea>
                     <CardContent style={{ height: 120 }}>
-                      <Typography gutterBottom variant="h6" component="div">
+                      <Typography gutterBottom variant="overline" component="div">
                         Nem Kalibrasyon
                       </Typography>
                       <Typography variant="center" color="text.secondary">

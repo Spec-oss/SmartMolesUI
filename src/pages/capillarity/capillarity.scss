@@ -139,8 +139,7 @@
   width: 100%;
   height: 100%;
   background: deepskyblue;
-  border-radius: 50%;
-  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 5px -5px 20px 5px rgb(0 0 0 / 50%);
 }
 .wave:before,
 .wave:after {
@@ -148,18 +147,18 @@
   position: absolute;
   width: 200%;
   height: 200%;
-  top: 0;
-  left: 125%;
+  top: 40px;
+  left: 100%;
   transform: translate(-50%, -75%);
 }
 .wave:before {
   border-radius: 45%;
-  background: rgba(255, 255, 255, 1);
+  background: rgb(205 205 205);
   animation: animate 5s linear infinite;
 }
 .wave:after {
   border-radius: 40%;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgb(205 205 205);
   animation: animate 10s linear infinite;
 }
 @keyframes animate {
@@ -185,4 +184,68 @@
     margin-top: 7px;
     margin-left: 15px;
   }
+}
+
+
+/////////////////////////////
+/// 
+.wave-100:before, .wave-75:before, .wave-50:before, .wave-25:before {
+  border-radius: 45%;
+  background: rgb(205 205 205);
+  animation: animate 5s linear infinite;
+}
+.wave-100:after, .wave-75:after, .wave-50:after, .wave-25:after {
+  border-radius: 40%;
+  background: rgb(205 205 205);
+  animation: animate 10s linear infinite;
+}
+.wave-100, .wave-75, .wave-50, .wave-25{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: deepskyblue;
+  box-shadow: inset 5px -5px 20px 5px rgb(0 0 0 / 50%);
+}
+.wave-100:before, 
+.wave-100:after {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -30px;
+  left: 125%;
+  transform: translate(-50%, -75%);
+}
+.wave-75:before,
+.wave-75:after {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -3px;
+  left: 125%;
+  transform: translate(-50%, -75%);
+}
+.wave-50:before,
+.wave-50:after {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: 15px;
+  left: 125%;
+  transform: translate(-50%, -75%);
+}
+.wave-25:before,
+.wave-25:after {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: 25px;
+  left: 115%;
+  transform: translate(-50%, -75%);
+}
+.none{
+  display: none;
 }

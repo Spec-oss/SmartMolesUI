@@ -12,11 +12,11 @@ import Iconify from '../../../components/Iconify';
 import { FormProvider } from '../../../components/hook-form';
 
 //mock
-import { columns } from '../../../mock/devicesandAuthorization/devicesTypes/deviceTypesColumn';
+import { columns } from '../../../mock/user/simCards/simCardsColumn';
 import { options } from '../../../mock/MuiTableOptions';
 
 //service
-import DeviceTypeService from '../../../services/DeviceTypeService';
+import SimCardService from '../../../services/SimCardsService';
 
 const style = {
   position: 'absolute',
@@ -30,11 +30,15 @@ const style = {
   p: 4,
 };
 
-const DeviceType = () => {
-  const services = new DeviceTypeService();
+const SimCards = () => {
+  const services = new SimCardService();
 
   const [data, setData] = useState({
-    Name: '',
+    GatewayID: '',
+    UserID: '',
+    SerialNumber: '',
+    StaticIP: '',
+    Port: '',
   });
 
   const handleChange = (e) => {
@@ -47,11 +51,15 @@ const DeviceType = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const deviceTypeData = {
-      Name: data.Name,
+    const simCardData = {
+      GatewayID: '',
+      UserID: '',
+      SerialNumber: data.SerialNumber,
+      StaticIP: data.StaticIP,
+      Port: data.Port,
     };
 
-    await services.addDeviceType(deviceTypeData).then((e) => {
+    await services.addSimCard(simCardData).then((e) => {
       if (e.status === 201) {
         setResult(e.data);
         getData();
@@ -60,7 +68,7 @@ const DeviceType = () => {
     });
   };
 
-  const [deviceType, setDeviceType] = useState({});
+  const [simCard, setSimCard] = useState({});
   const [getId, setGetId] = useState({});
   const [handleResult, setResult] = useState({});
   const [open, setOpen] = useState(false);
@@ -68,18 +76,18 @@ const DeviceType = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const getData = () => {
-    services.getDeviceType().then((result) => setDeviceType(result.data));
+    services.getSimCard().then((result) => setSimCard(result.data));
   };
   useEffect(() => {
     getData();
   }, []);
 
   return (
-    <Page title="Cihaz Türleri">
+    <Page title="Sim Kartları">
       <Container maxWidth="xxl">
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h5" gutterBottom>
-            Cihaz Türleri
+          Sim Kartları
           </Typography>
           <Button
             onClick={handleOpen}
@@ -106,9 +114,25 @@ const DeviceType = () => {
                 <TextField
                   required
                   style={{ backgroundColor: 'white', borderRadius: 10 }}
-                  name="Name"
-                  label="Adı"
-                  value={data.Name}
+                  name="SerialNumber"
+                  label="Seri Numarası"
+                  value={data.SerialNumber}
+                  onChange={handleChange}
+                />
+                <TextField
+                  required
+                  style={{ backgroundColor: 'white', borderRadius: 10 }}
+                  name="StaticIP"
+                  label="Statik IP"
+                  value={data.StaticIP}
+                  onChange={handleChange}
+                />
+                <TextField
+                  required
+                  style={{ backgroundColor: 'white', borderRadius: 10 }}
+                  name="Port"
+                  label="Port"
+                  value={data.Port}
                   onChange={handleChange}
                 />
                 <LoadingButton onClick={(e) => onSubmit(e)} fullWidth size="large" type="submit" variant="contained">
@@ -118,9 +142,9 @@ const DeviceType = () => {
             </FormProvider>
           </Box>
         </Modal>
-        <MuiTable title={'Cihaz Türleri'} data={deviceType.data} columns={columns} options={options} />
+        <MuiTable title={'Sim Kartları'} data={simCard.data} columns={columns} options={options} />
       </Container>
     </Page>
   );
 };
-export default DeviceType;
+export default SimCards;

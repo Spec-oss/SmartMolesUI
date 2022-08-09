@@ -57,12 +57,16 @@ export default function LiveTab() {
             display: 'flex',
           }}
         >
+          <Grid item xs={4}>
           <ButtonBase sx={{ width: 128, height: 128 }}>
             <Img alt="complex" src={logo} />
           </ButtonBase>
+          </Grid>
+          <Grid item xs={8}>
           <br />
 
           <Typography>BU ALANDA CANLI İZLEME YAPABİLİRSİNİZ</Typography>
+          </Grid>
         </Grid>
         <Grid item xs={12} sm container>
           <Grid item xs container direction="column" spacing={2}>

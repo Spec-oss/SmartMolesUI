@@ -19,7 +19,271 @@ const Khas = () => {
                         <div className="wave">
                         </div>
                     </div>
+                    <div className="pulse-box none">
+                        <div className="pulse pulse-one"></div>
+                        <div className="pulse pulse-two"></div>
+                        <div className="pulse pulse-three"></div>
+                    </div>
+                </Grid >
+                <Grid item xs={3}>
+                    <div className="circle">
+                        <div className="wave-25">
+                        </div>
+                    </div>
                     <div className="pulse-box">
+                        <div className="pulse pulse-one"></div>
+                        <div className="pulse pulse-two"></div>
+                        <div className="pulse pulse-three"></div>
+                    </div>
+                </Grid >
+                <Grid item xs={3}>
+                    <div className="circle">
+                        <div className="wave">
+                        </div>
+                    </div>
+                    <div className="pulse-box">
+                        <div className="pulse pulse-one"></div>
+                        <div className="pulse pulse-two"></div>
+                        <div className="pulse pulse-three"></div>
+                    </div>
+                </Grid >
+                <Grid item xs={3}>
+                    <div className="circle">
+                        <div className="wave">
+                        </div>
+                    </div>
+                    <div className="pulse-box">
+                        <div className="pulse pulse-one"></div>
+                        <div className="pulse pulse-two"></div>
+                        <div className="pulse pulse-three"></div>
+                    </div>
+                </Grid >
+                <Grid item xs={3}>
+                    <div className="circle">
+                        <div className="wave">
+                        </div>
+                    </div>
+                    <div className="pulse-box none">
+                        <div className="pulse pulse-one"></div>
+                        <div className="pulse pulse-two"></div>
+                        <div className="pulse pulse-three"></div>
+                    </div>
+                </Grid >
+                <Grid item xs={3}>
+                    <div className="circle">
+                        <div className="wave-75">
+                        </div>
+                    </div>
+                    <div className="pulse-box">
+                        <div className="pulse pulse-one"></div>
+                        <div className="pulse pulse-two"></div>
+                        <div className="pulse pulse-three"></div>
+                    </div>
+                </Grid >
+                <Grid item xs={3}>
+                    <div className="circle">
+                        <div className="wave">
+                        </div>
+                    </div>
+                    <div className="pulse-box">
+                        <div className="pulse pulse-one"></div>
+                        <div className="pulse pulse-two"></div>
+                        <div className="pulse pulse-three"></div>
+                    </div>
+                </Grid >
+                <Grid item xs={3}>
+                    <div className="circle">
+                        <div className="wave">
+                        </div>
+                    </div>
+                    <div className="pulse-box">
+                        <div className="pulse pulse-one"></div>
+                        <div className="pulse pulse-two"></div>
+                        <div className="pulse pulse-three"></div>
+                    </div>
+                </Grid >
+                <Grid item xs={3}>
+                    <div className="circle">
+                        <div className="wave">
+                        </div>
+                    </div>
+                    <div className="pulse-box none">
+                        <div className="pulse pulse-one"></div>
+                        <div className="pulse pulse-two"></div>
+                        <div className="pulse pulse-three"></div>
+                    </div>
+                </Grid >
+                <Grid item xs={3}>
+                    <div className="circle">
+                        <div className="wave">
+                        </div>
+                    </div>
+                    <div className="pulse-box">
+                        <div className="pulse pulse-one"></div>
+                        <div className="pulse pulse-two"></div>
+                        <div className="pulse pulse-three"></div>
+                    </div>
+                </Grid >
+                <Grid item xs={3}>
+                    <div className="circle">
+                        <div className="wave">
+                        </div>
+                    </div>
+                    <div className="pulse-box">
+                        <div className="pulse pulse-one"></div>
+                        <div className="pulse pulse-two"></div>
+                        <div className="pulse pulse-three"></div>
+                    </div>
+                </Grid >
+                <Grid item xs={3}>
+                    <div className="circle">
+                        <div className="wave">
+                        </div>
+                    </div>
+                    <div className="pulse-box">
+                        <div className="pulse pulse-one"></div>
+                        <div className="pulse pulse-two"></div>
+                        <div className="pulse pulse-three"></div>
+                    </div>
+                </Grid >
+                <Grid item xs={3}>
+                    <div className="circle">
+                        <div className="wave-75">
+                        </div>
+                    </div>
+                    <div className="pulse-box">
+                        <div className="pulse pulse-one"></div>
+                        <div className="pulse pulse-two"></div>
+                        <div className="pulse pulse-three"></div>
+                    </div>
+                </Grid >
+                <Grid item xs={3}>
+                    <div className="circle">
+                        <div className="wave">
+                        </div>
+                    </div>
+                    <div className="pulse-box none">
+                        <div className="pulse pulse-one"></div>
+                        <div className="pulse pulse-two"></div>
+                        <div className="pulse pulse-three"></div>
+                    </div>
+                </Grid >
+                <Grid item xs={3}>
+                    <div className="circle">
+                        <div className="wave">
+                        </div>
+                    </div>
+                    <div className="pulse-box">
+                        <div className="pulse pulse-one"></div>
+                        <div className="pulse pulse-two"></div>
+                        <div className="pulse pulse-three"></div>
+                    </div>
+                </Grid >
+                <Grid item xs={3}>
+                    <div className="circle">
+                        <div className="wave-100">
+                        </div>
+                    </div>
+                    <div className="pulse-box">
+                        <div className="pulse pulse-one"></div>
+                        <div className="pulse pulse-two"></div>
+                        <div className="pulse pulse-three"></div>
+                    </div>
+                </Grid >
+                <Grid item xs={3}>
+                    <div className="circle">
+                        <div className="wave">
+                        </div>
+                    </div>
+                    <div className="pulse-box none">
+                        <div className="pulse pulse-one"></div>
+                        <div className="pulse pulse-two"></div>
+                        <div className="pulse pulse-three"></div>
+                    </div>
+                </Grid >
+                <Grid item xs={3}>
+                    <div className="circle">
+                        <div className="wave">
+                        </div>
+                    </div>
+                    <div className="pulse-box">
+                        <div className="pulse pulse-one"></div>
+                        <div className="pulse pulse-two"></div>
+                        <div className="pulse pulse-three"></div>
+                    </div>
+                </Grid >
+                <Grid item xs={3}>
+                    <div className="circle">
+                        <div className="wave-75">
+                        </div>
+                    </div>
+                    <div className="pulse-box">
+                        <div className="pulse pulse-one"></div>
+                        <div className="pulse pulse-two"></div>
+                        <div className="pulse pulse-three"></div>
+                    </div>
+                </Grid >
+                <Grid item xs={3}>
+                    <div className="circle">
+                        <div className="wave">
+                        </div>
+                    </div>
+                    <div className="pulse-box">
+                        <div className="pulse pulse-one"></div>
+                        <div className="pulse pulse-two"></div>
+                        <div className="pulse pulse-three"></div>
+                    </div>
+                </Grid >
+                <Grid item xs={3}>
+                    <div className="circle">
+                        <div className="wave">
+                        </div>
+                    </div>
+                    <div className="pulse-box none">
+                        <div className="pulse pulse-one"></div>
+                        <div className="pulse pulse-two"></div>
+                        <div className="pulse pulse-three"></div>
+                    </div>
+                </Grid >
+                <Grid item xs={3}>
+                    <div className="circle">
+                        <div className="wave-75">
+                        </div>
+                    </div>
+                    <div className="pulse-box">
+                        <div className="pulse pulse-one"></div>
+                        <div className="pulse pulse-two"></div>
+                        <div className="pulse pulse-three"></div>
+                    </div>
+                </Grid >
+                <Grid item xs={3}>
+                    <div className="circle">
+                        <div className="wave-100">
+                        </div>
+                    </div>
+                    <div className="pulse-box">
+                        <div className="pulse pulse-one"></div>
+                        <div className="pulse pulse-two"></div>
+                        <div className="pulse pulse-three"></div>
+                    </div>
+                </Grid >
+                <Grid item xs={3}>
+                    <div className="circle">
+                        <div className="wave">
+                        </div>
+                    </div>
+                    <div className="pulse-box">
+                        <div className="pulse pulse-one"></div>
+                        <div className="pulse pulse-two"></div>
+                        <div className="pulse pulse-three"></div>
+                    </div>
+                </Grid >
+                <Grid item xs={3}>
+                    <div className="circle">
+                        <div className="wave">
+                        </div>
+                    </div>
+                    <div className="pulse-box none">
                         <div className="pulse pulse-one"></div>
                         <div className="pulse pulse-two"></div>
                         <div className="pulse pulse-three"></div>
@@ -63,271 +327,7 @@ const Khas = () => {
                         <div className="wave">
                         </div>
                     </div>
-                    <div className="pulse-box">
-                        <div className="pulse pulse-one"></div>
-                        <div className="pulse pulse-two"></div>
-                        <div className="pulse pulse-three"></div>
-                    </div>
-                </Grid >
-                <Grid item xs={3}>
-                    <div className="circle">
-                        <div className="wave">
-                        </div>
-                    </div>
-                    <div className="pulse-box">
-                        <div className="pulse pulse-one"></div>
-                        <div className="pulse pulse-two"></div>
-                        <div className="pulse pulse-three"></div>
-                    </div>
-                </Grid >
-                <Grid item xs={3}>
-                    <div className="circle">
-                        <div className="wave">
-                        </div>
-                    </div>
-                    <div className="pulse-box">
-                        <div className="pulse pulse-one"></div>
-                        <div className="pulse pulse-two"></div>
-                        <div className="pulse pulse-three"></div>
-                    </div>
-                </Grid >
-                <Grid item xs={3}>
-                    <div className="circle">
-                        <div className="wave">
-                        </div>
-                    </div>
-                    <div className="pulse-box">
-                        <div className="pulse pulse-one"></div>
-                        <div className="pulse pulse-two"></div>
-                        <div className="pulse pulse-three"></div>
-                    </div>
-                </Grid >
-                <Grid item xs={3}>
-                    <div className="circle">
-                        <div className="wave">
-                        </div>
-                    </div>
-                    <div className="pulse-box">
-                        <div className="pulse pulse-one"></div>
-                        <div className="pulse pulse-two"></div>
-                        <div className="pulse pulse-three"></div>
-                    </div>
-                </Grid >
-                <Grid item xs={3}>
-                    <div className="circle">
-                        <div className="wave">
-                        </div>
-                    </div>
-                    <div className="pulse-box">
-                        <div className="pulse pulse-one"></div>
-                        <div className="pulse pulse-two"></div>
-                        <div className="pulse pulse-three"></div>
-                    </div>
-                </Grid >
-                <Grid item xs={3}>
-                    <div className="circle">
-                        <div className="wave">
-                        </div>
-                    </div>
-                    <div className="pulse-box">
-                        <div className="pulse pulse-one"></div>
-                        <div className="pulse pulse-two"></div>
-                        <div className="pulse pulse-three"></div>
-                    </div>
-                </Grid >
-                <Grid item xs={3}>
-                    <div className="circle">
-                        <div className="wave">
-                        </div>
-                    </div>
-                    <div className="pulse-box">
-                        <div className="pulse pulse-one"></div>
-                        <div className="pulse pulse-two"></div>
-                        <div className="pulse pulse-three"></div>
-                    </div>
-                </Grid >
-                <Grid item xs={3}>
-                    <div className="circle">
-                        <div className="wave">
-                        </div>
-                    </div>
-                    <div className="pulse-box">
-                        <div className="pulse pulse-one"></div>
-                        <div className="pulse pulse-two"></div>
-                        <div className="pulse pulse-three"></div>
-                    </div>
-                </Grid >
-                <Grid item xs={3}>
-                    <div className="circle">
-                        <div className="wave">
-                        </div>
-                    </div>
-                    <div className="pulse-box">
-                        <div className="pulse pulse-one"></div>
-                        <div className="pulse pulse-two"></div>
-                        <div className="pulse pulse-three"></div>
-                    </div>
-                </Grid >
-                <Grid item xs={3}>
-                    <div className="circle">
-                        <div className="wave">
-                        </div>
-                    </div>
-                    <div className="pulse-box">
-                        <div className="pulse pulse-one"></div>
-                        <div className="pulse pulse-two"></div>
-                        <div className="pulse pulse-three"></div>
-                    </div>
-                </Grid >
-                <Grid item xs={3}>
-                    <div className="circle">
-                        <div className="wave">
-                        </div>
-                    </div>
-                    <div className="pulse-box">
-                        <div className="pulse pulse-one"></div>
-                        <div className="pulse pulse-two"></div>
-                        <div className="pulse pulse-three"></div>
-                    </div>
-                </Grid >
-                <Grid item xs={3}>
-                    <div className="circle">
-                        <div className="wave">
-                        </div>
-                    </div>
-                    <div className="pulse-box">
-                        <div className="pulse pulse-one"></div>
-                        <div className="pulse pulse-two"></div>
-                        <div className="pulse pulse-three"></div>
-                    </div>
-                </Grid >
-                <Grid item xs={3}>
-                    <div className="circle">
-                        <div className="wave">
-                        </div>
-                    </div>
-                    <div className="pulse-box">
-                        <div className="pulse pulse-one"></div>
-                        <div className="pulse pulse-two"></div>
-                        <div className="pulse pulse-three"></div>
-                    </div>
-                </Grid >
-                <Grid item xs={3}>
-                    <div className="circle">
-                        <div className="wave">
-                        </div>
-                    </div>
-                    <div className="pulse-box">
-                        <div className="pulse pulse-one"></div>
-                        <div className="pulse pulse-two"></div>
-                        <div className="pulse pulse-three"></div>
-                    </div>
-                </Grid >
-                <Grid item xs={3}>
-                    <div className="circle">
-                        <div className="wave">
-                        </div>
-                    </div>
-                    <div className="pulse-box">
-                        <div className="pulse pulse-one"></div>
-                        <div className="pulse pulse-two"></div>
-                        <div className="pulse pulse-three"></div>
-                    </div>
-                </Grid >
-                <Grid item xs={3}>
-                    <div className="circle">
-                        <div className="wave">
-                        </div>
-                    </div>
-                    <div className="pulse-box">
-                        <div className="pulse pulse-one"></div>
-                        <div className="pulse pulse-two"></div>
-                        <div className="pulse pulse-three"></div>
-                    </div>
-                </Grid >
-                <Grid item xs={3}>
-                    <div className="circle">
-                        <div className="wave">
-                        </div>
-                    </div>
-                    <div className="pulse-box">
-                        <div className="pulse pulse-one"></div>
-                        <div className="pulse pulse-two"></div>
-                        <div className="pulse pulse-three"></div>
-                    </div>
-                </Grid >
-                <Grid item xs={3}>
-                    <div className="circle">
-                        <div className="wave">
-                        </div>
-                    </div>
-                    <div className="pulse-box">
-                        <div className="pulse pulse-one"></div>
-                        <div className="pulse pulse-two"></div>
-                        <div className="pulse pulse-three"></div>
-                    </div>
-                </Grid >
-                <Grid item xs={3}>
-                    <div className="circle">
-                        <div className="wave">
-                        </div>
-                    </div>
-                    <div className="pulse-box">
-                        <div className="pulse pulse-one"></div>
-                        <div className="pulse pulse-two"></div>
-                        <div className="pulse pulse-three"></div>
-                    </div>
-                </Grid >
-                <Grid item xs={3}>
-                    <div className="circle">
-                        <div className="wave">
-                        </div>
-                    </div>
-                    <div className="pulse-box">
-                        <div className="pulse pulse-one"></div>
-                        <div className="pulse pulse-two"></div>
-                        <div className="pulse pulse-three"></div>
-                    </div>
-                </Grid >
-                <Grid item xs={3}>
-                    <div className="circle">
-                        <div className="wave">
-                        </div>
-                    </div>
-                    <div className="pulse-box">
-                        <div className="pulse pulse-one"></div>
-                        <div className="pulse pulse-two"></div>
-                        <div className="pulse pulse-three"></div>
-                    </div>
-                </Grid >
-                <Grid item xs={3}>
-                    <div className="circle">
-                        <div className="wave">
-                        </div>
-                    </div>
-                    <div className="pulse-box">
-                        <div className="pulse pulse-one"></div>
-                        <div className="pulse pulse-two"></div>
-                        <div className="pulse pulse-three"></div>
-                    </div>
-                </Grid >
-                <Grid item xs={3}>
-                    <div className="circle">
-                        <div className="wave">
-                        </div>
-                    </div>
-                    <div className="pulse-box">
-                        <div className="pulse pulse-one"></div>
-                        <div className="pulse pulse-two"></div>
-                        <div className="pulse pulse-three"></div>
-                    </div>
-                </Grid >
-                <Grid item xs={3}>
-                    <div className="circle">
-                        <div className="wave">
-                        </div>
-                    </div>
-                    <div className="pulse-box">
+                    <div className="pulse-box none">
                         <div className="pulse pulse-one"></div>
                         <div className="pulse pulse-two"></div>
                         <div className="pulse pulse-three"></div>

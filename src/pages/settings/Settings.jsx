@@ -7,16 +7,22 @@ import Page from '../../components/Page';
 
 // ----------------------------------------------------------------------
 
-export default function Devices() {
+export default function Settings() {
   const titles = [
     ["Bitki Türleri"],
     ["Sulama Türleri"],
     ["Sistem Parametreleri"],
+    ["Cihaz Türleri"],
+    ["Cihaz Konumları"],
+    ["Pompa Yönetim Türleri"]
   ];
   const paths = [
     ["https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wwtR?ver=4d2d"],
     ["https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wB6z?ver=eddc"],
     ["https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wqGK?ver=47a4"],
+    ["https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wppQ?ver=7215"],
+    ["https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wEaN?ver=9f5b"],
+    ["https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wqHi?ver=6ef6"]
   ];
   return (
     <Page title="Dashboard: Test">

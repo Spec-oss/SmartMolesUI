@@ -12,11 +12,11 @@ import Iconify from '../../../components/Iconify';
 import { FormProvider } from '../../../components/hook-form';
 
 //mock
-import { columns } from '../../../mock/devicesandAuthorization/simCards/simCardsColumn';
+import { columns } from '../../../mock/settings/deviceLocations/deviceLocationsColumn';
 import { options } from '../../../mock/MuiTableOptions';
 
 //service
-import SimCardService from '../../../services/SimCardsService';
+import DeviceLocationServices from '../../../services/DeviceLocationService';
 
 const style = {
   position: 'absolute',
@@ -30,15 +30,12 @@ const style = {
   p: 4,
 };
 
-const SimCards = () => {
-  const services = new SimCardService();
+const DeviceLocations = () => {
+  const services = new DeviceLocationServices();
 
   const [data, setData] = useState({
-    GatewayID: '',
-    UserID: '',
-    SerialNumber: '',
-    StaticIP: '',
-    Port: '',
+    imageUrl: '',
+    titleTR: '',
   });
 
   const handleChange = (e) => {
@@ -51,15 +48,13 @@ const SimCards = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const simCardData = {
-      GatewayID: '',
-      UserID: '',
-      SerialNumber: data.SerialNumber,
-      StaticIP: data.StaticIP,
-      Port: data.Port,
+    const deviceLocationData = {
+      ImageUrl: data.imageUrl,
+      TitleTR: data.titleTR,
+      TitleEN: '',
     };
 
-    await services.addSimCard(simCardData).then((e) => {
+    await services.addDeviceLocation(deviceLocationData).then((e) => {
       if (e.status === 201) {
         setResult(e.data);
         getData();
@@ -68,7 +63,7 @@ const SimCards = () => {
     });
   };
 
-  const [simCard, setSimCard] = useState({});
+  const [deviceLocation, setDeviceLocation] = useState({});
   const [getId, setGetId] = useState({});
   const [handleResult, setResult] = useState({});
   const [open, setOpen] = useState(false);
@@ -76,18 +71,18 @@ const SimCards = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const getData = () => {
-    services.getSimCard().then((result) => setSimCard(result.data));
+    services.getDeviceLocation().then((result) => setDeviceLocation(result.data));
   };
   useEffect(() => {
     getData();
   }, []);
 
   return (
-    <Page title="Sim Kartları">
+    <Page title="Cihaz Türleri">
       <Container maxWidth="xxl">
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h5" gutterBottom>
-          Sim Kartları
+            Cihaz Konumları
           </Typography>
           <Button
             onClick={handleOpen}
@@ -114,25 +109,17 @@ const SimCards = () => {
                 <TextField
                   required
                   style={{ backgroundColor: 'white', borderRadius: 10 }}
-                  name="SerialNumber"
-                  label="Seri Numarası"
-                  value={data.SerialNumber}
+                  name="imageUrl"
+                  label="Görsel"
+                  value={data.imageUrl}
                   onChange={handleChange}
                 />
                 <TextField
                   required
                   style={{ backgroundColor: 'white', borderRadius: 10 }}
-                  name="StaticIP"
-                  label="Statik IP"
-                  value={data.StaticIP}
-                  onChange={handleChange}
-                />
-                <TextField
-                  required
-                  style={{ backgroundColor: 'white', borderRadius: 10 }}
-                  name="Port"
-                  label="Port"
-                  value={data.Port}
+                  name="titleTR"
+                  label="Adı"
+                  value={data.titleTR}
                   onChange={handleChange}
                 />
                 <LoadingButton onClick={(e) => onSubmit(e)} fullWidth size="large" type="submit" variant="contained">
@@ -142,9 +129,9 @@ const SimCards = () => {
             </FormProvider>
           </Box>
         </Modal>
-        <MuiTable title={'Sim Kartları'} data={simCard.data} columns={columns} options={options} />
+        <MuiTable title={'Cihaz Konumları'} data={deviceLocation.data} columns={columns} options={options} />
       </Container>
     </Page>
   );
 };
-export default SimCards;
+export default DeviceLocations;

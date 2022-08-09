@@ -12,11 +12,11 @@ import Iconify from '../../../components/Iconify';
 import { FormProvider } from '../../../components/hook-form';
 
 //mock
-import { columns } from '../../../mock/devicesandAuthorization/pumpManagementTypes/pumpManagementTypesColumn';
+import { columns } from '../../../mock/user/modemImeiRecords/modemImeiRecordsColumn';
 import { options } from '../../../mock/MuiTableOptions';
 
 //service
-import PumpManagementTypesService from '../../../services/PumpManagementTypesService';
+import ModemImeiRecordService from '../../../services/ModemImeiRecordsService';
 
 const style = {
   position: 'absolute',
@@ -30,11 +30,13 @@ const style = {
   p: 4,
 };
 
-const PumpManagementType = () => {
-  const services = new PumpManagementTypesService();
+const ModemImeiRecord = () => {
+  const services = new ModemImeiRecordService();
 
   const [data, setData] = useState({
-    titleTR: '',
+    GatewayID: '',
+    UserID: '',
+    ImeiNumber: '',
   });
 
   const handleChange = (e) => {
@@ -47,11 +49,13 @@ const PumpManagementType = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const PumpManagementTypeData = {
-      titleTR: data.titleTR,
+    const modemImeiRecordData = {
+      GatewayID: '',
+      UserID: '',
+      ImeiNumber: data.ImeiNumber,
     };
 
-    await services.addPumpManagementType(PumpManagementTypeData).then((e) => {
+    await services.addModemImeiRecord(modemImeiRecordData).then((e) => {
       if (e.status === 201) {
         setResult(e.data);
         getData();
@@ -60,7 +64,7 @@ const PumpManagementType = () => {
     });
   };
 
-  const [pumpManagementType, setPumpManagementType] = useState({});
+  const [modemImeiRecord, setModemImeiRecord] = useState({});
   const [getId, setGetId] = useState({});
   const [handleResult, setResult] = useState({});
   const [open, setOpen] = useState(false);
@@ -68,18 +72,18 @@ const PumpManagementType = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const getData = () => {
-    services.getPumpManagementType().then((result) => setPumpManagementType(result.data));
+    services.getModemImeiRecord().then((result) => setModemImeiRecord(result.data));
   };
   useEffect(() => {
     getData();
   }, []);
 
   return (
-    <Page title="Pompa Yönetim Türleri">
+    <Page title="Cihaz Türleri">
       <Container maxWidth="xxl">
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h5" gutterBottom>
-            Pompa Yönetim Türleri
+            Modem IMEI Kayıtları
           </Typography>
           <Button
             onClick={handleOpen}
@@ -106,9 +110,9 @@ const PumpManagementType = () => {
                 <TextField
                   required
                   style={{ backgroundColor: 'white', borderRadius: 10 }}
-                  name="Name"
-                  label="Adı"
-                  value={data.titleTR}
+                  name="ImeiNumber"
+                  label="IMEI Numarası"
+                  value={data.ImeiNumber}
                   onChange={handleChange}
                 />
                 <LoadingButton onClick={(e) => onSubmit(e)} fullWidth size="large" type="submit" variant="contained">
@@ -118,9 +122,9 @@ const PumpManagementType = () => {
             </FormProvider>
           </Box>
         </Modal>
-        <MuiTable title={'Pompa Yönetim Türleri'} data={pumpManagementType.data} columns={columns} options={options} />
+        <MuiTable title={'Modem IMEI Kayıtları'} data={deviceType.data} columns={columns} options={options} />
       </Container>
     </Page>
   );
 };
-export default PumpManagementType;
+export default ModemImeiRecord;

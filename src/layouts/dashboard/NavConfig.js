@@ -17,34 +17,9 @@ const navConfig = [
     icon: getIcon('eva:people-fill'),
   },
   {
-    title: 'Hub Yönetimi',
-    path: '/dashboard/user',
-    icon: getIcon('ic:outline-device-hub'),
-  },
-  {
-    title: 'Smart Capillarity',
-    path: '/dashboard/capillarity/detail',
-    icon: getIcon('teenyicons:plant-outline'),
-  },
-  {
-    title: 'Smart Root',
-    path: '/dashboard/root/detail',
-    icon: getIcon('fluent:branch-24-filled'),
-  },
-  {
     title: 'Hızlı Kurulum',
     path: '/dashboard/user',
     icon: getIcon('heroicons-outline:fast-forward'),
-  },
-  {
-    title: 'Cihaz Kurulumu',
-    path: '/dashboard/user',
-    icon: getIcon('fluent:phone-link-setup-24-regular'),
-  },
-  {
-    title: 'Cihazlar ve Yetkilendirme',
-    path: '/dashboard/devices',
-    icon: getIcon('fluent:phone-link-setup-24-regular'),
   },
   {
     title: 'Ayarlar',
