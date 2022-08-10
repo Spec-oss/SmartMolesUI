@@ -122,7 +122,7 @@ const ModemImeiRecord = () => {
             </FormProvider>
           </Box>
         </Modal>
-        <MuiTable title={'Modem IMEI Kayıtları'} data={deviceType.data} columns={columns} options={options} />
+        <MuiTable title={'Modem IMEI Kayıtları'} data={modemImeiRecord.data} columns={columns} options={options} />
       </Container>
     </Page>
   );

@@ -1,5 +1,5 @@
 export const options = {
-  selectableRows: 'single',
+  selectableRows: 'none',
   onTableChange: (action, state) => {;
   },
   rowsPerPage: 25,

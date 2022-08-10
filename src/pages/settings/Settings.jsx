@@ -24,8 +24,16 @@ export default function Settings() {
     ["https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wEaN?ver=9f5b"],
     ["https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wqHi?ver=6ef6"]
   ];
+  const to = [
+    ["/dashboard/plants"],
+    ["/dashboard/irrigation-types"],
+    ["/dashboard/settings/#"],
+    ["/dashboard/device-types"],
+    ["/dashboard/device-locations"],
+    ["/dashboard/pump-management-types"]
+  ]
   return (
-    <Page title="Dashboard: Test">
+    <Page title="Ayarlar">
       <Container maxWidth="xxl">
         <Typography variant="h5" style={{textAlign:'center'}}>
           Ayarlar
@@ -34,7 +42,7 @@ export default function Settings() {
         <Grid container spacing={3}>
         {titles.map((title,index) => (
           <Grid key={index} item xs={12} sm={6} md={3}>
-            <MenuCard title={title} path={paths[index]} />
+            <MenuCard title={title} path={paths[index]} to={to[index]} />
           </Grid>))}
         </Grid>
       </Container>

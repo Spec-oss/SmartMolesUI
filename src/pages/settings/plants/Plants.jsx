@@ -12,7 +12,7 @@ import Iconify from '../../../components/Iconify';
 import { FormProvider } from '../../../components/hook-form';
 
 //mock
-import { columns } from '../../../mock/settings/irrigationTypes/irrigationTypesColumn';
+import { columns } from '../../../mock/settings/plant/plantTypesColumn';
 import { options } from '../../../mock/MuiTableOptions';
 
 //service
@@ -108,20 +108,28 @@ const Plants = () => {
             </Typography>
             <FormProvider onSubmit={(e) => onSubmit(e)}>
               <Stack spacing={3}>
-                <TextField
-                  required
-                  style={{ backgroundColor: 'white', borderRadius: 10 }}
-                  name="ImageUrl"
-                  label="Görsel"
-                  value={data.ImageUrl}
-                  onChange={handleChange}
-                />
-                <TextField
+              <TextField
                   required
                   style={{ backgroundColor: 'white', borderRadius: 10 }}
                   name="titleTR"
                   label="Adı"
                   value={data.titleTR}
+                  onChange={handleChange}
+                />
+                <TextField
+                  required
+                  style={{ backgroundColor: 'white', borderRadius: 10 }}
+                  name="RootRange"
+                  label="Kök Aralığı"
+                  value={data.RootRange}
+                  onChange={handleChange}
+                />
+                <TextField
+                  required
+                  style={{ backgroundColor: 'white', borderRadius: 10 }}
+                  name="ActiveRootRange"
+                  label="Aktif Kök Aralığı"
+                  value={data.ActiveRootRange}
                   onChange={handleChange}
                 />
                 <LoadingButton onClick={(e) => onSubmit(e)} fullWidth size="large" type="submit" variant="contained">
@@ -136,4 +144,4 @@ const Plants = () => {
     </Page>
   );
 };
-export default IrrigationTypes;
+export default Plants;

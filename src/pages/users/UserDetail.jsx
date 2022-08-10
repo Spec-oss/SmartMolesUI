@@ -1,9 +1,10 @@
 // material
-import { Container, Stack, Typography, Grid, Divider } from '@mui/material';
+import { Container, Stack, Typography, Grid, Divider, Button } from '@mui/material';
 
 // components
 import MenuCard from 'src/components/card/MenuCard';
 import Page from '../../components/Page';
+import Iconify from '../../components/Iconify';
 
 // ----------------------------------------------------------------------
 
@@ -42,9 +43,18 @@ export default function UserDetail() {
   return (
     <Page title="Dashboard: Test">
       <Container maxWidth="xxl">
-        <Typography variant="h5" style={{ textAlign: 'center' }}>
-          {'{Kullanıcı Adı}'}
-        </Typography>
+        <Stack direction="row" alignItems="center" justifyContent="space-between">
+          <Typography variant="h5" gutterBottom>
+             {'{Kullanıcı Adı}'}
+          </Typography>
+          <Button
+            variant="contained"
+            to=""
+            startIcon={<Iconify icon="material-symbols:edit" />}
+          >
+            Bilgileri Düzenle
+          </Button>
+        </Stack>
         <Stack direction="row" flexWrap="wrap-reverse" alignItems="center" justifyContent="flex-end" sx={{ mb: 5 }} />
         <Typography variant="subtitle2" sx={{ mb: 2 }}>
           Ürünler

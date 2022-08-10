@@ -14,6 +14,8 @@ import Reports from './pages/reports/Reports';
 import DeviceTypes from './pages/settings/deviceTypes/DeviceTypes';
 import DeviceLocations from './pages/settings/deviceLocations/DeviceLocations';
 import PumpManagementTypes from './pages/settings/pumpManagementTypes/PumpManagementTypes';
+import Plants from './pages/settings/plants/Plants';
+import IrrigationTypes from './pages/settings/irrigationTypes/IrrigationTypes';
 import SimCards from './pages/users/simCards/SimCards';
 import ModemImeiRecords from './pages/users/modemImeiRecords/ModemImeiRecords';
 import Settings from './pages/settings/Settings';
@@ -39,6 +41,8 @@ export default function Router() {
         { path: 'report', element: <Reports /> },
         { path: 'products', element: <Products /> },
         { path: 'settings', element: <Settings /> },
+        { path: 'plants', element: <Plants /> },
+        { path: 'irrigation-types', element: <IrrigationTypes /> },
         { path: 'device-types', element: <DeviceTypes /> },
         { path: 'device-locations', element: <DeviceLocations /> },
         { path: 'pump-management-types', element: <PumpManagementTypes /> },
