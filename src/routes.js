@@ -22,6 +22,14 @@ import Settings from './pages/settings/Settings';
 import CapillarityDetail from './pages/capillarity/CapillarityDetail';
 import Root from './pages/root/Root';
 import UserDetail from './pages/users/UserDetail';
+import GatewayLogs from './pages/logs/GatewayLogs';
+import PumpCardLogs from './pages/logs/PumpCardLogs';
+import SensorCalibrationLog from './pages/logs/SensorCalibrationLog';
+import SensorCardLogs from './pages/logs/SensorCardLogs';
+import SensorMoistureLog from './pages/logs/SensorMoistureLog';
+import TimerManagementLogs from './pages/logs/TimerManagementLogs';
+import ValveCardLogs from './pages/logs/ValveCardLogs';
+import WorkGroupsLog from './pages/logs/WorkGroupsLog';
 
 // ----------------------------------------------------------------------
 
@@ -46,7 +54,14 @@ export default function Router() {
         { path: 'device-types', element: <DeviceTypes /> },
         { path: 'device-locations', element: <DeviceLocations /> },
         { path: 'pump-management-types', element: <PumpManagementTypes /> },
-
+        { path: 'gateway-logs', element: <GatewayLogs /> },
+        { path: 'pump-card-logs', element: <PumpCardLogs /> },
+        { path: 'sensor-calibration-logs', element: <SensorCalibrationLog /> },
+        { path: 'sensor-card-logs', element: <SensorCardLogs /> },
+        { path: 'sensor-moisture-logs', element: <SensorMoistureLog /> },
+        { path: 'timer-management-logs', element: <TimerManagementLogs /> },
+        { path: 'valve-card-logs', element: <ValveCardLogs /> },
+        { path: 'work-groups-logs', element: <WorkGroupsLog /> },
         { path: 'blog', element: <Blog /> },
       ],
     },

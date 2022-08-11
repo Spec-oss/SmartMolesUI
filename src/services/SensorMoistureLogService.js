@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default class SensorMoistureLogService {
-  getSensorMoistureLog() {
+  async getSensorMoistureLog() {
     return await axios.get(process.env.REACT_APP_API_URL_NEW + '/sensor-moisture-log');
   }
   async addSensorMoistureLog(data) {

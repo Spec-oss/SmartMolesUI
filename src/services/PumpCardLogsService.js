@@ -1,19 +1,19 @@
 import axios from 'axios';
 
-export default class PumpCardsLogService {
-  getPumpCardsLog() {
+export default class PumpCardLogsService {
+  getPumpCardLogs() {
     return axios.get(process.env.REACT_APP_API_URL_NEW + '/pump-cards-logs');
   }
-  async addPumpCardsLog(data) {
+  async addPumpCardLogs(data) {
     return await axios.post(process.env.REACT_APP_API_URL_NEW + '/pump-cards-logs' , data);
   }
-  async updatePumpCardsLog(id) {
+  async updatePumpCardLogs(id) {
     return await axios.put(process.env.REACT_APP_API_URL_NEW + ' /pump-cards-logs/' + id);
   }
-  async deletePumpCardsLog(id) {
+  async deletePumpCardLogs(id) {
     return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/pump-cards-logs/' + id);
   }
-  async getByPumpCardsLogId(id) {
+  async getByPumpCardLogsId(id) {
     return await axios.get(process.env.REACT_APP_API_URL_NEW + '/pump-cards-logs/' + id);
   }
 }
