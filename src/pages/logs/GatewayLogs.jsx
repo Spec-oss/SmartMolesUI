@@ -27,7 +27,7 @@ const GatewayLogs = () => {
   }, []);
 
   return (
-    <Page title="Sim Kartları">
+    <Page title="Gateway Logları">
       <Container maxWidth="xxl">
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h5" gutterBottom>

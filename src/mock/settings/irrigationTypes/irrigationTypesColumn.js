@@ -1,10 +1,20 @@
+import Avatar from '@mui/material/Avatar';
 export const columns = [
   {
     name: 'ImageUrl',
-    label: 'Ad',
+    label: 'Görsel',
     options: {
-      filter: true,
-      sort: true,
+      filter: false,
+      sort: false,
+      customBodyRenderLite: (dataIndex) => {
+        return (
+          <Avatar
+        alt="Görsel"
+        src="/static/images/avatar/1.jpg"
+        sx={{ width: 56, height: 56 }}
+      />
+        );
+      },
     },
   },
   {

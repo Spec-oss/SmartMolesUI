@@ -34,8 +34,8 @@ const IrrigationTypes = () => {
   const services = new IrrigationTypesService();
 
   const [data, setData] = useState({
-    imageUrl: '',
-    titleTR: '',
+    ImageUrl: '',
+    TitleTR: '',
   });
 
   const handleChange = (e) => {
@@ -49,8 +49,8 @@ const IrrigationTypes = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const IrrigationTypeData = {
-      ImageUrl: data.imageUrl,
-      TitleTR: data.titleTR,
+      ImageUrl: data.ImageUrl,
+      TitleTR: data.TitleTR,
       TitleEN: '',
     };
 
@@ -117,9 +117,9 @@ const IrrigationTypes = () => {
                 <TextField
                   required
                   style={{ backgroundColor: 'white', borderRadius: 10 }}
-                  name="titleTR"
+                  name="TitleTR"
                   label="Adı"
-                  value={data.titleTR}
+                  value={data.TitleTR}
                   onChange={handleChange}
                 />
                 <LoadingButton onClick={(e) => onSubmit(e)} fullWidth size="large" type="submit" variant="contained">

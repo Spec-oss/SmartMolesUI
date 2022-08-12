@@ -27,14 +27,14 @@ const TimerManagementLogs = () => {
   }, []);
 
   return (
-    <Page title="Sim Kartları">
+    <Page title="Timer Logları">
       <Container maxWidth="xxl">
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h5" gutterBottom>
-          Gateway Logları
+          Timer Logları
           </Typography>
         </Stack>
-        <MuiTable title={'Gateway Logları'} data={timerManagementLogs.data} columns={columns} options={options} />
+        <MuiTable title={'Timer Logları'} data={timerManagementLogs.data} columns={columns} options={options} />
       </Container>
     </Page>
   );

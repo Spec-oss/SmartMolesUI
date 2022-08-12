@@ -30,6 +30,7 @@ import SensorMoistureLog from './pages/logs/SensorMoistureLog';
 import TimerManagementLogs from './pages/logs/TimerManagementLogs';
 import ValveCardLogs from './pages/logs/ValveCardLogs';
 import WorkGroupsLog from './pages/logs/WorkGroupsLog';
+import Gateway from './pages/users/gateway/Gateway';
 
 // ----------------------------------------------------------------------
 
@@ -46,6 +47,7 @@ export default function Router() {
         { path: 'modem-records', element: <ModemImeiRecords /> },
         { path: 'capillarity/detail', element: <CapillarityDetail /> },
         { path: 'root/detail', element: <Root /> },
+        { path: 'gateway', element: <Gateway /> },
         { path: 'report', element: <Reports /> },
         { path: 'products', element: <Products /> },
         { path: 'settings', element: <Settings /> },

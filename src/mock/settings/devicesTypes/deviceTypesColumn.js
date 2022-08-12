@@ -15,7 +15,7 @@ export const columns = [
       empty: true,
       customBodyRenderLite: (data) => {
         return (
-          <button style={{width:'50px'}} onClick={() => window.alert(`Clicked "Edit" for row ${rowIndex} with dataIndex of ${dataIndex}`)}>
+          <button style={{width:'50px'}} onClick={() => window.alert(`Clicked "Edit" for row with dataIndex of `)}>
             Edit
           </button>
         );

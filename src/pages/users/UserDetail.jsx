@@ -21,7 +21,7 @@ export default function UserDetail() {
   const logs = [
     ['Gateway Logları'],
     ['Çalışma Grubu Logları'],
-    ['Moisture Log'],
+    ['Nem Logları'],
     ['Kalibrasyon Logları'],
     ['Sensör Kartı Logları'],
     ['Timer Logları'],

@@ -10,7 +10,6 @@ import Page from '../../components/Page';
 export default function Report() {
   const titles = [
     ["KHAS Raporları"],
-    ["Loglar"],
     ["HUB Raporları"],
     ["Sulama Raporları"],
     ["Hata Raporları"],
@@ -18,7 +17,6 @@ export default function Report() {
   ];
   const path = [
     ["https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wwtR?ver=4d2d"],
-    ["https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wB6z?ver=eddc"],
     ["https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wqGK?ver=47a4"],
     ["https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wppQ?ver=7215"],
     ["https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wEaN?ver=9f5b"],

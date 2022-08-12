@@ -34,7 +34,8 @@ const PumpManagementType = () => {
   const services = new PumpManagementTypesService();
 
   const [data, setData] = useState({
-    titleTR: '',
+    TitleTR: '',
+    TitleEN: '',
   });
 
   const handleChange = (e) => {
@@ -48,7 +49,8 @@ const PumpManagementType = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const PumpManagementTypeData = {
-      titleTR: data.titleTR,
+      TitleTR: data.TitleTR,
+      TitleEN: '',
     };
 
     await services.addPumpManagementType(PumpManagementTypeData).then((e) => {
@@ -106,9 +108,9 @@ const PumpManagementType = () => {
                 <TextField
                   required
                   style={{ backgroundColor: 'white', borderRadius: 10 }}
-                  name="Name"
+                  name="TitleTR"
                   label="Adı"
-                  value={data.titleTR}
+                  value={data.TitleTR}
                   onChange={handleChange}
                 />
                 <LoadingButton onClick={(e) => onSubmit(e)} fullWidth size="large" type="submit" variant="contained">

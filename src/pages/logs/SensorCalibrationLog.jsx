@@ -39,21 +39,21 @@ const SensorCalibrationLog = () => {
       const colSpan = rowData.length + 1;
       return (
         <TableRow>
-          <TableCell colSpan={colSpan}>Data: {JSON.stringify(sensorCalibrationLog.data)}</TableCell>
+          <TableCell colSpan={colSpan}>Data: {JSON.stringify(rowData)}</TableCell>
         </TableRow>
       );
     },
   };
 
   return (
-    <Page title="Sim Kartları">
+    <Page title="Sensör Kalibrasyon Logları">
       <Container maxWidth="xxl">
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h5" gutterBottom>
-          Sensör Kalibrasyon Log
+          Sensör Kalibrasyon Logları
           </Typography>
         </Stack>
-        <MuiTable title={'Gateway Logları'} data={sensorCalibrationLog.data} columns={columns} options={options} />
+        <MuiTable title={'Sensör Kalibrasyon Logları'} data={sensorCalibrationLog.data} columns={columns} options={options} />
       </Container>
     </Page>
   );

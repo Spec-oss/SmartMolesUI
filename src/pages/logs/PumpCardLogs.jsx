@@ -27,14 +27,14 @@ const PumpCardLogs = () => {
   }, []);
 
   return (
-    <Page title="Sim Kartları">
+    <Page title="Pompa Kartı Logları">
       <Container maxWidth="xxl">
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h5" gutterBottom>
           Pompa Kartı Logları
           </Typography>
         </Stack>
-        <MuiTable title={'Gateway Logları'} data={pumpCardLogs.data} columns={columns} options={options} />
+        <MuiTable title={'Pompa Kartı Logları'} data={pumpCardLogs.data} columns={columns} options={options} />
       </Container>
     </Page>
   );

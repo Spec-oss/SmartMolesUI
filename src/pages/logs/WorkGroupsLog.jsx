@@ -27,14 +27,14 @@ const WorkGroupsLog = () => {
   }, []);
 
   return (
-    <Page title="Sim Kartları">
+    <Page title="Çalışma Grubu Logları">
       <Container maxWidth="xxl">
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h5" gutterBottom>
-          WorkGroups Logları
+          Çalışma Grubu Logları
           </Typography>
         </Stack>
-        <MuiTable title={'WorkGroups Logları'} data={workGroupLogs.data} columns={columns} options={options} />
+        <MuiTable title={'Çalışma Grubu Logları'} data={workGroupLogs.data} columns={columns} options={options} />
       </Container>
     </Page>
   );
