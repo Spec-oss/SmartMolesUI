@@ -8,7 +8,7 @@ import MuiTable from '../../components/tables/Table';
 import Page from '../../components/Page';
 
 //mock
-import { columns } from '../../mock/logs/gatewayLogsColumn';
+import { columns } from '../../mock/logs/valveCardLogsColumn';
 import { options } from '../../mock/MuiTableOptions';
 
 //service

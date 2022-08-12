@@ -1,15 +1,14 @@
 import { useEffect, useState } from 'react';
 
 //material
-import { Stack, Container, Typography } from '@mui/material';
+import { Stack, Container, Typography, TableCell, TableRow } from '@mui/material';
 
 // component
 import MuiTable from '../../components/tables/Table';
 import Page from '../../components/Page';
 
 //mock
-import { columns } from '../../mock/logs/gatewayLogsColumn';
-import { options } from '../../mock/MuiTableOptions';
+import { columns } from '../../mock/logs/sensorCalibrationLogColumn';
 
 //service
 import SensorCalibrationLogService from '../../services/SensorCalibrationLogService';
@@ -25,6 +24,26 @@ const SensorCalibrationLog = () => {
   useEffect(() => {
     getData();
   }, []);
+
+  const options = {
+    filter: true,
+    filterType: 'dropdown',
+    responsive: 'standard',
+    expandableRows: true,
+    expandableRowsHeader: false,
+    expandableRowsOnClick: true,
+    isRowExpandable: () => {
+      return true;
+    },
+    renderExpandableRow: (rowData) => {
+      const colSpan = rowData.length + 1;
+      return (
+        <TableRow>
+          <TableCell colSpan={colSpan}>Data: {JSON.stringify(sensorCalibrationLog.data)}</TableCell>
+        </TableRow>
+      );
+    },
+  };
 
   return (
     <Page title="Sim Kartları">
