@@ -80,13 +80,23 @@ export default function UserDetail() {
           <Typography variant="h5" gutterBottom>
              {'{Kullanıcı Adı}'}
           </Typography>
-          <Button
+          <Stack direction="row" alignItems="center" justifyContent="space-between">
+          <Button sx={{mr:2}}
             variant="contained"
             to=""
             startIcon={<Iconify icon="material-symbols:edit" />}
           >
             Bilgileri Düzenle
           </Button>
+          <Button
+            variant="contained"
+            color="error"
+            to=""
+            startIcon={<Iconify icon="mdi:delete-forever" />}
+          >
+            Kayıt Sil
+          </Button>
+          </Stack>
         </Stack>
         <Stack direction="row" flexWrap="wrap-reverse" alignItems="center" justifyContent="flex-end" sx={{ mb: 5 }} />
         <Typography variant="subtitle2" sx={{ mb: 2 }}>
