@@ -1,14 +1,88 @@
+// react
+import { useLocation, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+
 // material
 import { Container, Stack, Typography, Grid, Divider, Button } from '@mui/material';
 
 // components
-import MenuCard from 'src/components/card/MenuCard';
+import MenuCard from '../../components/card/MenuCard';
 import Page from '../../components/Page';
 import Iconify from '../../components/Iconify';
 
+// services
+import UserService from '../../services/UserService';
+
 // ----------------------------------------------------------------------
 
-export default function UserDetail() {
+export default function UserDetail(props) {
+  const location = useLocation();
+  const isDeleted = useState({
+    IsDeleted: false
+  })
+  const services = new UserService();
+  const [dataFinal, setData] = useState({
+    RoleID: '',
+    Name: '',
+    Surname: '',
+    Mail: '',
+    Password: '',
+    Gsm: '',
+    CitizenShipNum: '',
+    Nationality: '',
+    CompanyName: '',
+    TaxNum: '',
+    MersisNo: '',
+    Address: '',
+    MailIsVerified: '',
+    MailVerifiedAt: '',
+    Country: '',
+    City: '',
+    Distinct: '',
+    DetailAddress: '',
+    PostalCode: '',
+    Phone: '',
+    CompanyPhone: '',
+    HomePhone: '',
+    UserType: '',
+    IsAdmin: '',
+    IsBusiness: '',
+  });
+
+  const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(false);
+
+  const getData = async (userID) => {
+    setLoading(false);
+    const data = await services.getByUserId(userID);
+    setData({
+      ...data,
+      dataFinal,
+    });
+  };
+
+  let { userID } = useParams();
+  const onDelete = async(userID) => {
+    console.log(userID)
+    services.deleteUser(userID)
+  }
+console.log(userID)
+  
+  useEffect(() => {
+    const fetchData = async (userID) => {
+      return await services.getByUserId(userID);
+    };
+
+    fetchData(userID).then((data) => {
+      setUser(data.data.data);
+      setTimeout(() => {
+        console.log(user);
+      }, 3000);
+    });
+  }, []);
+
+  
+
   const products = [['Smart Capillarity'], ['Smart Root']];
   const settings = [
     ['Gateway'],
@@ -78,7 +152,7 @@ export default function UserDetail() {
       <Container maxWidth="xxl">
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Typography variant="h5" gutterBottom>
-             {'{Kullanıcı Adı}'}
+              {user.Name}  {user.Surname} Adlı Kullanıcının Hizmet Sayfası
           </Typography>
           <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Button sx={{mr:2}}
@@ -89,6 +163,7 @@ export default function UserDetail() {
             Bilgileri Düzenle
           </Button>
           <Button
+            onClick={()=>onDelete(userID)}
             variant="contained"
             color="error"
             to=""
