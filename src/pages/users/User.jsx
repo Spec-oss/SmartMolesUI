@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
 //material
-import { Stack, Button, Container, Typography, Box, Modal, TextField } from '@mui/material';
+import { Stack, Button, Container, Typography, Box, Modal, TextField, CircularProgress } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 
 // component
@@ -10,9 +10,9 @@ import MuiTable from '../../components/tables/Table';
 import Page from '../../components/Page';
 import Iconify from '../../components/Iconify';
 import { FormProvider } from '../../components/hook-form';
+import SuccessAlert from '../../components/alerts/Alerts';
 
 //mock
-import { columns } from '../../mock/user/userColumn';
 import { options } from '../../mock/MuiTableOptions';
 
 //service
@@ -26,13 +26,25 @@ const style = {
   width: '50%',
   bgcolor: 'background.paper',
   border: '1px solid #000',
-  borderRadius:'16px',
+  borderRadius: '16px',
   boxShadow: 24,
   p: 4,
 };
 
-const Users = () => {
+const CircularLoading = () => (
+  <CircularProgress
+    size={70}
+    sx={{
+      position: 'fixed',
+      left: '50%',
+      top: '50%',
+      transform: 'translate(-50%, -50%)',
+      zIndex: 2,
+    }}
+  />
+);
 
+const Users = () => {
   const services = new UserService();
 
   const [data, setData] = useState({
@@ -74,37 +86,41 @@ const Users = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const userData = {
-    RoleID: '',
-    Name: data.Name,
-    Surname: data.Surname,
-    Mail: data.Mail,
-    Password: data.Password,
-    Gsm: data.Gsm,
-    CitizenShipNum: '',
-    Nationality: '',
-    CompanyName: '',
-    TaxNum: '',
-    MersisNo: '',
-    Address: '',
-    MailIsVerified: true,
-    MailVerifiedAt: new Date(),
-    Country: '',
-    City: '',
-    Distinct: '',
-    DetailAddress: '',
-    PostalCode: '',
-    Phone: '',
-    CompanyPhone: '',
-    HomePhone: '',
-    UserType: '',
-    IsAdmin: true,
-    IsBusiness: true,
+      RoleID: '',
+      Name: data.Name,
+      Surname: data.Surname,
+      Mail: data.Mail,
+      Password: data.Password,
+      Gsm: data.Gsm,
+      CitizenShipNum: '',
+      Nationality: '',
+      CompanyName: '',
+      TaxNum: '',
+      MersisNo: '',
+      Address: '',
+      MailIsVerified: true,
+      MailVerifiedAt: new Date(),
+      Country: '',
+      City: '',
+      Distinct: '',
+      DetailAddress: '',
+      PostalCode: '',
+      Phone: '',
+      CompanyPhone: '',
+      HomePhone: '',
+      UserType: '',
+      IsAdmin: true,
+      IsBusiness: true,
     };
 
     await services.addUser(userData).then((e) => {
       if (e.status === 201) {
         setResult(e.data);
         getData();
+        setApiState(true);
+        setTimeout(() => {
+          setApiState(false);
+        }, 3000);
         handleClose();
       }
     });
@@ -113,32 +129,141 @@ const Users = () => {
   const [user, setUser] = useState({});
   const [handleResult, setResult] = useState({});
   const [open, setOpen] = useState(false);
+  const [apiState, setApiState] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [isDeleted, setIsDeleted] = useState(true);
+
+  const handleDeleted = (e) => {
+    e.preventDefault();
+    console.log(isDeleted);
+    setIsDeleted(!isDeleted);
+    if (isDeleted) {
+      services.getUserNonCondition().then((result) => setUser(result.data));
+    } else {
+      services.getUser().then((result) => setUser(result.data));
+    }
+  };
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const getData = () => {
+    setLoading(false);
     services.getUser().then((result) => setUser(result.data));
   };
+
+  const alertState = (title, description, descriptionStrong) => {
+    return (
+      <SuccessAlert title={`${title}`} description={`${description}`} descriptionStrong={`${descriptionStrong}`} />
+    );
+  };
+
   useEffect(() => {
     getData();
   }, []);
-    
-  return (
+
+  const columns = [
+    {
+      name: 'Name',
+      label: 'Ad',
+      options: {
+        filter: true,
+        sort: true,
+      },
+    },
+    {
+      name: 'Surname',
+      label: 'Soyad',
+      options: {
+        filter: true,
+        sort: true,
+      },
+    },
+    {
+      name: 'Mail',
+      label: 'E-mail',
+      options: {
+        filter: true,
+        sort: false,
+      },
+    },
+    {
+      name: 'Gsm',
+      label: 'Telefon',
+      options: {
+        filter: true,
+        sort: false,
+      },
+    },
+    {
+      name: 'ContentID',
+      label: 'Detaylar',
+      options: {
+        filter: false,
+        sort: false,
+        empty: true,
+        customBodyRenderLite: (dataIndex) => {
+          return (
+            <Button
+              variant="contained"
+              size="small"
+              to={'/dashboard/user-detail/userID=' + user.data[dataIndex].ContentID}
+              LinkComponent={RouterLink}
+            >
+              Detaylar
+            </Button>
+          );
+        },
+      },
+    },
+    {
+      name: 'isDeleted',
+      label: ' ',
+      options: {
+        filter: false,
+        sort: false,
+        empty: true,
+        customBodyRenderLite: (dataIndex) => {
+          return user.data[dataIndex].isDeleted ? (
+            <Iconify style={{color:"#1c1b18", width: '40px', height: '40px' }} icon="mdi:account-cancel" />
+          ) : (
+            <Iconify style={{color:"#2065d1", width: '40px', height: '40px' }} icon="mdi:account-check" />
+          );
+        },
+      },
+    },
+  ];
+
+  return loading ? (
+    CircularLoading()
+  ) : (
     <Page title="Müşteriler">
       <Container maxWidth="xxl">
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h5" gutterBottom>
             Müşteri Yönetimi
           </Typography>
-          <Button
-            onClick={handleOpen}
-            variant="contained"
-            component={RouterLink}
-            to=""
-            startIcon={<Iconify icon="eva:plus-fill" />}
-          >
-            Yeni Kayıt Ekle
-          </Button>
+          <Stack direction="row" alignItems="center" justifyContent="space-between">
+            <Button
+              onClick={(e) => handleDeleted(e)}
+              variant="contained"
+              color={isDeleted ? 'warning' : 'error'}
+              component={RouterLink}
+              to=""
+              startIcon={<Iconify icon={isDeleted ? 'mdi:delete' : 'mdi:eye-off'} />}
+            >
+              {isDeleted ? 'Silinenleri Getir' : 'Silinenleri Gizle'}
+            </Button>
+            &nbsp;&nbsp;
+            <Button
+              onClick={handleOpen}
+              variant="contained"
+              component={RouterLink}
+              to=""
+              startIcon={<Iconify icon="eva:plus-fill" />}
+            >
+              Yeni Kayıt Ekle
+            </Button>
+          </Stack>
         </Stack>
         <Modal
           open={open}
@@ -147,7 +272,7 @@ const Users = () => {
           aria-describedby="modal-modal-description"
         >
           <Box sx={style}>
-          <Typography textAlign={'center'} variant="subtitle1" gutterBottom component="div">
+            <Typography textAlign={'center'} variant="subtitle1" gutterBottom component="div">
               Yeni Kayıt Ekle
             </Typography>
             <FormProvider onSubmit={(e) => onSubmit(e)}>
@@ -185,7 +310,7 @@ const Users = () => {
                   value={data.Password}
                   onChange={handleChange}
                 />
-               
+
                 <TextField
                   required
                   style={{ backgroundColor: 'white', borderRadius: 10 }}
@@ -201,6 +326,8 @@ const Users = () => {
             </FormProvider>
           </Box>
         </Modal>
+        {apiState ? alertState('Başarılı!!!', 'Yeni Kullanıcı Oluşturma İşlemi', 'Başarıyla Tamamlandı!!') : ''}
+        <br />
         <MuiTable title={'Kullanıcılar'} data={user.data} columns={columns} options={options} />
       </Container>
     </Page>

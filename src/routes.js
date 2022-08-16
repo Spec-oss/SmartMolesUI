@@ -42,7 +42,7 @@ export default function Router() {
       children: [
         { path: 'app', element: <DashboardApp /> },
         { path: 'user', element: <User /> },
-        { path: 'user-detail', element: <UserDetail /> },
+        { path: 'user-detail/userID=:userID', element: <UserDetail /> },
         { path: 'simcards', element: <SimCards /> },
         { path: 'modem-records', element: <ModemImeiRecords /> },
         { path: 'capillarity/detail', element: <CapillarityDetail /> },

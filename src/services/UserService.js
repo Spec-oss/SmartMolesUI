@@ -4,6 +4,9 @@ export default class UserService {
   getUser() {
     return axios.get(process.env.REACT_APP_API_URL_NEW + '/users');
   }
+  getUserNonCondition() {
+    return axios.get(process.env.REACT_APP_API_URL_NEW + '/users/non-condition');
+  }
   async addUser(data) {
     return await axios.post(process.env.REACT_APP_API_URL_NEW + '/users/register', data);
   }
