@@ -3,7 +3,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 // material
-import { Container, Stack, Typography, Grid, Divider, Button } from '@mui/material';
+import { Container, Stack, Typography, Grid, Divider, Button, Fade, Modal, Box, Backdrop } from '@mui/material';
 
 // components
 import MenuCard from '../../components/card/MenuCard';
@@ -15,11 +15,22 @@ import UserService from '../../services/UserService';
 
 // ----------------------------------------------------------------------
 
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 'auto',
+  bgcolor: 'background.paper',
+  border: '1px solid #000',
+  borderRadius: '16px',
+  boxShadow: 24,
+  p: 4,
+};
+
 export default function UserDetail(props) {
   const location = useLocation();
-  const isDeleted = useState({
-    IsDeleted: false
-  })
+
   const services = new UserService();
   const [dataFinal, setData] = useState({
     RoleID: '',
@@ -50,6 +61,11 @@ export default function UserDetail(props) {
   });
 
   const [user, setUser] = useState({});
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   const [loading, setLoading] = useState(false);
 
   const getData = async (userID) => {
@@ -62,12 +78,12 @@ export default function UserDetail(props) {
   };
 
   let { userID } = useParams();
-  const onDelete = async(userID) => {
-    console.log(userID)
-    services.deleteUser(userID)
-  }
-console.log(userID)
-  
+  const onDelete = async (userID) => {
+    console.log(userID);
+    services.deleteUser(userID);
+  };
+  console.log(userID);
+
   useEffect(() => {
     const fetchData = async (userID) => {
       return await services.getByUserId(userID);
@@ -81,8 +97,6 @@ console.log(userID)
     });
   }, []);
 
-  
-
   const products = [['Smart Capillarity'], ['Smart Root']];
   const settings = [
     ['Gateway'],
@@ -90,7 +104,7 @@ console.log(userID)
     ['Sözleşmeler'],
     ['Kullanıcı İzinleri'],
     ['Sim Kartlar'],
-    ['Modem Kayıtları']
+    ['Modem Kayıtları'],
   ];
   const logs = [
     ['Gateway Logları'],
@@ -100,7 +114,7 @@ console.log(userID)
     ['Sensör Kartı Logları'],
     ['Timer Logları'],
     ['Pompa Kartı Logları'],
-    ['Vana Kartı Logları']
+    ['Vana Kartı Logları'],
   ];
   const paths = [
     ['https://www.smartmoles.com/uploads/files/logo/450x450/smart-capillarity.png'],
@@ -126,7 +140,7 @@ console.log(userID)
     ['https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wwtC?ver=b327'],
   ];
 
-  const toProduct =[['/dashboard/capillarity/detail'],['/dashboard/root/detail']]
+  const toProduct = [['/dashboard/capillarity/detail'], ['/dashboard/root/detail']];
 
   const to = [
     ['/dashboard/gateway'],
@@ -152,25 +166,53 @@ console.log(userID)
       <Container maxWidth="xxl">
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Typography variant="h5" gutterBottom>
-              {user.Name}  {user.Surname} Adlı Kullanıcının Hizmet Sayfası
+            {user.Name} {user.Surname} Adlı Kullanıcının Hizmet Sayfası
           </Typography>
           <Stack direction="row" alignItems="center" justifyContent="space-between">
-          <Button sx={{mr:2}}
-            variant="contained"
-            to=""
-            startIcon={<Iconify icon="material-symbols:edit" />}
-          >
-            Bilgileri Düzenle
-          </Button>
-          <Button
-            onClick={()=>onDelete(userID)}
-            variant="contained"
-            color="error"
-            to=""
-            startIcon={<Iconify icon="mdi:delete-forever" />}
-          >
-            Kayıt Sil
-          </Button>
+            <Button sx={{ mr: 2 }} variant="contained" to="" startIcon={<Iconify icon="material-symbols:edit" />}>
+              Bilgileri Düzenle
+            </Button>
+            <Button
+              onClick={handleOpen}
+              variant="contained"
+              color="error"
+              to=""
+              startIcon={<Iconify icon="mdi:delete-forever" />}
+            >
+              Kayıt Sil
+            </Button>
+            <Modal
+              aria-labelledby="transition-modal-title"
+              aria-describedby="transition-modal-description"
+              open={open}
+              closeAfterTransition
+              BackdropComponent={Backdrop}
+              BackdropProps={{
+                timeout: 500,
+              }}
+            >
+              <Fade in={open}>
+                <Box sx={style}>
+                  <Typography textAlign={'center'} id="transition-modal-title" variant="subtitle2" component="h2">
+                  {user.Name} {user.Surname} adlı kayıt silinecektir!
+                  </Typography>
+                  <Stack sx={{mt:5}} direction="row" alignItems="center" justifyContent="space-evenly">
+                    <Button sx={{ mr: 2 }}
+                    onClick={() => onDelete(userID)} 
+                    variant="outlined"
+                    color="error">
+                      Sil
+                    </Button>
+                    <Button sx={{ ml: 2 }}
+                    onClick={handleClose}
+                    variant="outlined"
+                    color="info">
+                      Vazgeç
+                    </Button>
+                  </Stack>
+                </Box>
+              </Fade>
+            </Modal>
           </Stack>
         </Stack>
         <Stack direction="row" flexWrap="wrap-reverse" alignItems="center" justifyContent="flex-end" sx={{ mb: 5 }} />

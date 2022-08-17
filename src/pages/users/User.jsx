@@ -261,7 +261,7 @@ const Users = () => {
               to=""
               startIcon={<Iconify icon="eva:plus-fill" />}
             >
-              Yeni Kayıt Ekle
+              Kayıt Ekle
             </Button>
           </Stack>
         </Stack>
