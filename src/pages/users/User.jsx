@@ -23,7 +23,7 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: '50%',
+  minWidth: '400px',
   bgcolor: 'background.paper',
   border: '1px solid #000',
   borderRadius: '16px',
@@ -98,7 +98,7 @@ const Users = () => {
       TaxNum: '',
       MersisNo: '',
       Address: '',
-      MailIsVerified: true,
+      MailIsVerified: false,
       MailVerifiedAt: new Date(),
       Country: '',
       City: '',
@@ -109,7 +109,7 @@ const Users = () => {
       CompanyPhone: '',
       HomePhone: '',
       UserType: '',
-      IsAdmin: true,
+      IsAdmin: false,
       IsBusiness: true,
     };
 
