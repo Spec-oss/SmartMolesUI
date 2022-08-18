@@ -130,7 +130,7 @@ const Users = () => {
   const [handleResult, setResult] = useState({});
   const [open, setOpen] = useState(false);
   const [apiState, setApiState] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [isDeleted, setIsDeleted] = useState(true);
 
   const handleDeleted = (e) => {
@@ -147,8 +147,9 @@ const Users = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const getData = () => {
-    setLoading(false);
     services.getUser().then((result) => setUser(result.data));
+    console.log(setLoading)
+    setLoading(false)
   };
 
   const alertState = (title, description, descriptionStrong) => {
@@ -233,9 +234,7 @@ const Users = () => {
     },
   ];
 
-  return loading ? (
-    CircularLoading()
-  ) : (
+  return (
     <Page title="Müşteriler">
       <Container maxWidth="xxl">
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
@@ -328,7 +327,7 @@ const Users = () => {
         </Modal>
         {apiState ? alertState('Başarılı!!!', 'Yeni Kullanıcı Oluşturma İşlemi', 'Başarıyla Tamamlandı!!') : ''}
         <br />
-        <MuiTable title={'Kullanıcılar'} data={user.data} columns={columns} options={options} />
+        {loading ? CircularLoading():<MuiTable title={'Kullanıcılar'} data={user.data} columns={columns} options={options} />}
       </Container>
     </Page>
   );

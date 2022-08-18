@@ -19,4 +19,7 @@ export default class UserService {
   async getByUserId(id) {
     return await axios.get(process.env.REACT_APP_API_URL_NEW + '/users/' + id);
   }
+  async authUser(data){
+    return await axios.post(process.env.REACT_APP_API_URL_NEW + '/users/auth' ,data);
+  }
 }
