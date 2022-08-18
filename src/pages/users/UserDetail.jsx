@@ -152,23 +152,23 @@ export default function UserDetail(props) {
     ['https://www.smartmoles.com/uploads/files/logo/450x450/smart-root.png'],
   ];
   const settingsPaths = [
-    ['https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wppQ?ver=7215'],
-    ['https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wEaN?ver=9f5b'],
-    ['https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wqHi?ver=6ef6'],
-    ['https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE53r3l?ver=5412'],
-    ['https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE53ei4?ver=b8a9'],
-    ['https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wqHk?ver=3198'],
+    ['/static/menu/gateway.jpg'],
+    ['/static/menu/raporlar.jpg'],
+    ['/static/menu/sozlesmeler.jpg'],
+    ['/static/menu/kullanici-izinleri.jpg'],
+    ['/static/menu/sim-kart.jpg'],
+    ['/static/menu/modem-kayitlari.jpg'],
   ];
 
   const logPaths = [
-    ['https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wEag?ver=1497'],
-    ['https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wqI5?ver=bfb7'],
-    ['https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wHfZ?ver=4a32'],
-    ['https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wtcs?ver=79d7'],
-    ['https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wppt?ver=bc05'],
-    ['https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wtcY?ver=795c'],
-    ['https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wtcW?ver=a66d'],
-    ['https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wwtC?ver=b327'],
+    ['/static/menu/hata-loglari.jpg'],
+    ['/static/menu/hata-loglari.jpg'],
+    ['/static/menu/hata-loglari.jpg'],
+    ['/static/menu/hata-loglari.jpg'],
+    ['/static/menu/hata-loglari.jpg'],
+    ['/static/menu/hata-loglari.jpg'],
+    ['/static/menu/hata-loglari.jpg'],
+    ['/static/menu/hata-loglari.jpg'],
   ];
 
   const toProduct = [['/dashboard/capillarity/detail'], ['/dashboard/root/detail']];

@@ -16,11 +16,11 @@ export default function Report() {
     ["Müşteri Raporları"]
   ];
   const path = [
-    ["https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wwtR?ver=4d2d"],
-    ["https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wqGK?ver=47a4"],
-    ["https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wppQ?ver=7215"],
-    ["https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wEaN?ver=9f5b"],
-    ["https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wqHi?ver=6ef6"]
+    ["/static/menu/khas-raporlari.jpg"],
+    ["/static/menu/hub-raporlari.jpg"],
+    ["/static/menu/sulama-raporlari.jpg"],
+    ["/static/menu/hata-raporlari.jpg"],
+    ["/static/menu/musteri-raporlari.jpg"]
   ];
   return (
     <Page title="Dashboard: Test">
