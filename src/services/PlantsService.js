@@ -7,8 +7,8 @@ export default class PlantService {
   async addPlant(data) {
     return await axios.post(process.env.REACT_APP_API_URL_NEW + '/plants' , data);
   }
-  async updatePlant(id) {
-    return await axios.put(process.env.REACT_APP_API_URL_NEW + ' /plants/' + id);
+  async updatePlant(id, data) {
+    return await axios.put(process.env.REACT_APP_API_URL_NEW + '/plants/' + id, data);
   }
   async deletePlant(id) {
     return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/plants/' + id);

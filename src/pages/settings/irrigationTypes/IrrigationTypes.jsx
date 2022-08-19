@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
 //material
-import { Stack, Button, Container, Typography, Box, Modal, TextField } from '@mui/material';
+import { Stack, Button, Container, Typography, Box, Modal, TextField, Avatar } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 
 // component
@@ -10,9 +10,9 @@ import MuiTable from '../../../components/tables/Table';
 import Page from '../../../components/Page';
 import Iconify from '../../../components/Iconify';
 import { FormProvider } from '../../../components/hook-form';
+import SuccessAlert from '../../../components/alerts/Alerts';
 
 //mock
-import { columns } from '../../../mock/settings/irrigationTypes/irrigationTypesColumn';
 import { options } from '../../../mock/MuiTableOptions';
 
 //service
@@ -58,15 +58,25 @@ const IrrigationTypes = () => {
       if (e.status === 201) {
         setResult(e.data);
         getData();
+        setApiState(true);
+        setTimeout(() => {
+          setApiState(false);
+        }, 3000);
         handleClose();
       }
     });
   };
 
+  const alertState = (title, description, descriptionStrong) => {
+    return (
+      <SuccessAlert title={`${title}`} description={`${description}`} descriptionStrong={`${descriptionStrong}`} />
+    );
+  };
+
   const [irrigationType, setIrrigationType] = useState({});
-  const [getId, setGetId] = useState({});
   const [handleResult, setResult] = useState({});
   const [open, setOpen] = useState(false);
+  const [apiState, setApiState] = useState(false);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -77,6 +87,55 @@ const IrrigationTypes = () => {
     getData();
   }, []);
 
+  const columns = [
+    {
+      name: 'ImageUrl',
+      label: 'Görsel',
+      options: {
+        filter: false,
+        sort: false,
+        customBodyRenderLite: (dataIndex) => {
+          return (
+            <Avatar
+          alt="Görsel"
+          src="/static/images/avatar/1.jpg"
+          sx={{ width: 56, height: 56 }}
+        />
+          );
+        },
+      },
+    },
+    {
+      name: 'TitleTR',
+      label: 'Ad',
+      options: {
+        filter: true,
+        sort: true,
+      },
+    },
+    {
+      name: 'contentId',
+      label: 'Detaylar',
+      options: {
+        filter: false,
+        sort: false,
+        empty: true,
+        customBodyRenderLite: (dataIndex) => {
+          return (
+              <Button
+              variant="contained"
+              size="small"
+              to={'/dashboard/irrigation-type-detail/irrigationTypeID=' + irrigationType.data[dataIndex].contentId}
+              LinkComponent={RouterLink}
+            >
+              Detaylar
+            </Button>
+          );
+        },
+      },
+    },
+  ];
+  
   return (
     <Page title="Sulama Türleri">
       <Container maxWidth="xxl">
@@ -129,6 +188,8 @@ const IrrigationTypes = () => {
             </FormProvider>
           </Box>
         </Modal>
+        {apiState ? alertState('Başarılı!!!', 'Yeni Kayıt Oluşturma İşlemi', 'Başarıyla Tamamlandı!!') : ''}
+        <br/>
         <MuiTable title={'Sulama Türleri'} data={irrigationType.data} columns={columns} options={options} />
       </Container>
     </Page>

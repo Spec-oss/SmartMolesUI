@@ -12,10 +12,13 @@ import Products from './pages/Products';
 import DashboardApp from './pages/DashboardApp';
 import Reports from './pages/reports/Reports';
 import DeviceTypes from './pages/settings/deviceTypes/DeviceTypes';
+import DeviceTypeDetail from './pages/settings/deviceTypes/DeviceTypeDetail'
 import DeviceLocations from './pages/settings/deviceLocations/DeviceLocations';
 import PumpManagementTypes from './pages/settings/pumpManagementTypes/PumpManagementTypes';
 import Plants from './pages/settings/plants/Plants';
+import PlantDetail from './pages/settings/plants/PlantDetail'
 import IrrigationTypes from './pages/settings/irrigationTypes/IrrigationTypes';
+import IrrigationTypeDetail from './pages/settings/irrigationTypes/IrrigationTypeDetail'
 import SimCards from './pages/users/simCards/SimCards';
 import ModemImeiRecords from './pages/users/modemImeiRecords/ModemImeiRecords';
 import Settings from './pages/settings/Settings';
@@ -52,8 +55,11 @@ export default function Router() {
         { path: 'products', element: <Products /> },
         { path: 'settings', element: <Settings /> },
         { path: 'plants', element: <Plants /> },
+        { path: 'plant-detail/plantID=:plantID', element: <PlantDetail /> },
         { path: 'irrigation-types', element: <IrrigationTypes /> },
+        { path: 'irrigation-type-detail/irrigationTypeID=:irrigationTypeID', element: <IrrigationTypeDetail /> },
         { path: 'device-types', element: <DeviceTypes /> },
+        { path: 'device-type-detail/deviceTypeID=:deviceTypeID', element: <DeviceTypeDetail /> },
         { path: 'device-locations', element: <DeviceLocations /> },
         { path: 'pump-management-types', element: <PumpManagementTypes /> },
         { path: 'gateway-logs', element: <GatewayLogs /> },

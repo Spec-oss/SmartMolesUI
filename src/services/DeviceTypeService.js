@@ -7,8 +7,8 @@ export default class DeviceTypeService {
   async addDeviceType(data) {
     return await axios.post(process.env.REACT_APP_API_URL_NEW + '/devices-types' , data);
   }
-  async updateDeviceType(id) {
-    return await axios.put(process.env.REACT_APP_API_URL_NEW + ' /devices-types/' + id);
+  async updateDeviceType(id, data) {
+    return await axios.put(process.env.REACT_APP_API_URL_NEW + '/devices-types/' + id, data);
   }
   async deleteDeviceType(id) {
     return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/devices-types/' + id);

@@ -10,9 +10,9 @@ import MuiTable from '../../../components/tables/Table';
 import Page from '../../../components/Page';
 import Iconify from '../../../components/Iconify';
 import { FormProvider } from '../../../components/hook-form';
+import SuccessAlert from '../../../components/alerts/Alerts';
 
 //mock
-import { columns } from '../../../mock/settings/devicesTypes/deviceTypesColumn';
 import { options } from '../../../mock/MuiTableOptions';
 
 //service
@@ -55,24 +55,67 @@ const DeviceType = () => {
       if (e.status === 201) {
         setResult(e.data);
         getData();
+        setApiState(true);
+        setTimeout(() => {
+          setApiState(false);
+        }, 3000);
         handleClose();
       }
     });
   };
 
   const [deviceType, setDeviceType] = useState({});
-  const [getId, setGetId] = useState({});
   const [handleResult, setResult] = useState({});
   const [open, setOpen] = useState(false);
+  const [apiState, setApiState] = useState(false);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const getData = () => {
     services.getDeviceType().then((result) => setDeviceType(result.data));
   };
+
   useEffect(() => {
     getData();
   }, []);
+
+  const alertState = (title, description, descriptionStrong) => {
+    return (
+      <SuccessAlert title={`${title}`} description={`${description}`} descriptionStrong={`${descriptionStrong}`} />
+    );
+  };
+
+  const columns = [
+    {
+      name: 'Name',
+      label: 'Ad',
+      options: {
+        filter: true,
+        sort: true,
+      },
+    },
+    {
+      name: 'contentId',
+      label: 'Detaylar',
+      options: {
+        filter: false,
+        sort: false,
+        empty: true,
+        customBodyRenderLite: (dataIndex) => {
+          return (
+              <Button
+              variant="contained"
+              size="small"
+              to={'/dashboard/device-type-detail/deviceTypeID=' + deviceType.data[dataIndex].contentId}
+              LinkComponent={RouterLink}
+            >
+              Detaylar
+            </Button>
+          );
+        },
+      },
+    },
+  ];
 
   return (
     <Page title="Cihaz Türleri">
@@ -118,6 +161,8 @@ const DeviceType = () => {
             </FormProvider>
           </Box>
         </Modal>
+        {apiState ? alertState('Başarılı!!!', 'Yeni Cihaz Türü Oluşturma İşlemi', 'Başarıyla Tamamlandı!!') : ''}
+        <br />
         <MuiTable title={'Cihaz Türleri'} data={deviceType.data} columns={columns} options={options} />
       </Container>
     </Page>

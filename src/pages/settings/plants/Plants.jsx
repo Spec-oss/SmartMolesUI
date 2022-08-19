@@ -17,7 +17,6 @@ import { options } from '../../../mock/MuiTableOptions';
 
 //service
 import PlantsService from '../../../services/PlantsService';
-import { result } from 'lodash';
 
 const style = {
   position: 'absolute',
@@ -35,7 +34,7 @@ const Plants = () => {
   const services = new PlantsService();
 
   const [data, setData] = useState({
-    ContentID: '',
+    contentId: '',
     TitleEN: '',
     TitleTR: '',
     RootRange: '',
@@ -72,34 +71,27 @@ const Plants = () => {
     });
   };
 
-  const onDelete = (id) => {
-    services.deletePlant(id)
-}
-
   const [plant, setPlant] = useState({});
   const [handleResult, setResult] = useState({});
   const [open, setOpen] = useState(false);
   const [apiState, setApiState] = useState(false);
-  const [deleteOpen, setDeleteOpen] = useState(false)
 
-  const handleDeleteOpen = () => setDeleteOpen(true);
-  const handleDeleteClose = () => setDeleteOpen(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
   const getData = () => {
     services.getPlant().then((result) => setPlant(result.data));
-  };
-  const alertState = (title, description, descriptionStrong) => {
-    return (
-      <SuccessAlert title={`${title}`} description={`${description}`} descriptionStrong={`${descriptionStrong}`} />
-    );
   };
 
   useEffect(() => {
     getData();
     console.log(plant.data)
   }, []);
+
+  const alertState = (title, description, descriptionStrong) => {
+    return (
+      <SuccessAlert title={`${title}`} description={`${description}`} descriptionStrong={`${descriptionStrong}`} />
+    );
+  };
 
   const columns = [
     {
@@ -127,33 +119,22 @@ const Plants = () => {
       },
     },
     {
-      name: 'ContentID',
-      label: ' ',
+      name: 'contentId',
+      label: 'Detaylar',
       options: {
         filter: false,
         sort: false,
         empty: true,
         customBodyRenderLite: (dataIndex) => {
           return (
-            <Stack direction="row" alignItems="center" justifyContent="space-evenly">
               <Button
               variant="contained"
               size="small"
-              to={'/dashboard/user-detail/userID=' + plant.data[dataIndex].ContentID}
+              to={'/dashboard/plant-detail/plantID=' + plant.data[dataIndex].contentId}
               LinkComponent={RouterLink}
             >
-              Düzenle
+              Detaylar
             </Button>
-            <Button
-              variant="contained"
-              color='error'
-              size="small"
-              onClick={handleDeleteOpen}
-              LinkComponent={RouterLink}
-            >
-              Sil
-            </Button>
-            </Stack>
           );
         },
       },
@@ -167,32 +148,6 @@ const Plants = () => {
           <Typography variant="h5" gutterBottom>
             Bitki Türleri
           </Typography>
-          <Modal
-              aria-labelledby="transition-modal-title"
-              aria-describedby="transition-modal-description"
-              open={deleteOpen}
-              closeAfterTransition
-              BackdropComponent={Backdrop}
-              BackdropProps={{
-                timeout: 500,
-              }}
-            >
-              <Fade in={deleteOpen}>
-                <Box sx={style}>
-                  <Typography textAlign={'center'} id="transition-modal-title" variant="subtitle2" component="h2">
-                    {console.log(plant.data)} adlı kayıt silinecektir!
-                  </Typography>
-                  <Stack sx={{ mt: 5 }} direction="row" alignItems="center" justifyContent="space-evenly">
-                    <Button sx={{ mr: 2 }} onClick={() => onDelete(plant.ContentID)} variant="outlined" color="error">
-                      Sil
-                    </Button>
-                    <Button sx={{ ml: 2 }} onClick={handleDeleteClose} variant="outlined" color="info">
-                      Vazgeç
-                    </Button>
-                  </Stack>
-                </Box>
-              </Fade>
-            </Modal>
           <Button
             onClick={handleOpen}
             variant="contained"
