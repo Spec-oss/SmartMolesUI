@@ -24,7 +24,7 @@ import {
 // components
 import Page from '../../../components/Page';
 import Iconify from '../../../components/Iconify';
-import DeviceTypeService from '../../../services/DeviceTypeService';
+import PumpManagementTypesService from '../../../services/PumpManagementTypesService';
 import SuccessAlert from '../../../components/alerts/Alerts';
 
 const style = {
@@ -40,27 +40,28 @@ const style = {
   p: 4,
 };
 
-const DeviceTypeDetail = () => {
+const PumpManagementTypeDetail = () => {
   const navigate = useNavigate();
-  const services = new DeviceTypeService();
+  const services = new PumpManagementTypesService();
   const [dataFinal, setData] = useState({
-    Name: '',
+    TitleTR: '',
+    TitleEN: '',
   });
   
-  const [deviceType, setDeviceType] = useState({});
+  const [pumpManagementType, setPumpManagementType] = useState({});
   const [open, setOpen] = useState(false);
   const [apiState, setApiState] = useState(false);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  let { deviceTypeID } = useParams();
+  let { pumpManagementTypeID } = useParams();
 
-  const onDelete = async (deviceTypeID) => {
-    const deleted = services.deleteDeviceType(deviceTypeID);
+  const onDelete = async (pumpManagementTypeID) => {
+    const deleted = services.deletePumpManagementType(pumpManagementTypeID);
     if ((await deleted).status == 200) {
       handleClose();
-      navigate('/dashboard/device-types');
+      navigate('/dashboard/pump-management-types');
     }
   };
 
@@ -72,12 +73,12 @@ const DeviceTypeDetail = () => {
     });
   };
 
-  const update = async (deviceTypeID) =>{
-    setDeviceType(dataFinal)
+  const update = async (pumpManagementTypeID) =>{
+    setPumpManagementType(dataFinal)
     console.log('first')
     console.log(dataFinal)
-    const updated = await services.updateDeviceType(deviceTypeID, {
-        'Name':dataFinal.Name,
+    const updated = await services.updatePumpManagementType(pumpManagementTypeID, {
+        'TitleTR':dataFinal.TitleTR,
     });
     if (updated.status==200) {
      setApiState(true);
@@ -94,10 +95,10 @@ const DeviceTypeDetail = () => {
   };
 
    useEffect(() => {
-     const fetchData = async (deviceTypeID) => {
-       return await services.getByDeviceTypeId(deviceTypeID);
+     const fetchData = async (pumpManagementTypeID) => {
+       return await services.getByPumpManagementTypeId(pumpManagementTypeID);
      };
-     fetchData(deviceTypeID).then((data) => {
+     fetchData(pumpManagementTypeID).then((data) => {
         setData(data.data.data);
        setTimeout(() => {
        }, 3000);
@@ -110,7 +111,7 @@ const DeviceTypeDetail = () => {
         <Stack sx={{ mb: 5 }} direction="row" alignItems="center" justifyContent="space-between">
         <Button
             variant="outlined"
-            to="/dashboard/device-types"
+            to="/dashboard/pump-management-types"
             LinkComponent={RouterLink}
             startIcon={<Iconify icon="akar-icons:arrow-back-thick-fill" />}
           >
@@ -138,10 +139,10 @@ const DeviceTypeDetail = () => {
             <Fade in={open}>
               <Box sx={style}>
                 <Typography textAlign={'center'} id="transition-modal-title" variant="subtitle2" component="h2">
-                  {dataFinal.Name} adlı kayıt silinecektir!
+                  {dataFinal.TitleTR} adlı kayıt silinecektir!
                 </Typography>
                 <Stack sx={{ mt: 5 }} direction="row" alignItems="center" justifyContent="space-evenly">
-                  <Button sx={{ mr: 2 }} onClick={() => onDelete(deviceTypeID)} variant="outlined" color="error">
+                  <Button sx={{ mr: 2 }} onClick={() => onDelete(pumpManagementTypeID)} variant="outlined" color="error">
                     Sil
                   </Button>
                   <Button sx={{ ml: 2 }} onClick={handleClose} variant="outlined" color="info">
@@ -154,7 +155,7 @@ const DeviceTypeDetail = () => {
         </Stack>
         {apiState ? alertState('Başarılı!!!', 'Güncelleme İşlemi', 'Başarıyla Tamamlandı!!') : ''}
         <Card sx={{mt:2}}>
-          <CardHeader title={dataFinal.Name} />
+          <CardHeader title={dataFinal.TitleTR} />
           <Divider />
           <CardContent>
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
@@ -163,8 +164,8 @@ const DeviceTypeDetail = () => {
                   fullWidth
                   label="Ad"
                   margin="normal"
-                  name="Name"
-                  value={dataFinal.Name}
+                  name="TitleTR"
+                  value={dataFinal.TitleTR}
                   variant="outlined"
                   onChange={handleChange}
                 />
@@ -179,7 +180,7 @@ const DeviceTypeDetail = () => {
               p: 2,
             }}
           >
-            <Button color="primary" variant="contained" type="submit" onClick={() =>update(deviceTypeID)}>
+            <Button color="primary" variant="contained" type="submit" onClick={() =>update(pumpManagementTypeID)}>
               Güncelle
             </Button>
           </Box>
@@ -189,4 +190,4 @@ const DeviceTypeDetail = () => {
   );
 };
 
-export default DeviceTypeDetail;
+export default PumpManagementTypeDetail;

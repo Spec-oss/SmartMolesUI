@@ -119,6 +119,7 @@ export default function UserDetail(props) {
       setUser(data.data.data);
       setTimeout(() => {
       }, 3000);
+      console.log(userID)
     });
   }, []);
 

@@ -148,7 +148,6 @@ const Users = () => {
   const handleClose = () => setOpen(false);
   const getData = () => {
     services.getUser().then((result) => setUser(result.data));
-    console.log(setLoading)
     setLoading(false)
   };
 

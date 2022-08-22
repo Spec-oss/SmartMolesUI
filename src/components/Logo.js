@@ -4,6 +4,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 import { Box } from '@mui/material';
 
+import logoUrl from '../assets//images/logo/SmartMoles-Beyaz.png'
 // ----------------------------------------------------------------------
 
 Logo.propTypes = {
@@ -25,11 +26,11 @@ export default function Logo({ disabledLink = false, sx }) {
 
   const logo = (
     <Box sx={{ width: 125, height: 70, margin:'0px 40px',  ...sx }}>
-      <img src='https://smartmoles.com/site/dist/img/smart_moles_footer.png' alt='Logo'/>
+      <img src={logoUrl} alt='Logo'/>
     </Box>
   );
 
-  if (disabledLink) {
+  if (disabledLink) {s
     return <>{logo}</>;
   }
 

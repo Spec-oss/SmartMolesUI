@@ -24,7 +24,7 @@ import {
 // components
 import Page from '../../../components/Page';
 import Iconify from '../../../components/Iconify';
-import DeviceTypeService from '../../../services/DeviceTypeService';
+import DeviceLocationService from '../../../services/DeviceLocationService';
 import SuccessAlert from '../../../components/alerts/Alerts';
 
 const style = {
@@ -40,27 +40,28 @@ const style = {
   p: 4,
 };
 
-const DeviceTypeDetail = () => {
+const DeviceLocationDetail = () => {
   const navigate = useNavigate();
-  const services = new DeviceTypeService();
+  const services = new DeviceLocationService();
   const [dataFinal, setData] = useState({
-    Name: '',
+    ImageUrl:'',
+    TitleTR: '',
   });
   
-  const [deviceType, setDeviceType] = useState({});
+  const [deviceLocation, setDeviceLocation] = useState({});
   const [open, setOpen] = useState(false);
   const [apiState, setApiState] = useState(false);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  let { deviceTypeID } = useParams();
+  let { deviceLocationID } = useParams();
 
-  const onDelete = async (deviceTypeID) => {
-    const deleted = services.deleteDeviceType(deviceTypeID);
+  const onDelete = async (deviceLocationID) => {
+    const deleted = services.deleteDeviceLocation(deviceLocationID);
     if ((await deleted).status == 200) {
       handleClose();
-      navigate('/dashboard/device-types');
+      navigate('/dashboard/device-locations');
     }
   };
 
@@ -72,12 +73,13 @@ const DeviceTypeDetail = () => {
     });
   };
 
-  const update = async (deviceTypeID) =>{
-    setDeviceType(dataFinal)
+  const update = async (deviceLocationID) =>{
+    setDeviceLocation(dataFinal)
     console.log('first')
     console.log(dataFinal)
-    const updated = await services.updateDeviceType(deviceTypeID, {
-        'Name':dataFinal.Name,
+    const updated = await services.updateDeviceLocation(deviceLocationID, {
+        'ImageUrl':dataFinal.ImageUrl,
+        'TitleTR':dataFinal.TitleTR,
     });
     if (updated.status==200) {
      setApiState(true);
@@ -94,10 +96,10 @@ const DeviceTypeDetail = () => {
   };
 
    useEffect(() => {
-     const fetchData = async (deviceTypeID) => {
-       return await services.getByDeviceTypeId(deviceTypeID);
+     const fetchData = async (deviceLocationID) => {
+       return await services.getByDeviceLocationId(deviceLocationID);
      };
-     fetchData(deviceTypeID).then((data) => {
+     fetchData(deviceLocationID).then((data) => {
         setData(data.data.data);
        setTimeout(() => {
        }, 3000);
@@ -105,12 +107,12 @@ const DeviceTypeDetail = () => {
    }, []);
 
   return (
-    <Page title="Dashboard: Cihaz Türleri">
+    <Page title="Dashboard: Cihaz Konumları">
       <Container maxWidth="xxl">
         <Stack sx={{ mb: 5 }} direction="row" alignItems="center" justifyContent="space-between">
         <Button
             variant="outlined"
-            to="/dashboard/device-types"
+            to="/dashboard/device-locations"
             LinkComponent={RouterLink}
             startIcon={<Iconify icon="akar-icons:arrow-back-thick-fill" />}
           >
@@ -138,10 +140,10 @@ const DeviceTypeDetail = () => {
             <Fade in={open}>
               <Box sx={style}>
                 <Typography textAlign={'center'} id="transition-modal-title" variant="subtitle2" component="h2">
-                  {dataFinal.Name} adlı kayıt silinecektir!
+                  {dataFinal.TitleTR} adlı kayıt silinecektir!
                 </Typography>
                 <Stack sx={{ mt: 5 }} direction="row" alignItems="center" justifyContent="space-evenly">
-                  <Button sx={{ mr: 2 }} onClick={() => onDelete(deviceTypeID)} variant="outlined" color="error">
+                  <Button sx={{ mr: 2 }} onClick={() => onDelete(deviceLocationID)} variant="outlined" color="error">
                     Sil
                   </Button>
                   <Button sx={{ ml: 2 }} onClick={handleClose} variant="outlined" color="info">
@@ -154,17 +156,28 @@ const DeviceTypeDetail = () => {
         </Stack>
         {apiState ? alertState('Başarılı!!!', 'Güncelleme İşlemi', 'Başarıyla Tamamlandı!!') : ''}
         <Card sx={{mt:2}}>
-          <CardHeader title={dataFinal.Name} />
+          <CardHeader title={dataFinal.TitleTR} />
           <Divider />
           <CardContent>
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-              <Grid item xs={12}>
+            <Grid item xs={12} md={6}>
+                <TextField
+                  fullWidth
+                  label="Görsel"
+                  margin="normal"
+                  name="ImageUrl"
+                  value={dataFinal.ImageUrl}
+                  variant="outlined"
+                  onChange={handleChange}
+                />
+              </Grid>
+              <Grid item xs={12} md={6}>
                 <TextField
                   fullWidth
                   label="Ad"
                   margin="normal"
-                  name="Name"
-                  value={dataFinal.Name}
+                  name="TitleTR"
+                  value={dataFinal.TitleTR}
                   variant="outlined"
                   onChange={handleChange}
                 />
@@ -179,7 +192,7 @@ const DeviceTypeDetail = () => {
               p: 2,
             }}
           >
-            <Button color="primary" variant="contained" type="submit" onClick={() =>update(deviceTypeID)}>
+            <Button color="primary" variant="contained" type="submit" onClick={() =>update(deviceLocationID)}>
               Güncelle
             </Button>
           </Box>
@@ -189,4 +202,4 @@ const DeviceTypeDetail = () => {
   );
 };
 
-export default DeviceTypeDetail;
+export default DeviceLocationDetail;

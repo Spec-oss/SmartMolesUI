@@ -206,7 +206,7 @@ const PlantDetail = () => {
             }}
           >
             <Button color="primary" variant="contained" type="submit" onClick={() =>update(plantID)}>
-              Update
+              Güncelle
             </Button>
           </Box>
         </Card>

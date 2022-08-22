@@ -34,6 +34,8 @@ import TimerManagementLogs from './pages/logs/TimerManagementLogs';
 import ValveCardLogs from './pages/logs/ValveCardLogs';
 import WorkGroupsLog from './pages/logs/WorkGroupsLog';
 import Gateway from './pages/users/gateway/Gateway';
+import DeviceLocationDetail from './pages/settings/deviceLocations/DeviceLocationDetail';
+import PumpManagementTypeDetail from './pages/settings/pumpManagementTypes/PumpManagementTypeDetail';
 
 // ----------------------------------------------------------------------
 
@@ -61,7 +63,9 @@ export default function Router() {
         { path: 'device-types', element: <DeviceTypes /> },
         { path: 'device-type-detail/deviceTypeID=:deviceTypeID', element: <DeviceTypeDetail /> },
         { path: 'device-locations', element: <DeviceLocations /> },
+        { path: 'device-location-detail/deviceLocationID=:deviceLocationID', element: <DeviceLocationDetail /> },
         { path: 'pump-management-types', element: <PumpManagementTypes /> },
+        { path: 'pump-management-type-detail/pumpManagementTypeID=:pumpManagementTypeID', element: <PumpManagementTypeDetail /> },
         { path: 'gateway-logs', element: <GatewayLogs /> },
         { path: 'pump-card-logs', element: <PumpCardLogs /> },
         { path: 'sensor-calibration-logs', element: <SensorCalibrationLog /> },

@@ -7,8 +7,8 @@ export default class PumpManagementTypeService {
   async addPumpManagementType(data) {
     return await axios.post(process.env.REACT_APP_API_URL_NEW + '/pump-management-types' , data);
   }
-  async updatePumpManagementType(id) {
-    return await axios.put(process.env.REACT_APP_API_URL_NEW + ' /pump-management-types/' + id);
+  async updatePumpManagementType(id, data) {
+    return await axios.put(process.env.REACT_APP_API_URL_NEW + '/pump-management-types/' + id, data);
   }
   async deletePumpManagementType(id) {
     return await axios.delete(process.env.REACT_APP_API_URL_NEW + '/pump-management-types/' + id);

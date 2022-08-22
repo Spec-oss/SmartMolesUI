@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
 //material
-import { Stack, Button, Container, Typography, Box, Modal, TextField } from '@mui/material';
+import { Stack, Button, Container, Typography, Box, Modal, TextField, Avatar } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 
 // component
@@ -10,9 +10,9 @@ import MuiTable from '../../../components/tables/Table';
 import Page from '../../../components/Page';
 import Iconify from '../../../components/Iconify';
 import { FormProvider } from '../../../components/hook-form';
+import SuccessAlert from '../../../components/alerts/Alerts';
 
 //mock
-import { columns } from '../../../mock/settings/deviceLocations/deviceLocationsColumn';
 import { options } from '../../../mock/MuiTableOptions';
 
 //service
@@ -34,8 +34,8 @@ const DeviceLocations = () => {
   const services = new DeviceLocationServices();
 
   const [data, setData] = useState({
-    imageUrl: '',
-    titleTR: '',
+    ImageUrl: '',
+    TitleTR: '',
   });
 
   const handleChange = (e) => {
@@ -49,8 +49,8 @@ const DeviceLocations = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const deviceLocationData = {
-      ImageUrl: data.imageUrl,
-      TitleTR: data.titleTR,
+      ImageUrl: data.ImageUrl,
+      TitleTR: data.TitleTR,
       TitleEN: '',
     };
 
@@ -64,9 +64,9 @@ const DeviceLocations = () => {
   };
 
   const [deviceLocation, setDeviceLocation] = useState({});
-  const [getId, setGetId] = useState({});
   const [handleResult, setResult] = useState({});
   const [open, setOpen] = useState(false);
+  const [apiState, setApiState] = useState(false);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -77,13 +77,73 @@ const DeviceLocations = () => {
     getData();
   }, []);
 
+  const alertState = (title, description, descriptionStrong) => {
+    return (
+      <SuccessAlert title={`${title}`} description={`${description}`} descriptionStrong={`${descriptionStrong}`} />
+    );
+  };
+
+  const columns = [
+    {
+      name: 'ImageUrl',
+      label: 'Görsel',
+      options: {
+        filter: false,
+        sort: false,
+        customBodyRenderLite: (dataIndex) => {
+          return (
+            <Avatar
+          alt="Görsel"
+          src="/static/images/avatar/1.jpg"
+          sx={{ width: 56, height: 56 }}
+        />
+          );
+        },
+      },
+    },
+    {
+      name: 'TitleTR',
+      label: 'Ad',
+      options: {
+        filter: false,
+        sort: true,
+      },
+    },
+    {
+      name: 'contentId',
+      label: 'Detaylar',
+      options: {
+        filter: false,
+        sort: false,
+        empty: true,
+        customBodyRenderLite: (dataIndex) => {
+          return (
+              <Button
+              variant="contained"
+              size="small"
+              to={'/dashboard/device-location-detail/deviceLocationID=' + deviceLocation.data[dataIndex].contentId}
+              LinkComponent={RouterLink}
+            >
+              Detaylar
+            </Button>
+          );
+        },
+      },
+    },
+  ];
+
   return (
-    <Page title="Cihaz Türleri">
+    <Page title="Cihaz Konumları">
       <Container maxWidth="xxl">
-        <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
-          <Typography variant="h5" gutterBottom>
-            Cihaz Konumları
-          </Typography>
+      <Stack direction="row" alignItems="center" justifyContent="space-between">
+        <Button
+            variant="outlined"
+            to="/dashboard/settings"
+            LinkComponent={RouterLink}
+            startIcon={<Iconify icon="akar-icons:arrow-back-thick-fill" />}
+          >
+            Listeye Geri Dön
+          </Button>
           <Button
             onClick={handleOpen}
             variant="contained"
@@ -109,17 +169,17 @@ const DeviceLocations = () => {
                 <TextField
                   required
                   style={{ backgroundColor: 'white', borderRadius: 10 }}
-                  name="imageUrl"
+                  name="ImageUrl"
                   label="Görsel"
-                  value={data.imageUrl}
+                  value={data.ImageUrl}
                   onChange={handleChange}
                 />
                 <TextField
                   required
                   style={{ backgroundColor: 'white', borderRadius: 10 }}
-                  name="titleTR"
+                  name="TitleTR"
                   label="Adı"
-                  value={data.titleTR}
+                  value={data.TitleTR}
                   onChange={handleChange}
                 />
                 <LoadingButton onClick={(e) => onSubmit(e)} fullWidth size="large" type="submit" variant="contained">
@@ -129,6 +189,8 @@ const DeviceLocations = () => {
             </FormProvider>
           </Box>
         </Modal>
+        {apiState ? alertState('Başarılı!!!', 'Yeni Cihaz Türü Oluşturma İşlemi', 'Başarıyla Tamamlandı!!') : ''}
+        <br />
         <MuiTable title={'Cihaz Konumları'} data={deviceLocation.data} columns={columns} options={options} />
       </Container>
     </Page>

@@ -139,10 +139,15 @@ const IrrigationTypes = () => {
   return (
     <Page title="Sulama Türleri">
       <Container maxWidth="xxl">
-        <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
-          <Typography variant="h5" gutterBottom>
-            Sulama Türleri
-          </Typography>
+      <Stack direction="row" alignItems="center" justifyContent="space-between">
+        <Button
+            variant="outlined"
+            to="/dashboard/settings"
+            LinkComponent={RouterLink}
+            startIcon={<Iconify icon="akar-icons:arrow-back-thick-fill" />}
+          >
+            Listeye Geri Dön
+          </Button>
           <Button
             onClick={handleOpen}
             variant="contained"
