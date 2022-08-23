@@ -8,7 +8,7 @@ export default function SuccessAlert(props) {
   return (
     <Stack sx={{ width: '100%' }} spacing={2}>
      
-      <Alert severity="success" color="info">
+      <Alert severity={props.severity} color={props.color}>
         <AlertTitle>{props.title}</AlertTitle>
         {props.description} — <strong>{props.descriptionStrong}</strong>
       </Alert>

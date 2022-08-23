@@ -36,6 +36,7 @@ import WorkGroupsLog from './pages/logs/WorkGroupsLog';
 import Gateway from './pages/users/gateway/Gateway';
 import DeviceLocationDetail from './pages/settings/deviceLocations/DeviceLocationDetail';
 import PumpManagementTypeDetail from './pages/settings/pumpManagementTypes/PumpManagementTypeDetail';
+import Setup from './pages/setup/Setup';
 
 // ----------------------------------------------------------------------
 
@@ -53,6 +54,7 @@ export default function Router() {
         { path: 'capillarity/detail', element: <CapillarityDetail /> },
         { path: 'root/detail', element: <Root /> },
         { path: 'gateway', element: <Gateway /> },
+        { path: 'setup', element: <Setup />},
         { path: 'report', element: <Reports /> },
         { path: 'products', element: <Products /> },
         { path: 'settings', element: <Settings /> },

@@ -162,14 +162,14 @@ export default function UserDetail(props) {
   ];
 
   const logPaths = [
-    ['/static/menu/hata-loglari.jpg'],
-    ['/static/menu/hata-loglari.jpg'],
-    ['/static/menu/hata-loglari.jpg'],
-    ['/static/menu/hata-loglari.jpg'],
-    ['/static/menu/hata-loglari.jpg'],
-    ['/static/menu/hata-loglari.jpg'],
-    ['/static/menu/hata-loglari.jpg'],
-    ['/static/menu/hata-loglari.jpg'],
+    ['/static/menu/gateway-loglari.jpg'],
+    ['/static/menu/calisma-grubu-loglari.jpg'],
+    ['/static/menu/nem-loglari.jpg'],
+    ['/static/menu/kalibrasyon-loglari.jpg'],
+    ['/static/menu/sensor-karti-loglari.jpg'],
+    ['/static/menu/timer-loglari.jpg'],
+    ['/static/menu/pompa-karti-loglari.jpg'],
+    ['/static/menu/vana-karti-loglari.jpg'],
   ];
 
   const toProduct = [['/dashboard/capillarity/detail'], ['/dashboard/root/detail']];

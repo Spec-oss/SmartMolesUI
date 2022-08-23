@@ -18,7 +18,7 @@ const navConfig = [
   },
   {
     title: 'Hızlı Kurulum',
-    path: '/dashboard/user',
+    path: '/dashboard/setup',
     icon: getIcon('heroicons-outline:fast-forward'),
   },
   {
