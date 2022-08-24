@@ -9,10 +9,19 @@ import { Backdrop, Box, Button, Modal, Fade, Stack, StepLabel, Stepper, Typograp
 import StepperButton from '../../components/stepper/StepperButton';
 import InfoAlert from '../../components/alerts/Alerts';
 import Iconify from '../../components/Iconify';
-import Guide from 'src/sections/@dashboard/setup/Guide';
-import User from 'src/sections/@dashboard/setup/User';
-import ContractType from 'src/sections/@dashboard/setup/ContractType';
-import UserContract from 'src/sections/@dashboard/setup/UserContract';
+import Guide from '../../sections/@dashboard/setup/Guide';
+import User from '../../sections/@dashboard/setup/User';
+import ContractType from '../../sections/@dashboard/setup/ContractType';
+import UserContract from '../../sections/@dashboard/setup/UserContract';
+import Subscription from 'src/sections/@dashboard/setup/Subscription';
+import SimCard from '../../sections/@dashboard/setup/SimCard';
+import Modem from '../../sections/@dashboard/setup/Modem';
+import Gateway from '../../sections/@dashboard/setup/Gateway';
+import Fields from '../../sections/@dashboard/setup/Fields';
+import WorkGroup from '../../sections/@dashboard/setup/WorkGroup';
+import Sensor from '../../sections/@dashboard/setup/Sensor';
+import Pump from '../../sections/@dashboard/setup/Pump';
+import Valve from '../../sections/@dashboard/setup/Valve';
 
 
 const style = {
@@ -93,13 +102,20 @@ export default function Setup() {
                 startIcon={<Iconify icon="fa:close" />}
               />
             </Stack>
-            {activeStep === 0 ? <Guide /> :
+            {
+            activeStep === 0 ? <Guide /> :
             activeStep === 1 ? <User /> :
             activeStep === 2 ? <>{alertState('Bilgilendirme!!!', 'Eğer Mevcutta Sözleşmeniz Varsa Bu Adımı', 'Atlayabilirsiniz!', 'warning', 'info')}<br/><ContractType /></> :
-            activeStep === 3 ? <UserContract></UserContract> : 
-            activeStep === 4 ? <></> :
-            activeStep === 5 ? <></> :
-            activeStep === 6 ? <></> : ''
+            activeStep === 3 ? <UserContract />: 
+            activeStep === 4 ? <Subscription /> :
+            activeStep === 5 ? <SimCard/> :
+            activeStep === 6 ? <Modem /> : 
+            activeStep === 7 ? <Gateway /> : 
+            activeStep === 8 ? <Fields /> : 
+            activeStep === 9 ? <WorkGroup /> :
+            activeStep === 10 ? <Sensor /> :
+            activeStep === 11 ? <Pump /> :
+            activeStep === 12 ? <Valve /> : '' 
             }
 
             <br />

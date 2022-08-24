@@ -6,6 +6,7 @@ import { Card, Link, Container, Typography } from '@mui/material';
 import useResponsive from '../hooks/useResponsive';
 // components
 import Page from '../components/Page';
+
 // sections
 import { LoginForm } from '../sections/auth/login';
 import AuthSocial from '../sections/auth/AuthSocial';
@@ -42,6 +43,7 @@ const SectionStyle = styled(Card)(({ theme }) => ({
   flexDirection: 'column',
   justifyContent: 'center',
   margin: theme.spacing(2, 0, 2, 2),
+  backgroundImage: 'url("https://graffitiwallpaper.com/pics/listings/111_portrait.jpg")'
 }));
 
 const ContentStyle = styled('div')(({ theme }) => ({
@@ -71,7 +73,6 @@ export default function Login() {
             <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
               Hi, Welcome Back
             </Typography>
-            <img src="/static/illustrations/illustration_login.png" alt="login" />
           </SectionStyle>
         )}
 

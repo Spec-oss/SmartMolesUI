@@ -25,8 +25,8 @@ export default function LoginForm() {
   });
 
   const defaultValues = {
-    email: '',
-    password: '',
+    email: 'test@smartmoles.com',
+    password: 'smartmoles',
     remember: true,
   };
 
