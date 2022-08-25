@@ -5,7 +5,11 @@ import MobileStepper from '@mui/material/MobileStepper';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 
-const StepperButton = ({ activeStep, handleBack, handleNext, stepsCount }) => {
+const StepperButton = ({ activeStep, handleBack, handleNext, stepsCount, showNextButton }) => {
+
+  const handleNextButton = () => {
+    activeStep===0 ? setShowNextButton(false) : setShowNextButton(false)
+  }
 
   return (
     <MobileStepper
@@ -15,7 +19,7 @@ const StepperButton = ({ activeStep, handleBack, handleNext, stepsCount }) => {
       activeStep={activeStep}
       sx={{ maxWidth: 'auto', flexGrow: 1,  textAlign: 'center', backgroundColor:'transparent' }}
       nextButton={
-        <Button size="small" onClick={handleNext} disabled={activeStep === stepsCount -1}>
+        <Button size="small" onClick={handleNext} disabled={false}>
           İleri
           <KeyboardArrowRight />
         </Button>

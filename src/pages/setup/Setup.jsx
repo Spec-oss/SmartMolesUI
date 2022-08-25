@@ -43,6 +43,7 @@ export default function Setup() {
   const handleClose = () => setOpen(false);
 
   const [activeStep, setActiveStep] = useState(0);
+  const [showNextButton, setShowNextButton] = useState(false)
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -56,6 +57,7 @@ export default function Setup() {
 
   useEffect(() => {
     setOpen(true);
+    console.log(activeStep)
   }, []);
 
   const alertState = (title, description, descriptionStrong, color, severity) => {
@@ -82,7 +84,7 @@ export default function Setup() {
               {
               activeStep === 0 ? <Typography variant="h5">Hızlı Kurulum Ekranı</Typography> :
               activeStep === 1 ? <Typography variant="h5">Müşteri Ekle</Typography> : 
-              activeStep === 2 ? <><Typography variant="h5">Sözleşme Ekle</Typography><br/></>  :
+              activeStep === 2 ? <Typography variant="h5">Sözleşme Ekle</Typography>  :
               activeStep === 3 ? <Typography variant="h5">Müşterilerin Sözleşmeleri</Typography> :
               activeStep === 4 ? <Typography variant="h5">Abonelik Ekle</Typography> : 
               activeStep === 5 ? <Typography variant="h5">Sim Kart Ekle</Typography> : 
@@ -105,7 +107,7 @@ export default function Setup() {
             {
             activeStep === 0 ? <Guide /> :
             activeStep === 1 ? <User /> :
-            activeStep === 2 ? <>{alertState('Bilgilendirme!!!', 'Eğer Mevcutta Sözleşmeniz Varsa Bu Adımı', 'Atlayabilirsiniz!', 'warning', 'info')}<br/><ContractType /></> :
+            activeStep === 2 ? <ContractType /> :
             activeStep === 3 ? <UserContract />: 
             activeStep === 4 ? <Subscription /> :
             activeStep === 5 ? <SimCard/> :
@@ -119,7 +121,7 @@ export default function Setup() {
             }
 
             <br />
-            <StepperButton activeStep={activeStep} handleBack={handleBack} handleNext={handleNext} stepsCount={13} />
+            <StepperButton activeStep={activeStep} handleBack={handleBack} handleNext={handleNext} stepsCount={13} showNextButton={showNextButton} />
           </Box>
         </Fade>
       </Modal>
