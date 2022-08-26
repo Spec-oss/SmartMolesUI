@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
 
 //material
 import { Stack, TextField, Grid } from '@mui/material';
@@ -6,11 +7,107 @@ import { LoadingButton } from '@mui/lab';
 
 //components
 import { FormProvider } from '../../../components/hook-form';
+import SuccessAlert from '../../../components/alerts/Alerts';
+
+//service
+import InstallationService from '../../../services/InstallationService';
 
 function Valve() {
+  const services = new InstallationService();
+
+  const alertState = (title, description, descriptionStrong) => {
+    return (
+      <SuccessAlert title={`${title}`} description={`${description}`} descriptionStrong={`${descriptionStrong}`} />
+    );
+  };
+  const [data, setData] = useState({
+    WorkGroupID: '',
+    SensorCardID: '',
+    TimerManagementID: '',
+    Name: '',
+    WaterMeter: '',
+    PressureSensor: '',
+    PressureMin: '',
+    PressureMax: '',
+    ConnectPeriodWhenWork: '',
+    ConnectPeriodWhenStop: '',
+    LitreMinCount: '',
+    LitrePulseCount: '',
+    Description: '',
+    ValveType: '',
+    ValveTypeCount: '',
+    Eeprom: '',
+    LastConnection: '',
+    ValveExit: '',
+    MoistureBox: '',
+    Tempeture: '',
+    Voltage: '',
+    WorkMode: '',
+    IsOpen: '',
+    Error: '',
+  });
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setData({
+      ...data,
+      [e.target.name]: value,
+    });
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const valveData = {
+      WorkGroupID: data.WorkGroupID,
+      SensorCardID: data.SensorCardID,
+      TimerManagementID: data.TimerManagementID,
+      Name: data.Name,
+      WaterMeter: data.WaterMeter,
+      PressureSensor: data.PressureSensor,
+      PressureMin: data.PressureMin,
+      PressureMax: data.PressureMax,
+      ConnectPeriodWhenWork: data.ConnectPeriodWhenWork,
+      ConnectPeriodWhenStop: data.ConnectPeriodWhenStop,
+      LitreMinCount: data.LitreMinCount,
+      LitrePulseCount: data.LitrePulseCount,
+      Description: data.Description,
+      ValveType: data.ValveType,
+      ValveTypeCount: data.ValveTypeCount,
+      Eeprom: data.Eeprom,
+      LastConnection: data.LastConnection,
+      ValveExit: data.ValveExit,
+      MoistureBox: data.MoistureBox,
+      Tempeture: data.Tempeture,
+      Voltage: data.Voltage,
+      WorkMode: data.WorkMode,
+      IsOpen: data.IsOpen,
+      Error: data.Error,
+    };
+
+    await services.addValve(valveData).then((e) => {
+      if (e.status === 201) {
+        setResult(e.data);
+        setApiState(true);
+        setTimeout(() => {
+          setApiState(false);
+        }, 999999);
+      }
+    });
+  };
+
+  const [handleResult, setResult] = useState({});
+  const [apiState, setApiState] = useState(false);
+
   return (
     <FormProvider onSubmit={(e) => onSubmit(e)}>
       <Grid container spacing={3}>
+        {apiState
+          ? alertState(
+              'Başarılı!!!',
+              'Yeni Vana Kartı Oluşturma İşlemi Başarıyla Tamamlandı!',
+              'Lütfen Sonraki Adıma Geçiniz!'
+            )
+          : ''}
         <Grid item xs={12} md={6}>
           <TextField required name="WorkGroupID" label="Çalışma Grubu ID" fullWidth />
         </Grid>

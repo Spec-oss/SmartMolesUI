@@ -13,14 +13,18 @@ import SuccessAlert from '../../../components/alerts/Alerts';
 import InstallationService from '../../../services/InstallationService';
 
 function ContractType() {
-
   const services = new InstallationService();
 
   const alertState = (title, description, descriptionStrong, color, severity) => {
     return (
-      <SuccessAlert title={`${title}`} description={`${description}`} descriptionStrong={`${descriptionStrong}`} color={`${color}`} severity={`${severity}`} />
+      <SuccessAlert
+        title={`${title}`}
+        description={`${description}`}
+        descriptionStrong={`${descriptionStrong}`}
+        color={`${color}`}
+        severity={`${severity}`}
+      />
     );
-    
   };
 
   const [data, setData] = useState({
@@ -50,19 +54,19 @@ function ContractType() {
   const onSubmit = async (e) => {
     e.preventDefault();
     const contractTypeData = {
-    name: data.name,
-    title: data.title,
-    subMainTitle: data.subMainTitle,
-    subContTitle: data.subContTitle,
-    description: data.description,
-    mainDescription: data.mainDescription,
-    content: data.content,
-    mainContent: data.mainContent,
-    subContent: data.subContent,
-    altText: data.altText,
-    altMainText: data.altMainText,
-    altContentText: data.altContentText,
-    contractTime: data.contractTime,
+      name: data.name,
+      title: data.title,
+      subMainTitle: data.subMainTitle,
+      subContTitle: data.subContTitle,
+      description: data.description,
+      mainDescription: data.mainDescription,
+      content: data.content,
+      mainContent: data.mainContent,
+      subContent: data.subContent,
+      altText: data.altText,
+      altMainText: data.altMainText,
+      altContentText: data.altContentText,
+      contractTime: data.contractTime,
     };
 
     await services.addContractType(contractTypeData).then((e) => {
@@ -78,63 +82,132 @@ function ContractType() {
 
   const [handleResult, setResult] = useState({});
   const [apiState, setApiState] = useState(false);
-//value ????
+
   return (
     <FormProvider onSubmit={(e) => onSubmit(e)}>
       <Grid container spacing={3}>
-      {apiState
+        {apiState
           ? alertState(
               'Başarılı!!!',
               'Yeni Sözleşme Oluşturma İşlemi Başarıyla Tamamlandı!',
-              'Lütfen Sonraki Adıma Geçiniz!', 'success'
+              'Lütfen Sonraki Adıma Geçiniz!',
+              'success'
             )
-          : alertState('Bilgilendirme!!!', 'Eğer Mevcutta Sözleşmeniz Varsa Bu Adımı', 'Atlayabilirsiniz!', 'warning', 'info')}
+          : alertState(
+              'Bilgilendirme!!!',
+              'Eğer Mevcutta Sözleşmeniz Varsa Bu Adımı',
+              'Atlayabilirsiniz!',
+              'warning',
+              'info'
+            )}
         <Grid item xs={12} md={6}>
-          <TextField required name="name" value="name" label="Ad" fullWidth />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField required name="title" value="title" label="Başlık" fullWidth />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField required name="subMainTitle" value="subMainTitle" label="Alt Başlık" fullWidth />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField required name="subContTitle" value="subContTitle" label="Alt İçerik Başlık" fullWidth />
+          <TextField required name="name" value={data.name} label="Ad" onChange={handleChange} fullWidth />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required name="description" value="description" label="Açıklama" fullWidth />
+          <TextField required name="title" value={data.title} label="Başlık" onChange={handleChange} fullWidth />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required name="mainDescription" value="mainDescription" label="Açıklama" fullWidth />
+          <TextField
+            required
+            name="subMainTitle"
+            value={data.subMainTitle}
+            label="Alt Başlık"
+            onChange={handleChange}
+            fullWidth
+          />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required name="content" value="content" label="Açıklama" fullWidth />
+          <TextField
+            required
+            name="subContTitle"
+            value={data.subContTitle}
+            label="Alt İçerik Başlık"
+            onChange={handleChange}
+            fullWidth
+          />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required name="mainContent" value="mainContent" label="Açıklama" fullWidth />
+          <TextField
+            required
+            name="description"
+            value={data.description}
+            label="Açıklama"
+            onChange={handleChange}
+            fullWidth
+          />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required name="subContent" value="subContent" label="Açıklama" fullWidth />
+          <TextField
+            required
+            name="mainDescription"
+            value={data.mainDescription}
+            label="Açıklama"
+            onChange={handleChange}
+            fullWidth
+          />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required name="altText" value="altText" label="Açıklama" fullWidth />
+          <TextField required name="content" value={data.content} label="Açıklama" onChange={handleChange} fullWidth />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required name="altMainText" value="altMainText" label="Açıklama" fullWidth />
+          <TextField
+            required
+            name="mainContent"
+            value={data.mainContent}
+            label="Açıklama"
+            onChange={handleChange}
+            fullWidth
+          />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required name="altContentText" value="altContentText" label="Açıklama" fullWidth />
+          <TextField
+            required
+            name="subContent"
+            value={data.subContent}
+            label="Açıklama"
+            onChange={handleChange}
+            fullWidth
+          />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required name="contractTime" value="contractTime" label="Sözleşme Tarihi" fullWidth />
+          <TextField required name="altText" value={data.altText} label="Açıklama" onChange={handleChange} fullWidth />
         </Grid>
+        <Grid item xs={12} md={6}>
+          <TextField
+            required
+            name="altMainText"
+            value={data.altMainText}
+            label="Açıklama"
+            onChange={handleChange}
+            fullWidth
+          />
         </Grid>
-        <Stack mt={3}>
+        <Grid item xs={12} md={6}>
+          <TextField
+            required
+            name="altContentText"
+            value={data.altContentText}
+            label="Açıklama"
+            onChange={handleChange}
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <TextField
+            required
+            name="contractTime"
+            value={data.contractTime}
+            label="Sözleşme Tarihi"
+            onChange={handleChange}
+            fullWidth
+          />
+        </Grid>
+      </Grid>
+      <Stack mt={3}>
         <LoadingButton onClick={(e) => onSubmit(e)} fullWidth size="large" type="submit" variant="contained">
           Kaydet
         </LoadingButton>
-        </Stack>
-      
+      </Stack>
     </FormProvider>
   );
 }

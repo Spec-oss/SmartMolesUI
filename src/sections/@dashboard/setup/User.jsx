@@ -98,7 +98,6 @@ function User() {
     });
   };
 
-  const [user, setUser] = useState({});
   const [handleResult, setResult] = useState({});
   const [apiState, setApiState] = useState(false);
 
@@ -113,13 +112,37 @@ function User() {
             )
           : ''}
         <Grid item xs={12} md={6}>
-          <TextField required fullWidth name="Name" label="Ad" value={data.Name} onChange={handleChange} />
+          <TextField
+            required
+            type={'text'}
+            fullWidth
+            name="Name"
+            label="Ad"
+            value={data.Name}
+            onChange={handleChange}
+          />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required fullWidth name="Surname" label="Soyad" value={data.Surname} onChange={handleChange} />
+          <TextField
+            required
+            type={'text'}
+            fullWidth
+            name="Surname"
+            label="Soyad"
+            value={data.Surname}
+            onChange={handleChange}
+          />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required fullWidth name="Mail" label="E-Mail" value={data.Mail} onChange={handleChange} />
+          <TextField
+            required
+            type={'email'}
+            fullWidth
+            name="Mail"
+            label="E-Mail"
+            value={data.Mail}
+            onChange={handleChange}
+          />
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField
@@ -133,7 +156,15 @@ function User() {
           />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required fullWidth name="Gsm" label="Gsm" value={data.Gsm} onChange={handleChange} />
+          <TextField
+            required
+            type={'text'}
+            fullWidth
+            name="Gsm"
+            label="Telefon"
+            value={data.Gsm}
+            onChange={handleChange}
+          />
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField

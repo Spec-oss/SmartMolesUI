@@ -3,11 +3,10 @@ import { useEffect, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
 // material
-import { Backdrop, Box, Button, Modal, Fade, Stack, StepLabel, Stepper, Typography } from '@mui/material';
+import { Backdrop, Box, Button, Modal, Fade, Stack, Typography } from '@mui/material';
 
 // components
 import StepperButton from '../../components/stepper/StepperButton';
-import InfoAlert from '../../components/alerts/Alerts';
 import Iconify from '../../components/Iconify';
 import Guide from '../../sections/@dashboard/setup/Guide';
 import User from '../../sections/@dashboard/setup/User';
@@ -60,12 +59,6 @@ export default function Setup() {
     console.log(activeStep)
   }, []);
 
-  const alertState = (title, description, descriptionStrong, color, severity) => {
-    return (
-      <InfoAlert title={`${title}`} description={`${description}`} descriptionStrong={`${descriptionStrong}`} color={`${color}`} severity={`${severity}`} />
-    );
-  };
-
   return (
     <div>
       <Modal
@@ -87,14 +80,14 @@ export default function Setup() {
               activeStep === 2 ? <Typography variant="h5">Sözleşme Ekle</Typography>  :
               activeStep === 3 ? <Typography variant="h5">Müşterilerin Sözleşmeleri</Typography> :
               activeStep === 4 ? <Typography variant="h5">Abonelik Ekle</Typography> : 
-              activeStep === 5 ? <Typography variant="h5">Sim Kart Ekle</Typography> : 
-              activeStep === 6 ? <Typography variant="h5">Modem Kayıtları Ekle</Typography> :
-              activeStep === 7 ? <Typography variant="h5">Gateway Ekle</Typography> :
-              activeStep === 8 ? <Typography variant="h5">Tarla Ekle</Typography> :
+              activeStep === 5 ? <Typography variant="h5">Gateway Ekle</Typography> :
+              activeStep === 6 ? <Typography variant="h5">Tarla Ekle</Typography> :
+              activeStep === 7 ? <Typography variant="h5">Sim Kart Ekle</Typography> : 
+              activeStep === 8 ? <Typography variant="h5">Modem Kayıtları Ekle</Typography> :
               activeStep === 9 ? <Typography variant="h5">Çalışma Grubu Ekle</Typography> :
               activeStep === 10 ? <Typography variant="h5">Sensör Kartı Ekle</Typography> :
-              activeStep === 11 ? <Typography variant="h5">Pompa Kartı Ekle</Typography> :
-              activeStep === 12 ? <Typography variant="h5">Vana Kartı Ekle</Typography> : ''
+              activeStep === 11 ? <Typography variant="h5">Vana Kartı Ekle</Typography> : 
+              activeStep === 12 ? <Typography variant="h5">Pompa Kartı Ekle</Typography> :''
               }
 
               <Button
@@ -109,15 +102,15 @@ export default function Setup() {
             activeStep === 1 ? <User /> :
             activeStep === 2 ? <ContractType /> :
             activeStep === 3 ? <UserContract />: 
-            activeStep === 4 ? <Subscription /> :
-            activeStep === 5 ? <SimCard/> :
-            activeStep === 6 ? <Modem /> : 
-            activeStep === 7 ? <Gateway /> : 
-            activeStep === 8 ? <Fields /> : 
+            activeStep === 4 ? <Subscription /> : 
+            activeStep === 5 ? <Gateway /> : 
+            activeStep === 6 ? <Fields /> : 
+            activeStep === 7 ? <SimCard/> :
+            activeStep === 8 ? <Modem /> :
             activeStep === 9 ? <WorkGroup /> :
             activeStep === 10 ? <Sensor /> :
-            activeStep === 11 ? <Pump /> :
-            activeStep === 12 ? <Valve /> : '' 
+            activeStep === 11 ? <Valve /> :
+            activeStep === 12 ? <Pump /> : '' 
             }
 
             <br />

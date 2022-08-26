@@ -40,6 +40,29 @@ export default function CssBaseline() {
           display: 'block',
           maxWidth: '100%',
         },
+        '::-webkit-scrollbar':{
+          width: '5px',
+          height: '5px',
+          backgroundColor: '#F5F5F5',
+        },
+        '::-webkit-scrollbar-track':{
+          backgroundColor: '#F5F5F5',
+	        borderRadius: '10px',
+        },
+        '::-webkit-scrollbar-thumb':{
+          borderRadius: '10px',
+          backgroundImage: `-webkit-gradient(linear,
+                             left bottom,
+                             left top,
+                             color-stop(0.44, rgb(122,153,217)),
+                             color-stop(0.72, rgb(73,125,189)),
+                             color-stop(0.86, rgb(28,58,148)))`
+        },
+        
+        /* Handle on hover */
+        '::-webkit-scrollbar-thumb:hover':{
+          background: '#555'
+        },
       },
     },
   };
