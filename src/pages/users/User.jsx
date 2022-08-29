@@ -31,19 +31,6 @@ const style = {
   p: 4,
 };
 
-const CircularLoading = () => (
-  <CircularProgress
-    size={70}
-    sx={{
-      position: 'fixed',
-      left: '50%',
-      top: '50%',
-      transform: 'translate(-50%, -50%)',
-      zIndex: 2,
-    }}
-  />
-);
-
 const Users = () => {
   const services = new UserService();
 
@@ -156,6 +143,21 @@ const Users = () => {
       <SuccessAlert title={`${title}`} description={`${description}`} descriptionStrong={`${descriptionStrong}`} />
     );
   };
+
+  const CircularLoading = () =>{ 
+  return(
+    <CircularProgress
+      size={70}
+      sx={{
+        position: 'fixed',
+        left: '50%',
+        top: '50%',
+        transform: 'translate(-50%, -50%)',
+        zIndex: 2,
+      }}
+    />
+  );
+    };
 
   useEffect(() => {
     getData();
