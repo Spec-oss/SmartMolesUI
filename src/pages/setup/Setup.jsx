@@ -43,20 +43,19 @@ export default function Setup() {
 
   const [activeStep, setActiveStep] = useState(0);
   const [showNextButton, setShowNextButton] = useState(false)
+  const [disabled, setDisabled]= useState(true)
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    console.log(activeStep);
+    setDisabled(true)
   };
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    console.log(activeStep);
   };
 
   useEffect(() => {
     setOpen(true);
-    console.log(activeStep)
   }, []);
 
   return (
@@ -99,22 +98,21 @@ export default function Setup() {
             </Stack>
             {
             activeStep === 0 ? <Guide /> :
-            activeStep === 1 ? <User /> :
-            activeStep === 2 ? <ContractType /> :
-            activeStep === 3 ? <UserContract />: 
-            activeStep === 4 ? <Subscription /> : 
-            activeStep === 5 ? <Gateway /> : 
-            activeStep === 6 ? <Fields /> : 
-            activeStep === 7 ? <SimCard/> :
-            activeStep === 8 ? <Modem /> :
-            activeStep === 9 ? <WorkGroup /> :
-            activeStep === 10 ? <Sensor /> :
-            activeStep === 11 ? <Valve /> :
-            activeStep === 12 ? <Pump /> : '' 
+            activeStep === 1 ? <User setDisabled={setDisabled}/> :
+            activeStep === 2 ? <ContractType setDisabled={setDisabled}/> :
+            activeStep === 3 ? <UserContract setDisabled={setDisabled}/>: 
+            activeStep === 4 ? <Subscription setDisabled={setDisabled}/> : 
+            activeStep === 5 ? <Gateway setDisabled={setDisabled}/> : 
+            activeStep === 6 ? <Fields setDisabled={setDisabled}/> : 
+            activeStep === 7 ? <SimCard setDisabled={setDisabled}/> :
+            activeStep === 8 ? <Modem setDisabled={setDisabled}/> :
+            activeStep === 9 ? <WorkGroup setDisabled={setDisabled}/> :
+            activeStep === 10 ? <Sensor setDisabled={setDisabled}/> :
+            activeStep === 11 ? <Valve setDisabled={setDisabled}/> :
+            activeStep === 12 ? <Pump setDisabled={setDisabled}/> : '' 
             }
-
             <br />
-            <StepperButton activeStep={activeStep} handleBack={handleBack} handleNext={handleNext} stepsCount={13} showNextButton={showNextButton} />
+            <StepperButton activeStep={activeStep} handleBack={handleBack} handleNext={handleNext} stepsCount={13} showNextButton={showNextButton} disabled={disabled} />
           </Box>
         </Fade>
       </Modal>

@@ -12,7 +12,7 @@ import SuccessAlert from '../../../components/alerts/Alerts';
 //service
 import InstallationService from '../../../services/InstallationService';
 
-function Sensor() {
+function Sensor({setDisabled}) {
   const services = new InstallationService();
 
   const alertState = (title, description, descriptionStrong) => {
@@ -58,6 +58,7 @@ function Sensor() {
       if (e.status === 201) {
         setResult(e.data);
         setApiState(true);
+        setDisabled(false);
         setTimeout(() => {
           setApiState(false);
         }, 999999);

@@ -12,7 +12,7 @@ import SuccessAlert from '../../../components/alerts/Alerts';
 //service
 import InstallationService from '../../../services/InstallationService';
 
-function ContractType() {
+function ContractType({setDisabled}) {
   const services = new InstallationService();
 
   const alertState = (title, description, descriptionStrong, color, severity) => {
@@ -73,6 +73,7 @@ function ContractType() {
       if (e.status === 201) {
         setResult(e.data);
         setApiState(true);
+        setDisabled(false);
         setTimeout(() => {
           setApiState(false);
         }, 999999);
@@ -91,6 +92,7 @@ function ContractType() {
               'Başarılı!!!',
               'Yeni Sözleşme Oluşturma İşlemi Başarıyla Tamamlandı!',
               'Lütfen Sonraki Adıma Geçiniz!',
+              'success',
               'success'
             )
           : alertState(

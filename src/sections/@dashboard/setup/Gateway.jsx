@@ -12,7 +12,7 @@ import SuccessAlert from '../../../components/alerts/Alerts';
 //service
 import InstallationService from '../../../services/InstallationService';
 
-function Gateway() {
+function Gateway({setDisabled}) {
   const services = new InstallationService();
 
   const alertState = (title, description, descriptionStrong) => {
@@ -60,6 +60,7 @@ function Gateway() {
       if (e.status === 201) {
         setResult(e.data);
         setApiState(true);
+        setDisabled(false);
         setTimeout(() => {
           setApiState(false);
         }, 999999);

@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 
 //material
-import { Stack, TextField, Grid } from '@mui/material';
+import { Stack, TextField, Grid, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 
 //components
@@ -11,15 +11,24 @@ import SuccessAlert from '../../../components/alerts/Alerts';
 
 //service
 import InstallationService from '../../../services/InstallationService';
+import ContractTypeService from '../../../services/ContractTypeService';
 
-function UserContract() {
+function UserContract({ setDisabled }) {
   const services = new InstallationService();
+  const contractService = new ContractTypeService();
 
-  const alertState = (title, description, descriptionStrong) => {
+  const alertState = (title, description, descriptionStrong, severity, color) => {
     return (
-      <SuccessAlert title={`${title}`} description={`${description}`} descriptionStrong={`${descriptionStrong}`} />
+      <SuccessAlert
+        title={`${title}`}
+        description={`${description}`}
+        descriptionStrong={`${descriptionStrong}`}
+        severity={`${severity}`}
+        color={`${color}`}
+      />
     );
   };
+
   const [data, setData] = useState({
     UserID: '',
     ContractID: '',
@@ -48,6 +57,7 @@ function UserContract() {
       if (e.status === 201) {
         setResult(e.data);
         setApiState(true);
+        setDisabled(false);
         setTimeout(() => {
           setApiState(false);
         }, 999999);
@@ -58,6 +68,14 @@ function UserContract() {
   const [handleResult, setResult] = useState({});
   const [apiState, setApiState] = useState(false);
 
+  const getData = () => {
+    contractService.getContractType().then((result) => setData(result.data));
+  };
+  useEffect(() => {
+    getData();
+    console.log(data)
+  }, []);
+  
   return (
     <FormProvider onSubmit={(e) => onSubmit(e)}>
       <Grid container spacing={3}>
@@ -65,14 +83,30 @@ function UserContract() {
           ? alertState(
               'Başarılı!!!',
               'Yeni Sözleşme Oluşturma İşlemi Başarıyla Tamamlandı!',
-              'Lütfen Sonraki Adıma Geçiniz!'
+              'Lütfen Sonraki Adıma Geçiniz!',
+              'success',
+              'success'
             )
           : ''}
         <Grid item xs={12} md={6}>
-          <TextField required name="UserID" label="UserID" value={data.UserID} onChange={handleChange} fullWidth />
+          <TextField
+            required
+            name="UserID"
+            label="Kullanıcı ID"
+            value={data.UserID}
+            onChange={handleChange}
+            fullWidth
+          />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required name="ContractID" label="ContractID" value={data.ContractID} onChange={handleChange} fullWidth />
+          <TextField
+            required
+            name="ContractID"
+            label="Sözleşme ID"
+            value={data.ContractID}
+            onChange={handleChange}
+            fullWidth
+          />
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField
@@ -85,14 +119,16 @@ function UserContract() {
           />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField
-            required
-            name="ContractTypeID"
-            label="ContractTypeID"
-            value={data.ContractTypeID}
-            onChange={handleChange}
-            fullWidth
-          />
+        <FormControl fullWidth>
+        <InputLabel>Sözleşme Seçiniz</InputLabel>
+        <Select
+          value={data.ContractTypeID}
+          label="testt"
+          onChange={handleChange}
+        >
+          <MenuItem value={10}>Ten</MenuItem>
+        </Select>
+        </FormControl>
         </Grid>
       </Grid>
       <Stack mt={3}>

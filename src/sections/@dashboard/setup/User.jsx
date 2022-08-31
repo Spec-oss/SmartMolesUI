@@ -2,26 +2,33 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 
 //material
-import { Stack, TextField, Grid } from '@mui/material';
+import { Stack, TextField, Grid, Switch, FormControlLabel } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 
 //components
 import { FormProvider } from '../../../components/hook-form';
 import SuccessAlert from '../../../components/alerts/Alerts';
-import CountrySelect from '../../../components/ChooseCountry';
+import CountrySelect from '../../../components/form-group/ChooseCountry';
 //service
 import InstallationService from '../../../services/InstallationService';
 
-function User() {
+function User({setDisabled}) {
   const services = new InstallationService();
 
-  const alertState = (title, description, descriptionStrong) => {
+  const alertState = (title, description, descriptionStrong, severity, color) => {
     return (
-      <SuccessAlert title={`${title}`} description={`${description}`} descriptionStrong={`${descriptionStrong}`} />
+      <SuccessAlert title={`${title}`} description={`${description}`} descriptionStrong={`${descriptionStrong}`} severity={`${severity}`} color={`${color}`} />
     );
   };
 
-  const [country, setCountry] = useState("")
+  const [bussinessValue, setBussinessValue] = useState(false);
+
+  const switchChange = (event) => {
+    setBussinessValue(!bussinessValue);
+  };
+
+  const [nationality, setNationality] = useState('');
+  const [country, setCountry] = useState('');
 
   const [data, setData] = useState({
     RoleID: '',
@@ -69,11 +76,11 @@ function User() {
       Password: data.Password,
       Gsm: data.Gsm,
       CitizenShipNum: data.CitizenShipNum,
-      Nationality: data.Nationality,
+      Nationality: nationality,
       CompanyName: data.CompanyName,
       TaxNum: data.TaxNum,
       MersisNo: data.MersisNo,
-      Address: data.Address,
+      Address: data.City + '/' + data.Distinct,
       MailIsVerified: false,
       MailVerifiedAt: new Date(),
       Country: country,
@@ -86,13 +93,14 @@ function User() {
       HomePhone: data.HomePhone,
       UserType: 'user',
       IsAdmin: false,
-      IsBusiness: data.IsBusiness,
+      IsBusiness: bussinessValue,
     };
 
     await services.addUser(userData).then((e) => {
       if (e.status === 201) {
         setResult(e.data);
         setApiState(true);
+        setDisabled(false)
         setTimeout(() => {
           setApiState(false);
         }, 999999);
@@ -110,7 +118,9 @@ function User() {
           ? alertState(
               'Başarılı!!!',
               'Yeni Kullanıcı Oluşturma İşlemi Başarıyla Tamamlandı!',
-              'Lütfen Sonraki Adıma Geçiniz!'
+              'Lütfen Sonraki Adıma Geçiniz!',
+              'success',
+              'success'
             )
           : ''}
         <Grid item xs={12} md={6}>
@@ -169,130 +179,120 @@ function User() {
           />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField
-            required
-            fullWidth
-            name="CitizenShipNum"
-            label="CitizenShipNum"
-            value={data.CitizenShipNum}
-            onChange={handleChange}
-          />
+          <CountrySelect label={'Uyruğu'} nationality={nationality} setNationality={setNationality} />
         </Grid>
         <Grid item xs={12} md={6}>
-          <CountrySelect
-            label={'Ülke Seçiniz'}
-            country={country}
-            setCountry={setCountry}
-          />
+          <CountrySelect label={'Ülke Seçiniz'} country={country} setNationality={setCountry} />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField
-            required
-            fullWidth
-            name="CompanyName"
-            label="CompanyName"
-            value={data.CompanyName}
-            onChange={handleChange}
-          />
+          <TextField required fullWidth name="City" label="İl" value={data.City} onChange={handleChange} />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField
-            required
-            fullWidth
-            type={'number'}
-            name="TaxNum"
-            label="TaxNum"
-            value={data.TaxNum}
-            onChange={handleChange}
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField
-            required
-            fullWidth
-            name="MersisNo"
-            label="MersisNo"
-            value={data.MersisNo}
-            onChange={handleChange}
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField required fullWidth name="Address" label="Address" value={data.Address} onChange={handleChange} />
-        </Grid>
-        {/* <Grid item xs={12} md={6}>
-        <CountrySelect
-            label={'Ülke Seçiniz'}
-            value={data.Country}
-            name="Country"
-            onChange={handleChange}
-          />
-        </Grid> */}
-        <Grid item xs={12} md={6}>
-          <TextField required fullWidth name="City" label="City" value={data.City} onChange={handleChange} />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField
-            required
-            fullWidth
-            name="Distinct"
-            label="Distinct"
-            value={data.Distinct}
-            onChange={handleChange}
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField
-            required
-            fullWidth
-            name="DetailAddress"
-            label="DetailAddress"
-            value={data.DetailAddress}
-            onChange={handleChange}
-          />
+          <TextField required fullWidth name="Distinct" label="İlçe" value={data.Distinct} onChange={handleChange} />
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField
             required
             fullWidth
             name="PostalCode"
-            label="PostalCode"
+            label="Posta Kodu"
             value={data.PostalCode}
             onChange={handleChange}
           />
         </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField required fullWidth name="Phone" label="Phone" value={data.Phone} onChange={handleChange} />
-        </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={12}>
           <TextField
             required
             fullWidth
-            name="CompanyPhone"
-            label="CompanyPhone"
-            value={data.CompanyPhone}
+            multiline
+            name="DetailAddress"
+            label="Tam Adres"
+            value={data.DetailAddress}
             onChange={handleChange}
           />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <TextField required fullWidth name="Phone" label="Telefon" value={data.Phone} onChange={handleChange} />
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField
             required
             fullWidth
             name="HomePhone"
-            label="HomePhone"
+            label="Ev Telefonu"
             value={data.HomePhone}
             onChange={handleChange}
           />
         </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField
-            required
-            fullWidth
-            name="IsBusiness"
-            label="IsBusiness"
-            value={data.IsBusiness}
-            onChange={handleChange}
+        {!bussinessValue ? (
+          <Grid item xs={12} md={6}>
+            <TextField
+              required
+              fullWidth
+              name="CitizenShipNum"
+              label="Vatandaşlık Numarası"
+              value={data.CitizenShipNum}
+              onChange={handleChange}
+            />
+          </Grid>
+        ) : (
+          ''
+        )}
+        <Grid item xs={12}>
+          <FormControlLabel
+            control={<Switch onChange={switchChange} />}
+            label={bussinessValue ? 'Kurumsal' : 'Bireysel'}
+            labelPlacement="start"
           />
         </Grid>
+
+        {bussinessValue ? (
+          <>
+            <Grid item xs={12} md={6}>
+              <TextField
+                required
+                fullWidth
+                name="CompanyName"
+                label="Şirket Adı"
+                value={data.CompanyName}
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <TextField
+                required
+                fullWidth
+                type={'number'}
+                name="TaxNum"
+                label="Vergi Numarası"
+                value={data.TaxNum}
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <TextField
+                required
+                fullWidth
+                name="MersisNo"
+                label="Mersis Numarası"
+                value={data.MersisNo}
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <TextField
+                required
+                fullWidth
+                name="CompanyPhone"
+                label="Şirket Telefonu"
+                value={data.CompanyPhone}
+                onChange={handleChange}
+              />
+            </Grid>
+          </>
+        ) : (
+          ''
+        )}
       </Grid>
       <Stack mt={3}>
         <LoadingButton onClick={(e) => onSubmit(e)} fullWidth size="large" type="submit" variant="contained">

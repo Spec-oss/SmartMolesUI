@@ -1,17 +1,14 @@
 import * as React from 'react';
 import {Box, TextField, Autocomplete} from '@mui/material';
 
-export default function CountrySelect({label, inputValue, setCountry}) {
+export default function CountrySelect({label, inputValue, setNationality}) {
   return (
     <Autocomplete
-      id="country-select-demo"
       options={countries}
       autoHighlight
       inputValue={inputValue}
       onInputChange={(event, newInputValue) => {
-        // setInputValue(newInputValue);
-        setCountry(newInputValue);
-        console.log(newInputValue)
+        setNationality(newInputValue);
       }}
       getOptionLabel={(option) => option.label}
       renderOption={(props, option) => (
@@ -23,7 +20,7 @@ export default function CountrySelect({label, inputValue, setCountry}) {
             srcSet={`https://flagcdn.com/w40/${option.code.toLowerCase()}.png 2x`}
             alt=""
           />
-          {option.label} ({option.code}) +{option.phone}
+          {option.label} ({option.code})
         </Box>
       )}
       renderInput={(params) => (

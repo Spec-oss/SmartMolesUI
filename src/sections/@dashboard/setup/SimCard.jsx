@@ -12,7 +12,7 @@ import SuccessAlert from '../../../components/alerts/Alerts';
 //service
 import InstallationService from '../../../services/InstallationService';
 
-function SimCard() {
+function SimCard({setDisabled}) {
   const services = new InstallationService();
 
   const alertState = (title, description, descriptionStrong) => {
@@ -50,6 +50,7 @@ function SimCard() {
       if (e.status === 201) {
         setResult(e.data);
         setApiState(true);
+        setDisabled(false);
         setTimeout(() => {
           setApiState(false);
         }, 999999);
