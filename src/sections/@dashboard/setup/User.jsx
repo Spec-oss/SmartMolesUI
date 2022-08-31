@@ -8,7 +8,7 @@ import { LoadingButton } from '@mui/lab';
 //components
 import { FormProvider } from '../../../components/hook-form';
 import SuccessAlert from '../../../components/alerts/Alerts';
-
+import CountrySelect from '../../../components/ChooseCountry';
 //service
 import InstallationService from '../../../services/InstallationService';
 
@@ -20,6 +20,8 @@ function User() {
       <SuccessAlert title={`${title}`} description={`${description}`} descriptionStrong={`${descriptionStrong}`} />
     );
   };
+
+  const [country, setCountry] = useState("")
 
   const [data, setData] = useState({
     RoleID: '',
@@ -74,7 +76,7 @@ function User() {
       Address: data.Address,
       MailIsVerified: false,
       MailVerifiedAt: new Date(),
-      Country: data.Country,
+      Country: country,
       City: data.City,
       Distinct: data.Distinct,
       DetailAddress: data.DetailAddress,
@@ -177,13 +179,10 @@ function User() {
           />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField
-            required
-            fullWidth
-            name="Nationality"
-            label="Nationality"
-            value={data.Nationality}
-            onChange={handleChange}
+          <CountrySelect
+            label={'Ülke Seçiniz'}
+            country={country}
+            setCountry={setCountry}
           />
         </Grid>
         <Grid item xs={12} md={6}>
@@ -197,7 +196,15 @@ function User() {
           />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required fullWidth name="TaxNum" label="TaxNum" value={data.TaxNum} onChange={handleChange} />
+          <TextField
+            required
+            fullWidth
+            type={'number'}
+            name="TaxNum"
+            label="TaxNum"
+            value={data.TaxNum}
+            onChange={handleChange}
+          />
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField
@@ -212,9 +219,14 @@ function User() {
         <Grid item xs={12} md={6}>
           <TextField required fullWidth name="Address" label="Address" value={data.Address} onChange={handleChange} />
         </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField required fullWidth name="Country" label="Country" value={data.Country} onChange={handleChange} />
-        </Grid>
+        {/* <Grid item xs={12} md={6}>
+        <CountrySelect
+            label={'Ülke Seçiniz'}
+            value={data.Country}
+            name="Country"
+            onChange={handleChange}
+          />
+        </Grid> */}
         <Grid item xs={12} md={6}>
           <TextField required fullWidth name="City" label="City" value={data.City} onChange={handleChange} />
         </Grid>
