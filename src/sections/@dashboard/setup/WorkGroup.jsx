@@ -12,7 +12,7 @@ import SuccessAlert from '../../../components/alerts/Alerts';
 //service
 import InstallationService from '../../../services/InstallationService';
 
-function WorkGroup({setDisabled}) {
+function WorkGroup({ setDisabled }) {
   const services = new InstallationService();
 
   const alertState = (title, description, descriptionStrong) => {

@@ -29,6 +29,20 @@ function UserContract({ setDisabled }) {
     );
   };
 
+  const renderMenuItems = (data) => {
+    return data.map((item) => {
+      return (
+        <MenuItem key={item.contentId} value={item.contentId}>{item.name}</MenuItem>
+      );
+    });
+  };
+  const [selectModel, setSelectModel] = useState([
+    {
+      contentId:'',
+      name: '',
+    },
+  ]);
+
   const [listData, setListData] = useState([]);
 
   const [data, setData] = useState({
@@ -46,12 +60,16 @@ function UserContract({ setDisabled }) {
     });
   };
 
+  const handleSelect = (event) => {
+    setListData(event.target.value);
+  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
     const userContractData = {
       UserID: data.UserID,
       ContractID: data.ContractID,
-      ContractTypeID: data.ContractTypeID,
+      ContractTypeID: listData,
       ContractName: data.ContractName,
     };
 
@@ -71,12 +89,15 @@ function UserContract({ setDisabled }) {
   const [apiState, setApiState] = useState(false);
 
   const getData = () => {
-    contractService.getContractType().then((result) => setListData(result.data));
+    contractService.getContractType().then((result) => {
+      setListData(result.data);
+      setSelectModel(result.data.data);
+    });
     setListData(getData.data);
   };
+
   useEffect(() => {
     getData(listData);
-    setListData(getData.data)
   }, []);
 
   return (
@@ -124,14 +145,8 @@ function UserContract({ setDisabled }) {
         <Grid item xs={12} md={6}>
           <FormControl fullWidth>
             <InputLabel>Sözleşme Seçiniz</InputLabel>
-            <Select value={data.ContractTypeID} label="testt" onChange={handleChange}>
-            
-            <MenuItem value={data.ContractID}>{data.ContractName}</MenuItem>
-              {/* {listData.map((alldata) => {
-                return(
-
-                ) 
-              })} */}
+            <Select defaultValue={undefined} value={listData || ""} onChange={handleSelect}>
+            {renderMenuItems(selectModel)}
             </Select>
           </FormControl>
         </Grid>
