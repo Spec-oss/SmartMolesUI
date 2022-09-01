@@ -29,6 +29,8 @@ function UserContract({ setDisabled }) {
     );
   };
 
+  const [listData, setListData] = useState([]);
+
   const [data, setData] = useState({
     UserID: '',
     ContractID: '',
@@ -69,13 +71,14 @@ function UserContract({ setDisabled }) {
   const [apiState, setApiState] = useState(false);
 
   const getData = () => {
-    contractService.getContractType().then((result) => setData(result.data));
+    contractService.getContractType().then((result) => setListData(result.data));
+    setListData(getData.data);
   };
   useEffect(() => {
-    getData();
-    console.log(data)
+    getData(listData);
+    setListData(getData.data)
   }, []);
-  
+
   return (
     <FormProvider onSubmit={(e) => onSubmit(e)}>
       <Grid container spacing={3}>
@@ -119,16 +122,18 @@ function UserContract({ setDisabled }) {
           />
         </Grid>
         <Grid item xs={12} md={6}>
-        <FormControl fullWidth>
-        <InputLabel>Sözleşme Seçiniz</InputLabel>
-        <Select
-          value={data.ContractTypeID}
-          label="testt"
-          onChange={handleChange}
-        >
-          <MenuItem value={10}>Ten</MenuItem>
-        </Select>
-        </FormControl>
+          <FormControl fullWidth>
+            <InputLabel>Sözleşme Seçiniz</InputLabel>
+            <Select value={data.ContractTypeID} label="testt" onChange={handleChange}>
+            
+            <MenuItem value={data.ContractID}>{data.ContractName}</MenuItem>
+              {/* {listData.map((alldata) => {
+                return(
+
+                ) 
+              })} */}
+            </Select>
+          </FormControl>
         </Grid>
       </Grid>
       <Stack mt={3}>

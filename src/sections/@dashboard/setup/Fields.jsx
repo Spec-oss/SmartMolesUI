@@ -82,17 +82,18 @@ function Fields({setDisabled}) {
           />
         </Grid>
         <Grid item xs={12} md={6}>
+          <TextField required name="Name" value={data.Name} onChange={handleChange} label="Ad" fullWidth />
+        </Grid>
+        <Grid item xs={12}>
           <TextField
             required
+            multiline
             name="Description"
             value={data.Description}
             onChange={handleChange}
             label="Açıklama"
             fullWidth
           />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField required name="Name" value={data.Name} onChange={handleChange} label="Ad" fullWidth />
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField required name="Lang" value={data.Lang} onChange={handleChange} label="Lang" fullWidth />

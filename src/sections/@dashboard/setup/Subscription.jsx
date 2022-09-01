@@ -131,7 +131,7 @@ function Subscription({setDisabled}) {
             name="distinct"
             value={data.distinct}
             onChange={handleChange}
-            label="distinct"
+            label="İlçe"
             fullWidth
           />
         </Grid>
@@ -158,9 +158,10 @@ function Subscription({setDisabled}) {
             fullWidth
           />
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12}>
           <TextField
             required
+            multiline
             name="detailedAddress"
             value={data.detailedAddress}
             onChange={handleChange}
@@ -184,7 +185,7 @@ function Subscription({setDisabled}) {
             name="creatorCompanyCode"
             value={data.creatorCompanyCode}
             onChange={handleChange}
-            label="Oluşturan Şirket"
+            label="Oluşturan Şirket Kodu"
             fullWidth
           />
         </Grid>
@@ -248,13 +249,13 @@ function Subscription({setDisabled}) {
             fullWidth
           />
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12}>
           <TextField
             required
             name="deliveredProductIDs"
             value={data.deliveredProductIDs}
             onChange={handleChange}
-            label="Teslim Edilen Ürün"
+            label="Teslim Edilen Ürünler"
             fullWidth
           />
         </Grid>

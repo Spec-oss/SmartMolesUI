@@ -97,12 +97,12 @@ function Pump() {
             name="SensorCardID"
             value={data.SensorCardID}
             onChange={handleChange}
-            label="SensorCardID"
+            label="Sensör Kart ID"
             fullWidth
           />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required name="Name" value={data.Name} onChange={handleChange} label="Name" fullWidth />
+          <TextField required name="Name" value={data.Name} onChange={handleChange} label="Ad" fullWidth />
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField
@@ -110,7 +110,7 @@ function Pump() {
             name="ValveManagementType"
             value={data.ValveManagementType}
             onChange={handleChange}
-            label="ValveManagementType"
+            label="Vana Yönetim Türü"
             fullWidth
           />
         </Grid>
@@ -120,7 +120,7 @@ function Pump() {
             name="PumpManagementType"
             value={data.PumpManagementType}
             onChange={handleChange}
-            label="PumpManagementType"
+            label="Pompa Yönetim Türü"
             fullWidth
           />
         </Grid>
@@ -130,7 +130,7 @@ function Pump() {
             name="PressureSensor"
             value={data.PressureSensor}
             onChange={handleChange}
-            label="PressureSensor"
+            label="Basınç Sensörü"
             fullWidth
           />
         </Grid>
@@ -140,7 +140,7 @@ function Pump() {
             name="PressureUpLimit"
             value={data.PressureUpLimit}
             onChange={handleChange}
-            label="PressureUpLimit"
+            label="Basınç Üst Limit"
             fullWidth
           />
         </Grid>
@@ -150,7 +150,7 @@ function Pump() {
             name="PressureDownLimit"
             value={data.PressureDownLimit}
             onChange={handleChange}
-            label="PressureDownLimit"
+            label="Basınç Alt Limit"
             fullWidth
           />
         </Grid>
@@ -160,7 +160,7 @@ function Pump() {
             name="ConnectPeriodWhenWork"
             value={data.ConnectPeriodWhenWork}
             onChange={handleChange}
-            label="ConnectPeriodWhenWork"
+            label="Çalışma Esnasında Bağlantı Periyodu"
             fullWidth
           />
         </Grid>
@@ -170,7 +170,7 @@ function Pump() {
             name="ConnectPeriodWhenStop"
             value={data.ConnectPeriodWhenStop}
             onChange={handleChange}
-            label="ConnectPeriodWhenStop"
+            label="Kapalıyken Bağlantı Periyodu"
             fullWidth
           />
         </Grid>
@@ -180,7 +180,7 @@ function Pump() {
             name="WaterMeter"
             value={data.WaterMeter}
             onChange={handleChange}
-            label="WaterMeter"
+            label="Su Sayacı"
             fullWidth
           />
         </Grid>
@@ -190,7 +190,7 @@ function Pump() {
             name="LitrePulseCount"
             value={data.LitrePulseCount}
             onChange={handleChange}
-            label="LitrePulseCount"
+            label="Litre Kat Sayısı"
             fullWidth
           />
         </Grid>
@@ -200,7 +200,7 @@ function Pump() {
             name="DigitalPump"
             value={data.DigitalPump}
             onChange={handleChange}
-            label="DigitalPump"
+            label="Dijital Pompa"
             fullWidth
           />
         </Grid>
@@ -210,7 +210,7 @@ function Pump() {
             name="Description"
             value={data.Description}
             onChange={handleChange}
-            label="Description"
+            label="Açıklama"
             fullWidth
           />
         </Grid>

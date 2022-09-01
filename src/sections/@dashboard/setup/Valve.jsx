@@ -113,73 +113,73 @@ function Valve({setDisabled}) {
           <TextField required name="WorkGroupID" label="Çalışma Grubu ID" fullWidth />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required name="SensorCardID" label="SensorCardID" fullWidth />
+          <TextField required name="SensorCardID" label="Sensor Kart ID" fullWidth />
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField required name="TimerManagementID" label="TimerManagementID" fullWidth />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required name="Name" label="Name" fullWidth />
+          <TextField required name="Name" label="Ad" fullWidth />
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField required name="WaterMeter" label="WaterMeter" fullWidth />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required name="PressureSensor" label="PressureSensor" fullWidth />
+          <TextField required name="PressureSensor" label="Basınç Sensörü" fullWidth />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required name="PressureMin" label="PressureMin" fullWidth />
+          <TextField required name="PressureMin" label="Minimum Basınç" fullWidth />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required name="PressureMax" label="PressureMax" fullWidth />
+          <TextField required name="PressureMax" label="Maksimum Basınç" fullWidth />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required name="ConnectPeriodWhenWork" label="ConnectPeriodWhenWork" fullWidth />
+          <TextField required name="ConnectPeriodWhenWork" label="Çalışma Esnasında Bağlantı Periyodu" fullWidth />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required name="ConnectPeriodWhenStop" label="ConnectPeriodWhenStop" fullWidth />
+          <TextField required name="ConnectPeriodWhenStop" label="Kapalıyken Bağlantı Periyodu" fullWidth />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required name="LitreMinCount" label="LitreMinCount" fullWidth />
+          <TextField required name="LitreMinCount" label="Litre Min Kat Sayısı" fullWidth />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required name="LitrePulseCount" label="LitrePulseCount" fullWidth />
+          <TextField required name="LitrePulseCount" label="Litre Pulse Kat Sayısı" fullWidth />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required name="Description" label="Description" fullWidth />
+          <TextField required name="Description" label="Açıklama" fullWidth />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required name="ValveType" label="ValveType" fullWidth />
+          <TextField required name="ValveType" label="Vana Tipi" fullWidth />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required name="ValveTypeCount" label="ValveTypeCount" fullWidth />
+          <TextField required name="ValveTypeCount" label="Vana Tipi Kat Sayısı" fullWidth />
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField required name="Eeprom" label="Eeprom" fullWidth />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required name="LastConnection" label="LastConnection" fullWidth />
+          <TextField required name="LastConnection" label="Son Bağlantı" fullWidth />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required name="ValveExit" label="ValveExit" fullWidth />
+          <TextField required name="ValveExit" label="Vana Çıkışı" fullWidth />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required name="MoistureBox" label="MoistureBox" fullWidth />
+          <TextField required name="MoistureBox" label="Nem Sensörü" fullWidth />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required name="Tempeture" label="Tempeture" fullWidth />
+          <TextField required name="Tempeture" label="Sıcaklık Senserü" fullWidth />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required name="Voltage" label="Voltage" fullWidth />
+          <TextField required name="Voltage" label="Voltaj" fullWidth />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required name="WorkMode" label="WorkMode" fullWidth />
+          <TextField required name="WorkMode" label="Çalışma Grubu" fullWidth />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required name="IsOpen" label="IsOpen" fullWidth />
+          <TextField required name="IsOpen" label="Açık mı?" fullWidth />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required name="Error" label="Error" fullWidth />
+          <TextField required name="Error" label="Hata Durumunda mı?" fullWidth />
         </Grid>
       </Grid>
       <Stack mt={3}>

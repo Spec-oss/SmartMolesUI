@@ -12,7 +12,7 @@ import SuccessAlert from '../../../components/alerts/Alerts';
 //service
 import InstallationService from '../../../services/InstallationService';
 
-function ContractType({setDisabled}) {
+function ContractType({ setDisabled }) {
   const services = new InstallationService();
 
   const alertState = (title, description, descriptionStrong, color, severity) => {
@@ -113,7 +113,7 @@ function ContractType({setDisabled}) {
             required
             name="subMainTitle"
             value={data.subMainTitle}
-            label="Alt Başlık"
+            label="Alt Ana Başlık"
             onChange={handleChange}
             fullWidth
           />
@@ -128,9 +128,10 @@ function ContractType({setDisabled}) {
             fullWidth
           />
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12}>
           <TextField
             required
+            multiline
             name="description"
             value={data.description}
             label="Açıklama"
@@ -138,48 +139,59 @@ function ContractType({setDisabled}) {
             fullWidth
           />
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12}>
           <TextField
             required
+            multiline
             name="mainDescription"
             value={data.mainDescription}
-            label="Açıklama"
+            label="Ana Açıklama"
             onChange={handleChange}
             fullWidth
           />
         </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField required name="content" value={data.content} label="Açıklama" onChange={handleChange} fullWidth />
-        </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12}>
           <TextField
             required
+            multiline
+            name="content"
+            value={data.content}
+            label="İçerik"
+            onChange={handleChange}
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            required
+            multiline
             name="mainContent"
             value={data.mainContent}
-            label="Açıklama"
+            label="Ana İçerik"
             onChange={handleChange}
             fullWidth
           />
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12}>
           <TextField
             required
+            multiline
             name="subContent"
             value={data.subContent}
-            label="Açıklama"
+            label="Alt İçerik"
             onChange={handleChange}
             fullWidth
           />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField required name="altText" value={data.altText} label="Açıklama" onChange={handleChange} fullWidth />
+          <TextField required name="altText" value={data.altText} label="Alt Yazı" onChange={handleChange} fullWidth />
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField
             required
             name="altMainText"
             value={data.altMainText}
-            label="Açıklama"
+            label="Alt Ana Yazı"
             onChange={handleChange}
             fullWidth
           />
@@ -189,7 +201,7 @@ function ContractType({setDisabled}) {
             required
             name="altContentText"
             value={data.altContentText}
-            label="Açıklama"
+            label="Alt İçerik Yazı"
             onChange={handleChange}
             fullWidth
           />

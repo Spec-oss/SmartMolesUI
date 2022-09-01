@@ -91,7 +91,7 @@ function Sensor({setDisabled}) {
             name="ConnectPeriodWhenStop"
             value={data.ConnectPeriodWhenStop}
             onChange={handleChange}
-            label="ConnectPeriodWhenStop"
+            label="Kapalıyken Bağlantı Periyodu"
             fullWidth
           />
         </Grid>
@@ -101,7 +101,7 @@ function Sensor({setDisabled}) {
             name="ConnectPeriodWhenWork"
             value={data.ConnectPeriodWhenWork}
             onChange={handleChange}
-            label="ConnectPeriodWhenWork"
+            label="Çalışma Esnasında Bağlantı Periyodu"
             fullWidth
           />
         </Grid>
