@@ -175,9 +175,9 @@ export default function UserDetail(props) {
   const toProduct = [['/dashboard/capillarity/detail'], ['/dashboard/root/detail']];
 
   const to = [
-    ['/dashboard/gateway'],
+    ['/dashboard/gateway/userID='+userID],
     ['/dashboard/report'],
-    ['/dashboard/contract'],
+    ['/dashboard/contract/userID='+userID],
     ['/dashboard/permissions'],
     ['/dashboard/simcards'],
     ['/dashboard/modem-records'],

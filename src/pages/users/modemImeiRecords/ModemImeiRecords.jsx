@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useParams } from 'react-router-dom';
 
 //material
 import { Stack, Button, Container, Typography, Box, Modal, TextField } from '@mui/material';
@@ -32,10 +32,11 @@ const style = {
 
 const ModemImeiRecord = () => {
   const services = new ModemImeiRecordService();
+  let { userID } = useParams();
 
   const [data, setData] = useState({
     GatewayID: '',
-    UserID: '',
+    UserID: userID,
     ImeiNumber: '',
   });
 
@@ -51,7 +52,7 @@ const ModemImeiRecord = () => {
     e.preventDefault();
     const modemImeiRecordData = {
       GatewayID: '',
-      UserID: '',
+      UserID: userID,
       ImeiNumber: data.ImeiNumber,
     };
 

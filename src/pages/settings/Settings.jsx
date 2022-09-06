@@ -14,15 +14,17 @@ export default function Settings() {
     ["Sistem Parametreleri"],
     ["Cihaz Türleri"],
     ["Cihaz Konumları"],
-    ["Pompa Yönetim Türleri"]
+    ["Pompa Yönetim Türleri"],
+    ["Sözleşme Türleri"]
   ];
   const paths = [
     ["/static/menu/bitki-turleri.jpg"],
     ["/static/menu/sulama-turleri.jpg"],
     ["/static/menu/sistem-parametreleri.jpg"],
     ["/static/menu/cihaz-turleri.jpg"],
-    ["/static/menu/cihaz-turleri.jpg"],
-    ["/static/menu/sulama-turleri.jpg"]
+    ["/static/menu/cihaz-konumlari.jpg"],
+    ["/static/menu/sulama-turleri.jpg"],
+    ["/static/menu/sozlesmeler.jpg"]
   ];
   const to = [
     ["/dashboard/plants"],
@@ -30,7 +32,8 @@ export default function Settings() {
     ["/dashboard/settings/#"],
     ["/dashboard/device-types"],
     ["/dashboard/device-locations"],
-    ["/dashboard/pump-management-types"]
+    ["/dashboard/pump-management-types"],
+    ["/dashboard/contract-types"]
   ]
   return (
     <Page title="Ayarlar">

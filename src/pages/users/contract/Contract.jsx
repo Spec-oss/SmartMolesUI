@@ -1,8 +1,22 @@
 import { useEffect, useState } from 'react';
 import { Link as RouterLink, useParams } from 'react-router-dom';
 
+//API HATALI KONTROL EDİLECEK
+
 //material
-import { Stack, Button, Container, Typography, Box, Modal, TextField } from '@mui/material';
+import {
+  Stack,
+  Button,
+  Container,
+  Typography,
+  Box,
+  Modal,
+  TextField,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+} from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 
 // component
@@ -12,11 +26,12 @@ import Iconify from '../../../components/Iconify';
 import { FormProvider } from '../../../components/hook-form';
 
 //mock
-import { columns } from '../../../mock/user/gateway/gatewayColumn';
+import { columns } from '../../../mock/user/contract/contractColumn';
 import { options } from '../../../mock/MuiTableOptions';
 
 //service
-import GatewayService from '../../../services/GatewayService';
+import UserContractService from '../../../services/UserContractService';
+import ContractTypeService from '../../../services/ContractTypeService';
 
 const style = {
   position: 'absolute',
@@ -30,23 +45,38 @@ const style = {
   p: 4,
 };
 
-const Gateway = () => {
-  const services = new GatewayService();
+const Contract = () => {
+  const services = new UserContractService();
+  const contractService = new ContractTypeService();
+
   let { userID } = useParams();
+
+  const renderMenuItems = (data) => {
+    return data.map((item) => {
+      return (
+        <MenuItem key={item.contentId} value={item.contentId}>
+          {item.name}
+        </MenuItem>
+      );
+    });
+  };
+  const [selectModel, setSelectModel] = useState([
+    {
+      contentId: '',
+      name: '',
+    },
+  ]);
+
+  const [listData, setListData] = useState([]);
 
   const [data, setData] = useState({
     SalesID: '',
-    UserID: '',
-    Name: '',
-    Lang: '',
-    Lat: '',
-    ServerIP: '',
-    ServerPort: '',
-    GatewayIP: '',
-    GatewayPort: '',
-    TelitClientPort: '',
+    UserID: userID,
+    ContractID: '',
+    ContractTypeID: '',
+    ContractName: '',
   });
-
+  
   const handleChange = (e) => {
     const value = e.target.value;
     setData({
@@ -55,22 +85,21 @@ const Gateway = () => {
     });
   };
 
+  const handleSelect = (event) => {
+    setListData(event.target.value);
+  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
-    const gatewayData = {
+    const contractData = {
       SalesID: '',
-      UserID: '',
-      Name: data.Name,
-      Lang: data.Lang,
-      Lat: data.Lat,
-      ServerIP: data.ServerIP,
-      ServerPort: data.ServerPort,
-      GatewayIP: data.GatewayIP,
-      GatewayPort: data.GatewayPort,
-      TelitClientPort: data.TelitClientPort,
+      UserID: userID,
+      ContractID: data.ContractID,
+      ContractTypeID: data.ContractTypeID,
+      ContractName: data.ContractName,
     };
 
-    await services.addGateway(gatewayData).then((e) => {
+    await services.addUserContract(contractData).then((e) => {
       if (e.status === 201) {
         setResult(e.data);
         getData();
@@ -79,26 +108,36 @@ const Gateway = () => {
     });
   };
 
-  const [gateway, setGateway] = useState({});
+  const [contract, setContract] = useState({});
   const [handleResult, setResult] = useState({});
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const getMenuItem = () => {
+    contractService.getContractType().then((result) => {
+      setListData(result.data);
+      setSelectModel(result.data.data);
+    });
+    setListData(getMenuItem.data);
+  };
+
   const getData = () => {
-    services.getByGatewayUserId(userID).then((result) => setGateway(result.data));
+    services.getByUserId(userID).then((result) => setContract(result.data));
   };
   useEffect(() => {
-    getData();
-    console.log(gateway.data)
+     getData();
+     console.log(contract.data)
+    getMenuItem(listData);
   }, []);
 
   return (
-    <Page title="Gateway">
+    <Page title="Sözleşme">
       <Container maxWidth="xxl">
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h5" gutterBottom>
-            Gateway Kayıtları
+            Sözleşme Kayıtları
           </Typography>
           <Button
             onClick={handleOpen}
@@ -124,52 +163,36 @@ const Gateway = () => {
               <Stack spacing={3}>
                 <TextField
                   required
-                  style={{ backgroundColor: 'white', borderRadius: 10 }}
-                  name="Name"
-                  label="Ad"
-                  value={data.Name}
+                  name="UserID"
+                  label="Kullanıcı ID"
+                  value={data.UserID}
                   onChange={handleChange}
+                  fullWidth
+                  disabled
+                  hiddens
                 />
                 <TextField
                   required
-                  style={{ backgroundColor: 'white', borderRadius: 10 }}
-                  name="ServerIP"
-                  label="Server IP"
-                  value={data.ServerIP}
+                  name="ContractID"
+                  label="Sözleşme ID"
+                  value={data.ContractID}
                   onChange={handleChange}
+                  fullWidth
                 />
                 <TextField
                   required
-                  style={{ backgroundColor: 'white', borderRadius: 10 }}
-                  name="ServerPort"
-                  label="Server Port"
-                  value={data.ServerPort}
+                  name="ContractName"
+                  label="Adı"
+                  value={data.ContractName}
                   onChange={handleChange}
+                  fullWidth
                 />
-                <TextField
-                  required
-                  style={{ backgroundColor: 'white', borderRadius: 10 }}
-                  name="GatewayIP"
-                  label="Gateway IP"
-                  value={data.GatewayIP}
-                  onChange={handleChange}
-                />
-                <TextField
-                  required
-                  style={{ backgroundColor: 'white', borderRadius: 10 }}
-                  name="GatewayPort"
-                  label="Gateway Port"
-                  value={data.GatewayPort}
-                  onChange={handleChange}
-                />
-                <TextField
-                  required
-                  style={{ backgroundColor: 'white', borderRadius: 10 }}
-                  name="TelitClientPort"
-                  label="Telit Client Port"
-                  value={data.TelitClientPort}
-                  onChange={handleChange}
-                />
+                <FormControl fullWidth>
+                  <InputLabel>Sözleşme Seçiniz</InputLabel>
+                  <Select defaultValue={undefined} value={listData || ''} onChange={handleSelect}>
+                    {renderMenuItems(selectModel)}
+                  </Select>
+                </FormControl>
                 <LoadingButton onClick={(e) => onSubmit(e)} fullWidth size="large" type="submit" variant="contained">
                   Kaydet
                 </LoadingButton>
@@ -177,9 +200,9 @@ const Gateway = () => {
             </FormProvider>
           </Box>
         </Modal>
-        <MuiTable title={'Gateway'} data={gateway.data} columns={columns} options={options} />
+        <MuiTable title={'Sözleşme'} data={contract.data} columns={columns} options={options} />
       </Container>
     </Page>
   );
 };
-export default Gateway;
+export default Contract;

@@ -14,7 +14,12 @@ import Reports from './pages/reports/Reports';
 import DeviceTypes from './pages/settings/deviceTypes/DeviceTypes';
 import DeviceTypeDetail from './pages/settings/deviceTypes/DeviceTypeDetail'
 import DeviceLocations from './pages/settings/deviceLocations/DeviceLocations';
+import DeviceLocationDetail from './pages/settings/deviceLocations/DeviceLocationDetail';
 import PumpManagementTypes from './pages/settings/pumpManagementTypes/PumpManagementTypes';
+import PumpManagementTypeDetail from './pages/settings/pumpManagementTypes/PumpManagementTypeDetail';
+import Contract from './pages/users/contract/Contract';
+import ContractType from './pages/settings/contractTypes/ContractTypes';
+import ContractTypeDetail from './pages/settings/contractTypes/ContractTypeDetail';
 import Plants from './pages/settings/plants/Plants';
 import PlantDetail from './pages/settings/plants/PlantDetail'
 import IrrigationTypes from './pages/settings/irrigationTypes/IrrigationTypes';
@@ -34,9 +39,10 @@ import TimerManagementLogs from './pages/logs/TimerManagementLogs';
 import ValveCardLogs from './pages/logs/ValveCardLogs';
 import WorkGroupsLog from './pages/logs/WorkGroupsLog';
 import Gateway from './pages/users/gateway/Gateway';
-import DeviceLocationDetail from './pages/settings/deviceLocations/DeviceLocationDetail';
-import PumpManagementTypeDetail from './pages/settings/pumpManagementTypes/PumpManagementTypeDetail';
+
+
 import Setup from './pages/setup/Setup';
+
 
 // ----------------------------------------------------------------------
 
@@ -49,11 +55,12 @@ export default function Router() {
         { path: 'app', element: <DashboardApp /> },
         { path: 'user', element: <User /> },
         { path: 'user-detail/userID=:userID', element: <UserDetail /> },
+        { path: 'contract/userID=:userID', element: <Contract /> },
         { path: 'simcards', element: <SimCards /> },
         { path: 'modem-records', element: <ModemImeiRecords /> },
         { path: 'capillarity/detail', element: <CapillarityDetail /> },
         { path: 'root/detail', element: <Root /> },
-        { path: 'gateway', element: <Gateway /> },
+        { path: 'gateway/userID=:userID', element: <Gateway /> },
         { path: 'setup', element: <Setup />},
         { path: 'report', element: <Reports /> },
         { path: 'products', element: <Products /> },
@@ -68,6 +75,8 @@ export default function Router() {
         { path: 'device-location-detail/deviceLocationID=:deviceLocationID', element: <DeviceLocationDetail /> },
         { path: 'pump-management-types', element: <PumpManagementTypes /> },
         { path: 'pump-management-type-detail/pumpManagementTypeID=:pumpManagementTypeID', element: <PumpManagementTypeDetail /> },
+        { path: 'contract-types', element: <ContractType /> },
+        { path: 'contract-type-detail/contractTypeID=:contractTypeID', element: <ContractTypeDetail /> },
         { path: 'gateway-logs', element: <GatewayLogs /> },
         { path: 'pump-card-logs', element: <PumpCardLogs /> },
         { path: 'sensor-calibration-logs', element: <SensorCalibrationLog /> },

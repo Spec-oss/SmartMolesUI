@@ -16,4 +16,7 @@ export default class GatewayService {
   async getByGatewayId(id) {
     return await axios.get(process.env.REACT_APP_API_URL_NEW + '/gateway/' + id);
   }
+  async getByGatewayUserId(id) {
+    return await axios.get(process.env.REACT_APP_API_URL_NEW + '/gateway/get-by-user/' + id);
+  }
 }
