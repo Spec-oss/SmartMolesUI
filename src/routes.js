@@ -39,6 +39,7 @@ import TimerManagementLogs from './pages/logs/TimerManagementLogs';
 import ValveCardLogs from './pages/logs/ValveCardLogs';
 import WorkGroupsLog from './pages/logs/WorkGroupsLog';
 import Gateway from './pages/users/gateway/Gateway';
+import GatewayDetail from './pages/users/gateway/GatewayDetail';
 
 
 import Setup from './pages/setup/Setup';
@@ -61,6 +62,7 @@ export default function Router() {
         { path: 'capillarity/detail', element: <CapillarityDetail /> },
         { path: 'root/detail', element: <Root /> },
         { path: 'gateway/userID=:userID', element: <Gateway /> },
+        { path: 'gateway-detail/gatewayId=:gatewayID', element: <GatewayDetail /> },
         { path: 'setup', element: <Setup />},
         { path: 'report', element: <Reports /> },
         { path: 'products', element: <Products /> },

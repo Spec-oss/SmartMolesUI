@@ -68,6 +68,7 @@ function Pump() {
       if (e.status === 201) {
         setResult(e.data);
         setApiState(true);
+        setSaveDisabled(true)
         setTimeout(() => {
           setApiState(false);
         }, 999999);
@@ -75,6 +76,7 @@ function Pump() {
     });
   };
 
+  const [saveDisabled, setSaveDisabled] = useState(false)
   const [handleResult, setResult] = useState({});
   const [apiState, setApiState] = useState(false);
 
@@ -216,7 +218,7 @@ function Pump() {
         </Grid>
       </Grid>
       <Stack mt={3}>
-        <LoadingButton onClick={(e) => onSubmit(e)} fullWidth size="large" type="submit" variant="contained">
+        <LoadingButton disabled={saveDisabled} onClick={(e) => onSubmit(e)} fullWidth size="large" type="submit" variant="contained">
           Kaydet
         </LoadingButton>
       </Stack>

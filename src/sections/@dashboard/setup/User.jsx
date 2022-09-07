@@ -100,7 +100,8 @@ function User({setDisabled}) {
       if (e.status === 201) {
         setResult(e.data);
         setApiState(true);
-        setDisabled(false)
+        setDisabled(false);
+        setSaveDisabled(true);
         setTimeout(() => {
           setApiState(false);
         }, 999999);
@@ -110,6 +111,7 @@ function User({setDisabled}) {
 
   const [handleResult, setResult] = useState({});
   const [apiState, setApiState] = useState(false);
+  const [saveDisabled, setSaveDisabled] = useState(false)
 
   return (
     <FormProvider onSubmit={(e) => onSubmit(e)}>
@@ -295,7 +297,7 @@ function User({setDisabled}) {
         )}
       </Grid>
       <Stack mt={3}>
-        <LoadingButton onClick={(e) => onSubmit(e)} fullWidth size="large" type="submit" variant="contained">
+        <LoadingButton disabled={saveDisabled} onClick={(e) => onSubmit(e)} fullWidth size="large" type="submit" variant="contained">
           Kaydet
         </LoadingButton>
       </Stack>

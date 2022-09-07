@@ -1,22 +1,20 @@
 import { useEffect, useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useParams } from 'react-router-dom';
 
 //material
-import { Stack, Button, Container, Typography, Box, Modal, TextField, Backdrop, Fade } from '@mui/material';
+import { Stack, Button, Container, Typography, Box, Modal, TextField } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 
 // component
-import MuiTable from '../../../components/tables/Table';
-import Page from '../../../components/Page';
-import Iconify from '../../../components/Iconify';
-import { FormProvider } from '../../../components/hook-form';
-import SuccessAlert from '../../../components/alerts/Alerts';
+import MuiTable from '../../../../components/tables/Table';
+import Iconify from '../../../../components/Iconify';
+import { FormProvider } from '../../../../components/hook-form';
 
 //mock
-import { options } from '../../../mock/MuiTableOptions';
+import { options } from '../../../../mock/MuiTableOptions';
 
 //service
-import PlantsService from '../../../services/PlantsService';
+import GatewayFieldService from '../../../../services/GatewayFieldsService';
 
 const style = {
   position: 'absolute',
@@ -30,15 +28,15 @@ const style = {
   p: 4,
 };
 
-const Plants = () => {
-  const services = new PlantsService();
+const GatewayFields = () => {
+  const services = new GatewayFieldService();
+  let { gatewayID } = useParams();
 
   const [data, setData] = useState({
-    contentId: '',
-    TitleEN: '',
-    TitleTR: '',
-    RootRange: '',
-    ActiveRootRange: '',
+    Description: '',
+    Name: '',
+    Lang: '',
+    Lat: '',
   });
 
   const handleChange = (e) => {
@@ -51,51 +49,48 @@ const Plants = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const PlantData = {
-      TitleEN: '',
-      TitleTR: data.TitleTR,
-      RootRange: data.RootRange,
-      ActiveRootRange: data.ActiveRootRange,
+    const gatewayData = {
+      GatewayID: gatewayID,
+      Description: data.Description,
+      Name: data.Name,
+      Lang: data.Lang,
+      Lat: data.Lat,
     };
 
-    await services.addPlant(PlantData).then((e) => {
+    await services.addGatewayField(gatewayData).then((e) => {
       if (e.status === 201) {
         setResult(e.data);
         getData();
-        setApiState(true);
-        setTimeout(() => {
-          setApiState(false);
-        }, 3000);
         handleClose();
       }
     });
   };
 
-  const [plant, setPlant] = useState({});
+  const [gatewayField, setGatewayField] = useState({});
   const [handleResult, setResult] = useState({});
   const [open, setOpen] = useState(false);
-  const [apiState, setApiState] = useState(false);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const getData = () => {
-    services.getPlant().then((result) => setPlant(result.data));
+    services.getByGatewayId(gatewayID).then((result) => setGatewayField(result.data));
   };
-
   useEffect(() => {
     getData();
-    console.log(plant.data)
+    console.log(gatewayField.data)
   }, []);
-
-  const alertState = (title, description, descriptionStrong) => {
-    return (
-      <SuccessAlert title={`${title}`} description={`${description}`} descriptionStrong={`${descriptionStrong}`} />
-    );
-  };
 
   const columns = [
     {
-      name: 'TitleTR',
+      name: 'Description',
+      label: 'Açıklama',
+      options: {
+        filter: true,
+        sort: false,
+      },
+    },
+    {
+      name: 'Name',
       label: 'Ad',
       options: {
         filter: true,
@@ -103,19 +98,19 @@ const Plants = () => {
       },
     },
     {
-      name: 'RootRange',
-      label: 'Kök Aralığı',
+      name: 'Lang',
+      label: 'Lang',
       options: {
         filter: true,
         sort: true,
       },
     },
     {
-      name: 'ActiveRootRange',
-      label: 'Etkili Kök Aralığı',
+      name: 'Lat',
+      label: 'Lat',
       options: {
         filter: true,
-        sort: true,
+        sort: false,
       },
     },
     {
@@ -130,7 +125,7 @@ const Plants = () => {
               <Button
               variant="contained"
               size="small"
-              to={'/dashboard/plant-detail/plantID=' + plant.data[dataIndex].contentId}
+              to={'/dashboard/gateway-detail/gatewayID=' + gatewayField.data[dataIndex].contentId}
               LinkComponent={RouterLink}
             >
               Detaylar
@@ -140,19 +135,13 @@ const Plants = () => {
       },
     },
   ];
-  
+
   return (
-    <Page title="Bitki Türleri">
       <Container maxWidth="xxl">
-        <Stack direction="row" alignItems="center" justifyContent="space-between">
-        <Button
-            variant="outlined"
-            to="/dashboard/settings"
-            LinkComponent={RouterLink}
-            startIcon={<Iconify icon="akar-icons:arrow-back-thick-fill" />}
-          >
-            Listeye Geri Dön
-          </Button>
+        <Stack direction="row" alignItems="center" justifyContent="space-between" mt={5} mb={5}>
+          <Typography variant="h5" gutterBottom>
+            Gateway Field Kayıtları
+          </Typography>
           <Button
             onClick={handleOpen}
             variant="contained"
@@ -175,28 +164,32 @@ const Plants = () => {
             </Typography>
             <FormProvider onSubmit={(e) => onSubmit(e)}>
               <Stack spacing={3}>
-                <TextField
+              <TextField
                   required
-                  style={{ backgroundColor: 'white', borderRadius: 10 }}
-                  name="TitleTR"
-                  label="Adı"
-                  value={data.TitleTR}
+                  name="Description"
+                  label="Açıklama"
+                  value={data.Description}
                   onChange={handleChange}
                 />
                 <TextField
                   required
-                  style={{ backgroundColor: 'white', borderRadius: 10 }}
-                  name="RootRange"
-                  label="Kök Aralığı"
-                  value={data.RootRange}
+                  name="Name"
+                  label="Ad"
+                  value={data.Name}
                   onChange={handleChange}
                 />
                 <TextField
                   required
-                  style={{ backgroundColor: 'white', borderRadius: 10 }}
-                  name="ActiveRootRange"
-                  label="Aktif Kök Aralığı"
-                  value={data.ActiveRootRange}
+                  name="Lang"
+                  label="Lang"
+                  value={data.Lang}
+                  onChange={handleChange}
+                />
+                <TextField
+                  required
+                  name="Lat"
+                  label="Lat"
+                  value={data.Lat}
                   onChange={handleChange}
                 />
                 <LoadingButton onClick={(e) => onSubmit(e)} fullWidth size="large" type="submit" variant="contained">
@@ -206,11 +199,8 @@ const Plants = () => {
             </FormProvider>
           </Box>
         </Modal>
-        {apiState ? alertState('Başarılı!!!', 'Yeni Bitki Türü Oluşturma İşlemi', 'Başarıyla Tamamlandı!!') : ''}
-        <br />
-        <MuiTable title={'Bitkiler'} data={plant.data} columns={columns} options={options} />
+        <MuiTable title={'Gateway Fields'} data={gatewayField.data} columns={columns} options={options} />
       </Container>
-    </Page>
   );
 };
-export default Plants;
+export default GatewayFields;

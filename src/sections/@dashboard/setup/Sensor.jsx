@@ -59,6 +59,7 @@ function Sensor({setDisabled}) {
         setResult(e.data);
         setApiState(true);
         setDisabled(false);
+        setSaveDisabled(true);
         setTimeout(() => {
           setApiState(false);
         }, 999999);
@@ -66,6 +67,7 @@ function Sensor({setDisabled}) {
     });
   };
 
+  const [saveDisabled, setSaveDisabled] = useState(false)
   const [handleResult, setResult] = useState({});
   const [apiState, setApiState] = useState(false);
 
@@ -157,7 +159,7 @@ function Sensor({setDisabled}) {
         </Grid>
       </Grid>
       <Stack mt={3}>
-        <LoadingButton onClick={(e) => onSubmit(e)} fullWidth size="large" type="submit" variant="contained">
+        <LoadingButton disabled={saveDisabled} onClick={(e) => onSubmit(e)} fullWidth size="large" type="submit" variant="contained">
           Kaydet
         </LoadingButton>
       </Stack>

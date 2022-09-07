@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 
 //material
-import { Stack, TextField, Grid } from '@mui/material';
+import { Stack, TextField, Grid, Button } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 
 //components
@@ -12,7 +12,7 @@ import SuccessAlert from '../../../components/alerts/Alerts';
 //service
 import InstallationService from '../../../services/InstallationService';
 
-function ContractType({ setDisabled }) {
+function ContractType({ setDisabled, handleSkip }) {
   const services = new InstallationService();
 
   const alertState = (title, description, descriptionStrong, color, severity) => {
@@ -74,6 +74,7 @@ function ContractType({ setDisabled }) {
         setResult(e.data);
         setApiState(true);
         setDisabled(false);
+        setSaveDisabled(true);
         setTimeout(() => {
           setApiState(false);
         }, 999999);
@@ -81,27 +82,33 @@ function ContractType({ setDisabled }) {
     });
   };
 
+  const [saveDisabled, setSaveDisabled] = useState(false);
   const [handleResult, setResult] = useState({});
   const [apiState, setApiState] = useState(false);
 
   return (
     <FormProvider onSubmit={(e) => onSubmit(e)}>
+      {apiState
+        ? alertState(
+            'Başarılı!!!',
+            'Yeni Sözleşme Oluşturma İşlemi Başarıyla Tamamlandı!',
+            'Lütfen Sonraki Adıma Geçiniz!',
+            'success',
+            'success'
+          )
+        : alertState(
+            'Bilgilendirme!!!',
+            'Eğer Mevcutta Sözleşmeniz Varsa Bu Adımı',
+            'Atlayabilirsiniz!',
+            'warning',
+            'info'
+          )}
       <Grid container spacing={3}>
-        {apiState
-          ? alertState(
-              'Başarılı!!!',
-              'Yeni Sözleşme Oluşturma İşlemi Başarıyla Tamamlandı!',
-              'Lütfen Sonraki Adıma Geçiniz!',
-              'success',
-              'success'
-            )
-          : alertState(
-              'Bilgilendirme!!!',
-              'Eğer Mevcutta Sözleşmeniz Varsa Bu Adımı',
-              'Atlayabilirsiniz!',
-              'warning',
-              'info'
-            )}
+        <Grid justifyItems={'end'} marginTop={2} item xs={12}>
+        <Button onClick={() => handleSkip()} variant="text">
+        Atlamak İçin Tıklayınız
+      </Button>
+        </Grid>
         <Grid item xs={12} md={6}>
           <TextField required name="name" value={data.name} label="Ad" onChange={handleChange} fullWidth />
         </Grid>
@@ -218,7 +225,14 @@ function ContractType({ setDisabled }) {
         </Grid>
       </Grid>
       <Stack mt={3}>
-        <LoadingButton onClick={(e) => onSubmit(e)} fullWidth size="large" type="submit" variant="contained">
+        <LoadingButton
+          disabled={saveDisabled}
+          onClick={(e) => onSubmit(e)}
+          fullWidth
+          size="large"
+          type="submit"
+          variant="contained"
+        >
           Kaydet
         </LoadingButton>
       </Stack>

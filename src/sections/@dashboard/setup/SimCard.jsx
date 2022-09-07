@@ -51,6 +51,7 @@ function SimCard({setDisabled}) {
         setResult(e.data);
         setApiState(true);
         setDisabled(false);
+        setDisabled(true);
         setTimeout(() => {
           setApiState(false);
         }, 999999);
@@ -58,6 +59,7 @@ function SimCard({setDisabled}) {
     });
   };
 
+  const [saveDisabled, setSaveDisabled] = useState(false)
   const [handleResult, setResult] = useState({});
   const [apiState, setApiState] = useState(false);
 
@@ -116,7 +118,7 @@ function SimCard({setDisabled}) {
         </Grid>
       </Grid>
       <Stack mt={3}>
-        <LoadingButton onClick={(e) => onSubmit(e)} fullWidth size="large" type="submit" variant="contained">
+        <LoadingButton disabled={saveDisabled} onClick={(e) => onSubmit(e)} fullWidth size="large" type="submit" variant="contained">
           Kaydet
         </LoadingButton>
       </Stack>

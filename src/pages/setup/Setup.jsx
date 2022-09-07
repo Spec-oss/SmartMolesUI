@@ -50,6 +50,11 @@ export default function Setup() {
     setDisabled(true)
   };
 
+  const handleSkip = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    setDisabled(true)
+  };
+
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
@@ -99,7 +104,7 @@ export default function Setup() {
             {
             activeStep === 0 ? <Guide /> :
             activeStep === 1 ? <User setDisabled={setDisabled}/> :
-            activeStep === 2 ? <ContractType setDisabled={setDisabled}/> :
+            activeStep === 2 ? <ContractType setDisabled={setDisabled} handleSkip={handleSkip}/> :
             activeStep === 3 ? <UserContract setDisabled={setDisabled}/>: 
             activeStep === 4 ? <Subscription setDisabled={setDisabled}/> : 
             activeStep === 5 ? <Gateway setDisabled={setDisabled}/> : 

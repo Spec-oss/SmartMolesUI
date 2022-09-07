@@ -12,7 +12,6 @@ import Iconify from '../../../components/Iconify';
 import { FormProvider } from '../../../components/hook-form';
 
 //mock
-import { columns } from '../../../mock/user/gateway/gatewayColumn';
 import { options } from '../../../mock/MuiTableOptions';
 
 //service
@@ -59,7 +58,7 @@ const Gateway = () => {
     e.preventDefault();
     const gatewayData = {
       SalesID: '',
-      UserID: '',
+      UserID: userID,
       Name: data.Name,
       Lang: data.Lang,
       Lat: data.Lat,
@@ -93,6 +92,94 @@ const Gateway = () => {
     console.log(gateway.data)
   }, []);
 
+  const columns = [
+    {
+      name: 'Name',
+      label: 'Ad',
+      options: {
+        filter: true,
+        sort: true,
+      },
+    },
+    {
+      name: 'Lang',
+      label: 'Lang',
+      options: {
+        filter: true,
+        sort: true,
+      },
+    },
+    {
+      name: 'Lat',
+      label: 'Lat',
+      options: {
+        filter: true,
+        sort: false,
+      },
+    },
+    {
+      name: 'ServerIP',
+      label: 'Server IP',
+      options: {
+        filter: true,
+        sort: false,
+      },
+    },
+    {
+      name: 'ServerPort',
+      label: 'Server Port',
+      options: {
+        filter: true,
+        sort: false,
+      },
+    },
+    {
+      name: 'GatewayIP',
+      label: 'Gateway IP',
+      options: {
+        filter: true,
+        sort: false,
+      },
+    },
+    {
+      name: 'GatewayPort',
+      label: 'Gateway Port',
+      options: {
+        filter: true,
+        sort: false,
+      },
+    },
+    {
+      name: 'TelitClientPort',
+      label: 'Telit Client Port',
+      options: {
+        filter: true,
+        sort: false,
+      },
+    },
+    {
+      name: 'contentId',
+      label: 'Detaylar',
+      options: {
+        filter: false,
+        sort: false,
+        empty: true,
+        customBodyRenderLite: (dataIndex) => {
+          return (
+              <Button
+              variant="contained"
+              size="small"
+              to={'/dashboard/gateway-detail/gatewayID=' + gateway.data[dataIndex].contentId}
+              LinkComponent={RouterLink}
+            >
+              Detaylar
+            </Button>
+          );
+        },
+      },
+    },
+  ];
+
   return (
     <Page title="Gateway">
       <Container maxWidth="xxl">
@@ -124,7 +211,6 @@ const Gateway = () => {
               <Stack spacing={3}>
                 <TextField
                   required
-                  style={{ backgroundColor: 'white', borderRadius: 10 }}
                   name="Name"
                   label="Ad"
                   value={data.Name}
@@ -132,7 +218,20 @@ const Gateway = () => {
                 />
                 <TextField
                   required
-                  style={{ backgroundColor: 'white', borderRadius: 10 }}
+                  name="Lang"
+                  label="Lang"
+                  value={data.Lang}
+                  onChange={handleChange}
+                />
+                <TextField
+                  required
+                  name="Lat"
+                  label="Lat"
+                  value={data.Lat}
+                  onChange={handleChange}
+                />
+                <TextField
+                  required
                   name="ServerIP"
                   label="Server IP"
                   value={data.ServerIP}
@@ -140,7 +239,6 @@ const Gateway = () => {
                 />
                 <TextField
                   required
-                  style={{ backgroundColor: 'white', borderRadius: 10 }}
                   name="ServerPort"
                   label="Server Port"
                   value={data.ServerPort}
@@ -148,7 +246,6 @@ const Gateway = () => {
                 />
                 <TextField
                   required
-                  style={{ backgroundColor: 'white', borderRadius: 10 }}
                   name="GatewayIP"
                   label="Gateway IP"
                   value={data.GatewayIP}
@@ -156,7 +253,6 @@ const Gateway = () => {
                 />
                 <TextField
                   required
-                  style={{ backgroundColor: 'white', borderRadius: 10 }}
                   name="GatewayPort"
                   label="Gateway Port"
                   value={data.GatewayPort}
@@ -164,7 +260,6 @@ const Gateway = () => {
                 />
                 <TextField
                   required
-                  style={{ backgroundColor: 'white', borderRadius: 10 }}
                   name="TelitClientPort"
                   label="Telit Client Port"
                   value={data.TelitClientPort}

@@ -70,7 +70,6 @@ const Contract = () => {
   const [listData, setListData] = useState([]);
 
   const [data, setData] = useState({
-    SalesID: '',
     UserID: userID,
     ContractID: '',
     ContractTypeID: '',
@@ -92,10 +91,9 @@ const Contract = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const contractData = {
-      SalesID: '',
       UserID: userID,
       ContractID: data.ContractID,
-      ContractTypeID: data.ContractTypeID,
+      ContractTypeID: listData,
       ContractName: data.ContractName,
     };
 
@@ -124,12 +122,12 @@ const Contract = () => {
   };
 
   const getData = () => {
-    services.getByUserId(userID).then((result) => setContract(result.data));
+    services.getUserContract().then((result) => setContract(result.data));
   };
   useEffect(() => {
-     getData();
-     console.log(contract.data)
+    getData();
     getMenuItem(listData);
+    console.log(listData)
   }, []);
 
   return (
