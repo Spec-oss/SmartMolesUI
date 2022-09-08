@@ -22,11 +22,11 @@ import {
 } from '@mui/material';
 
 // components
-import Page from '../../../components/Page';
-import Iconify from '../../../components/Iconify';
-import GatewayService from '../../../services/GatewayService';
-import SuccessAlert from '../../../components/alerts/Alerts';
-import GatewayFields from './gatewayFields/GatewayFields';
+import Page from '../../../../components/Page';
+import Iconify from '../../../../components/Iconify';
+import GatewayFieldsService from '../../../../services/GatewayFieldsService';
+import SuccessAlert from '../../../../components/alerts/Alerts';
+import WorkGroup from './workGroup/WorkGroup';
 
 const style = {
   position: 'absolute',
@@ -41,20 +41,16 @@ const style = {
   p: 4,
 };
 
-const GatewayDetail = () => {
+const GatewayFieldDetail = () => {
   const navigate = useNavigate();
-  const services = new GatewayService();
+  const services = new GatewayFieldsService();
   const [dataFinal, setData] = useState({
+    Description: '',
     Name: '',
     Lang: '',
     Lat: '',
-    ServerIP: '',
-    ServerPort: '',
-    GatewayIP: '',
-    GatewayPort: '',
-    TelitClientPort: '',
   });
-  const [gateway, setGateway] = useState({});
+  const [gatewayFields, setGatewayFields] = useState({});
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
@@ -62,9 +58,9 @@ const GatewayDetail = () => {
 
   const [apiState, setApiState] = useState(false);
 
-  let { gatewayID } = useParams();
-  const onDelete = async (gatewayID) => {
-    const deleted = services.deleteGateway(gatewayID);
+  let { gatewayfieldID, gatewayID } = useParams();
+  const onDelete = async (gatewayfieldID) => {
+    const deleted = services.deleteGatewayField(gatewayfieldID);
     if ((await deleted).status == 200) {
       handleClose();
       navigate(0);
@@ -80,19 +76,15 @@ const GatewayDetail = () => {
     console.log(value)
   };
 
-  const update = async (gatewayID) =>{
-    setGateway(dataFinal)
+  const update = async (gatewayfieldID) =>{
+    setGatewayFields(dataFinal)
     console.log('first')
     console.log(dataFinal)
-    const updated = await services.updateGateway(gatewayID, {
+    const updated = await services.updateGatewayField(gatewayfieldID, {
+      'Description': dataFinal.Description,
       'Name': dataFinal.Name,
       'Lang': dataFinal.Lang,
       'Lat': dataFinal.Lat,
-      'ServerIP': dataFinal.ServerIP,
-      'ServerPort': dataFinal.ServerPort,
-      'GatewayIP': dataFinal.GatewayIP,
-      'GatewayPort': dataFinal.GatewayPort,
-      'TelitClientPort': dataFinal.TelitClientPort
     });
     if (updated.status==200) {
      setApiState(true);
@@ -109,10 +101,10 @@ const GatewayDetail = () => {
   };
 
    useEffect(() => {
-     const fetchData = async (gatewayID) => {
-       return await services.getByGatewayId(gatewayID);
+     const fetchData = async (gatewayfieldID) => {
+       return await services.getByGatewayFieldId(gatewayfieldID);
      };
-     fetchData(gatewayID).then((data) => {
+     fetchData(gatewayfieldID).then((data) => {
         setData(data.data.data);
        setTimeout(() => {
        }, 3000);
@@ -120,7 +112,7 @@ const GatewayDetail = () => {
    }, []);
 
   return (
-    <Page title="Dashboard: Gateway Detaylar">
+    <Page title="Dashboard: Gateway Field Detaylar">
       <Container maxWidth="xxl">
         <Stack sx={{ mb: 5 }} direction="row" alignItems="center" justifyContent="space-between">
         <Button
@@ -156,7 +148,7 @@ const GatewayDetail = () => {
                   {dataFinal.Name} adlı kayıt silinecektir!
                 </Typography>
                 <Stack sx={{ mt: 5 }} direction="row" alignItems="center" justifyContent="space-evenly">
-                  <Button sx={{ mr: 2 }} onClick={() => onDelete(gatewayID)} variant="outlined" color="error">
+                  <Button sx={{ mr: 2 }} onClick={() => onDelete(gatewayfieldID)} variant="outlined" color="error">
                     Sil
                   </Button>
                   <Button sx={{ ml: 2 }} onClick={handleClose} variant="outlined" color="info">
@@ -189,6 +181,17 @@ const GatewayDetail = () => {
                   fullWidth
                   margin='normal'
                   required
+                  name="Description"
+                  label="Açıklama"
+                  value={dataFinal.Description}
+                  onChange={handleChange}
+                />
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <TextField
+                  fullWidth
+                  margin='normal'
+                  required
                   name="Lang"
                   label="Lang"
                   value={dataFinal.Lang}
@@ -206,61 +209,6 @@ const GatewayDetail = () => {
                   onChange={handleChange}
                 />
               </Grid>
-              <Grid item xs={12} md={6}>
-                <TextField
-                  fullWidth
-                  margin='normal'
-                  required
-                  name="ServerIP"
-                  label="Server IP"
-                  value={dataFinal.ServerIP}
-                  onChange={handleChange}
-                />
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <TextField
-                  fullWidth
-                  margin='normal'
-                  required
-                  name="ServerPort"
-                  label="Server Port"
-                  value={dataFinal.ServerPort}
-                  onChange={handleChange}
-                />
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <TextField
-                  fullWidth
-                  margin='normal'
-                  required
-                  name="GatewayIP"
-                  label="Gateway IP"
-                  value={dataFinal.GatewayIP}
-                  onChange={handleChange}
-                />
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <TextField
-                  fullWidth
-                  margin='normal'
-                  required
-                  name="GatewayPort"
-                  label="Gateway Port"
-                  value={dataFinal.GatewayPort}
-                  onChange={handleChange}
-                />
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <TextField
-                  fullWidth
-                  margin='normal'
-                  required
-                  name="TelitClientPort"
-                  label="Telit Client Port"
-                  value={dataFinal.TelitClientPort}
-                  onChange={handleChange}
-                />
-              </Grid>
             </Grid>
           </CardContent>
           <Divider />
@@ -271,15 +219,15 @@ const GatewayDetail = () => {
               p: 2,
             }}
           >
-            <Button color="primary" variant="contained" type="submit" onClick={() =>update(gatewayID)}>
+            <Button color="primary" variant="contained" type="submit" onClick={() =>update(gatewayfieldID)}>
               Güncelle
             </Button>
           </Box>
         </Card>
       </Container>
-      <GatewayFields />
+      <WorkGroup/>
     </Page>
   );
 };
 
-export default GatewayDetail;
+export default GatewayFieldDetail;

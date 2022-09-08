@@ -6,15 +6,15 @@ import { Stack, Button, Container, Typography, Box, Modal, TextField } from '@mu
 import { LoadingButton } from '@mui/lab';
 
 // component
-import MuiTable from '../../../../components/tables/Table';
-import Iconify from '../../../../components/Iconify';
-import { FormProvider } from '../../../../components/hook-form';
+import MuiTable from '../../../../../components/tables/Table';
+import Iconify from '../../../../../components/Iconify';
+import { FormProvider } from '../../../../../components/hook-form';
 
 //mock
-import { options } from '../../../../mock/MuiTableOptions';
+import { options } from '../../../../../mock/MuiTableOptions';
 
 //service
-import GatewayFieldService from '../../../../services/GatewayFieldsService';
+import WorkGroupService from '../../../../../services/WorkGroupService';
 
 const style = {
   position: 'absolute',
@@ -28,15 +28,14 @@ const style = {
   p: 4,
 };
 
-const GatewayFields = () => {
-  const services = new GatewayFieldService();
+const WorkGroup = () => {
+  const services = new WorkGroupService();
   let { gatewayID } = useParams();
 
   const [data, setData] = useState({
-    Description: '',
+    WorkType: '',
     Name: '',
-    Lang: '',
-    Lat: '',
+    Description: '',
   });
 
   const handleChange = (e) => {
@@ -49,15 +48,14 @@ const GatewayFields = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const gatewayData = {
+    const workGroupData = {
       GatewayID: gatewayID,
-      Description: data.Description,
+      WorkType: data.WorkType,
       Name: data.Name,
-      Lang: data.Lang,
-      Lat: data.Lat,
+      Description: data.Description,
     };
 
-    await services.addGatewayField(gatewayData).then((e) => {
+    await services.addWorkGroup(workGroupData).then((e) => {
       if (e.status === 201) {
         setResult(e.data);
         getData();
@@ -66,18 +64,18 @@ const GatewayFields = () => {
     });
   };
 
-  const [gatewayField, setGatewayField] = useState({});
+  const [workGroup, setWorkGroup] = useState({});
   const [handleResult, setResult] = useState({});
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const getData = () => {
-    services.getByGatewayId(gatewayID).then((result) => setGatewayField(result.data));
+    services.getByGatewayId(gatewayID).then((result) => setWorkGroup(result.data));
   };
   useEffect(() => {
     getData();
-    console.log(gatewayField.data)
+    console.log(workGroup.data)
   }, []);
 
   const columns = [
@@ -98,19 +96,11 @@ const GatewayFields = () => {
       },
     },
     {
-      name: 'Lang',
-      label: 'Lang',
+      name: 'WorkType',
+      label: 'Çalışma',
       options: {
         filter: true,
         sort: true,
-      },
-    },
-    {
-      name: 'Lat',
-      label: 'Lat',
-      options: {
-        filter: true,
-        sort: false,
       },
     },
     {
@@ -125,7 +115,7 @@ const GatewayFields = () => {
               <Button
               variant="contained"
               size="small"
-              to={`/dashboard/gateway-field-detail/gatewayId=${gatewayID}/gatewayfieldID=` + gatewayField.data[dataIndex].contentId}
+              to={`/dashboard/workgroup-detail/workGroupID=` + workGroup.data[dataIndex].contentId}
               LinkComponent={RouterLink}
             >
               Detaylar
@@ -140,7 +130,7 @@ const GatewayFields = () => {
       <Container maxWidth="xxl">
         <Stack direction="row" alignItems="center" justifyContent="space-between" mt={5} mb={5}>
           <Typography variant="h5" gutterBottom>
-            Gateway Field Kayıtları
+            WorkGroup Kayıtları
           </Typography>
           <Button
             onClick={handleOpen}
@@ -180,16 +170,9 @@ const GatewayFields = () => {
                 />
                 <TextField
                   required
-                  name="Lang"
-                  label="Lang"
-                  value={data.Lang}
-                  onChange={handleChange}
-                />
-                <TextField
-                  required
-                  name="Lat"
-                  label="Lat"
-                  value={data.Lat}
+                  name="WorkType"
+                  label="Çalışma Türü"
+                  value={data.WorkType}
                   onChange={handleChange}
                 />
                 <LoadingButton onClick={(e) => onSubmit(e)} fullWidth size="large" type="submit" variant="contained">
@@ -199,8 +182,8 @@ const GatewayFields = () => {
             </FormProvider>
           </Box>
         </Modal>
-        <MuiTable title={'Gateway Fields'} data={gatewayField.data} columns={columns} options={options} />
+        <MuiTable title={'WorkGroup'} data={workGroup.data} columns={columns} options={options} />
       </Container>
   );
 };
-export default GatewayFields;
+export default WorkGroup;
